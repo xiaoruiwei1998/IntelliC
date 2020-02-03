@@ -12,4 +12,14 @@ router.get('/', function(req, res, next) {
   })
 });
 
+/* GET register page. */
+router.get('/registerPage', function(req, res, next) {
+    res.render('registerPage', {})
+  })
+
+/* GET login page. */
+router.get('/loginPage', function(req, res, next) {
+  res.render('loginPage', {})
+})
+
 module.exports = router;

@@ -41,30 +41,26 @@ router.post('/registerPage', function(req, res, next) {
 
 /* Login */
 router.post('/loginPage', function(req, res, next) {
-  // pwd == pwd1?
-  if (req.body.password != req.body.password1) {
-    console.log('Different Password!') //怎么只重输pwd1？
-    res.redirect('/registerPage')
-  } else if(0) {
-
-  } else {
-
-    // save data to db
-    var data = {
-      user_email: req.body.userMail,
-      user_password: req.body.password
-    }
-    model.connect(function(db) {
-      db.collection('users').insertOne(data, function(err, ret) {
-        if (err) {
-          console.log('Register Failed!')
-          res.redirect('/registerPage')
+  var data = {
+    user_email: req.body.userMail,
+    user_password: req.body.password
+  }
+  // verify: ...
+  // query
+  model.connect(function(db) {
+    db.collection('users').find(data).toArray(function(err, docs) {
+      if (err) {
+        res.redirect('/loginPage')
+      } else {
+        if (docs.length > 0) {
+          res.redirect('/')
         } else {
           res.redirect('/loginPage')
         }
-      })
+      }
     })
-  }
+  })
+  console.log('Login', data)
 })
 
 module.exports = router;

@@ -3,9 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var questionsRouter = require('./routes/questions');
+var papersRouter = require('./routes/papers');
 
 var app = express();
 
@@ -19,8 +22,30 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session settings
+app.use(session({
+  secret: 'the gift is a tie',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {maxAge: 1000 * 60 * 1000} // 10 mins
+}))
+
+app.get('*', function(req, res, next) {
+  var userMail = req.session.userMail
+  var path = req.path
+  console.log('session', userMail)
+  if (path != '/loginPage' && path != '/registerPage') {
+    if (!userMail) {
+      res.redirect('/loginPage')
+    }
+  }
+  next()
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/questions', questionsRouter);
+app.use('/papers', papersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

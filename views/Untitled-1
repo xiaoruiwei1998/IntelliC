@@ -1,0 +1,49 @@
+db.collection.insertOne({
+q_type: 'C',
+q_title: '编程题',
+q_description: ’编写一个C程序，运行时输出Hello Word’,
+q_answer: '#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+printf("Hello World!\n");
+system("color 04");
+return 0;
+}',
+q_total_times: 29,
+q_right_times: 9,
+q_tags: '',
+q_difficulty: 1,
+q_test_cases: 'test 1'
+})
+
+db.collection.insertOne({q_type: 'C',
+q_title: '编程题',
+q_description: '编写一个C程序，运行时输出Hello Word',
+q_answer: 'q_answer',
+q_total_times: 29,
+q_right_times: 9,
+q_tags: '',
+q_difficulty: 1,
+q_test_cases: ['test 1', 'test 2']
+});
+
+
+// insert new columns
+>db.users.update({'user_friends':[], 'user_assignments': []})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })   # 输出信息
+
+db.users.insertOne(
+    {"user_type" : "S", 
+    "user_name" : "RuiweiXiao", 
+    "user_email" : "ruiweixiao@berkeley.edu", 
+    "user_password" : "$2b$10$Ioa9rqN5a/ftMfaRYjLWae2tTQQa2adQpXniTMwDYalXbrure1nt2", 
+    "user_salt" : "$2b$10$is2TBYYl9mjfUYp0AmtfJO",
+    "user_friends": [],
+    "user_assignments": [] }
+);
+
+db.users.insertMany(
+    { "_id" : ObjectId("5e629256c75401bb3031ff60"), "user_type" : "S", "user_name" : "ChrisChi", "user_email" : "chrischicc99@berkeley.edu", "user_password" : "$2b$10$yupUHuP0x4uxFgnzgmJ1yuEAqvsrgdhpW3GiRkOviUYo22ZJQdOJG", "user_salt" : "$2b$10$Jh/LWPbH8UyqvxvBoUliZ.", "user_friends" : [ ], "user_assignments" : [ ] }
+    { "_id" : ObjectId("5e6292afc75401bb3031ff61"), "user_type" : "I", "user_name" : "NickWeaver", "user_email" : "1036659062@qq.com", "user_password" : "$2b$10$MFqyrAMufH9kISmgJOa4OuH9n9.ANEJGBzUUKr.02IvtL1CNsOz7q", "user_salt" : "$2b$10$ILax4O.zTuKttApVYM.t8u", "user_friends" : [ ], "user_assignments" : [ ] }
+)

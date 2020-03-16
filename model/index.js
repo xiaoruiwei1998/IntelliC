@@ -4,7 +4,7 @@ var url = 'mongodb://localhost:27017'
 
 var dbName = 'IntelliC'
 
-// Database Connectinng Method
+// DB Connectinng Method
 function connect(callback) {
     MongoClient.connect(url, function(err, client) {
         if (err) {

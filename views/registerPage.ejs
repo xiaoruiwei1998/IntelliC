@@ -7,9 +7,13 @@
   <body>
       
       <div>
-        <form action="/users/registerPage" method="post">
+        <form action="/users/register" method="post">
           <div>
-            <input type="text" name="userType" value="" placeholder="Input User Type"></div>
+              <select name="userType">
+              <option value="S">Student</option>
+              <option value="I">Instructor</option>
+              <option value="A">Administer</option>
+              </select>
           </div>
           <div>
             <input type="text" name="username" value="" placeholder="Input Username">

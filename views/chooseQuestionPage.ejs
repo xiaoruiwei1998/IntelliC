@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang = "">
+  <head>
+    <title>chooseQuestionsPage</title>
+  </head>
+  <body>
+
+
+      <div class="questions">
+        <% list.map(function(item, index) { %>
+          <div class="row">
+            <span>
+                <a href="/editQuestionPage?q_type=<%=item.q_type%>&q_description=<%=item.q_description%>&page=<%=data.curPage%>">edit</a>
+                <a href="questions/delete?q_time=<%=item.q_time%>&page=<%=data.curPage%>">delete</a>
+            </span>
+          </div>
+        <% }) %>
+      <div><a href="/">homePage</a> </div>
+
+    </body>
+  </html>
+  
+  

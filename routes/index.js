@@ -35,13 +35,15 @@ router.get('/personalPage', function(req, res, next) {
 })
 
 /* GET log page. */
-router.get('/logPage', function(req, res, next) {
-  res.render('logPage', {})
+router.get('/oneAssignmentPage', function(req, res, next) {
+  var userMail = req.session.userMail || ''
+  res.render('oneAssignmentPage', {userMail: userMail})
 })
 
 /* GET course page. */
 router.get('/coursePage', function(req, res, next) {
-    res.render('coursePage', {})
+    var userMail = req.session.userMail || ''
+    res.render('coursePage', {userMail: userMail})
   })
 
 /* GET all questions page. */
@@ -89,7 +91,27 @@ router.get('/editQuestionPage', function(req, res, next) {
 /* GET editAssignmentPage page. */
 router.get('/editAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
-  res.render('editAssignmentPage', {userMail: userMail})
+  res.render('editQuestionPage', {userMail: userMail})
 })
 
+router.get('/chooseQuestionPage', function(req, res, next) {
+  var userMail = req.session.userMail || ''
+  var item = {
+    q_title: '',
+    q_type: '',
+    q_description: '',
+    q_answer: '',
+    q_explaination: '',
+    q_time: ''
+}
+  if (1) {
+    model.connect(function(db) {
+      db.collection('questions').find({q_type: req.query.q_type}, function(err, docs) {
+          var list = docs
+          res.render('chooseQuestionPage', {userMail: userMail, list: list})
+      })
+  })} else {
+    res.render('chooseQuestionPage', {userMail: userMail, item: item});
+  }
+})
 module.exports = router;

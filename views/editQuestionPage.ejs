@@ -4,11 +4,6 @@
     <title>editQuestionsPage</title>
   </head>
   <body>
-        <span><%= item.q_type %></span>
-        <span><%= item.q_title %></span>
-        <span><%= item.q_description %></span>
-        <span><%= item.q_answer %></span>
-        <span><%= item.q_time %></span>
       <div>
         <form action="/questions/insert" method="post">
           <div><input type="text" name="title" value="<%- item.q_title %>" placeholder="问题标题"></div>

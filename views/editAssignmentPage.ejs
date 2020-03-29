@@ -15,29 +15,34 @@
                 <% if (0) { %>
           
                   <div>autoAdd</div>
-                  <div><input type="text" name="question_num" value="" placeholder="问题数量"></div>
+                  <div><input type="text" name="question_num" value="" placeholder="单选题题数量"></div>
+                  <div><input type="text" name="question_num" value="" placeholder="多选题题数量"></div>
+                  <div><input type="text" name="question_num" value="" placeholder="填空题题数量"></div>
+                  <div><input type="text" name="question_num" value="" placeholder="简答题题数量"></div>
+                  <div><input type="text" name="question_num" value="" placeholder="编程题题数量"></div>
                   <div><form action="/assignments/autoAdd" method="post"></form></div>
           
                   <% } else { %>
           
-                  <div>manuAdd</div>
-                  <div><input type="text" name="question_num" value="" placeholder="问题数量"></div>
-                  
-                  <div class="questions">
-                      <% list.map(function(item, index) { %>
-                        <div class="row">
-                          <span><%= index+1 %></span>
-                          <span><%= item.a_time %></span>
-                          <span>
-                              <a href="/editQuestionPage?q_type=<%=item.q_type%>&q_description=<%=item.q_description%>&page=<%=data.curPage%>">edit</a>
-                              <a href="questions/delete?q_time=<%=item.q_time%>&page=<%=data.curPage%>">delete</a>
-                          </span>
-                        </div>
-                      <% }) %>
-                  <div><a href="/">homePage</a> </div>
-
-                  <div>加新问题</div>
-                  <div>从数据库中选择问题</div>
+                  <div>2. manuAdd</div>
+                  <div><a href="/editQuestionPage">(1)加新问题</a></div><br>
+                  <div><a href="/chooseQuestionPage">(2)从数据库中选择问题</a></div><br>
+                  <div>
+                      <select name="questionType">
+                      <option value="MC">单选题</option>
+                      <option value="NMC">多选题</option>
+                      <option value="B">填空题</option>
+                      <option value="W">简答题</option>
+                      <option value="C">编程题</option>
+                      </select>
+                  </div>
+                  <div>
+                      <select name="questionTag">
+                      </select>
+                  </div>
+                 
+                  <div>题目1</div><br>
+                  <div>题目n</div><br>
                   <div><form action="/assignments/manuAdd" method="post"></form></div>  
           
                   <% } %>

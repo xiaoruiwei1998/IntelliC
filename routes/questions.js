@@ -31,7 +31,7 @@ router.post("/insert", function(req, res, next) {
                     console.log('添加问题失败！', err)
                     res.redirect('/allQuestionsPage')
                 } else {
-                    res.redirect('/testPaperPage')
+                    res.redirect('/assignmentPage')
                 }
             })
         })

@@ -6,7 +6,6 @@ var model = require('../model');
 router.get('/', function(req, res, next) {
   model.connect(function(db) {
     db.collection('users').find().toArray(function(err, docs) {
-      // console.log('user docs', docs)
       res.render('index', { title: 'Express' });
     })
   })
@@ -24,10 +23,13 @@ router.get('/loginPage', function(req, res, next) {
 
 /* GET personal page. */
 router.get('/personalPage', function(req, res, next) {
+  var userMail = req.session.userMail || ''
+  var userType = req.session.userType || ''
+  var item = {}
   model.connect(function(db) {
-    db.collection('users').find().toArray(function(err, docs) {
-      var list = docs
-      res.render('personalPage', {list: list});
+    db.collection('users').findOne({user_email: userMail}, function(err, docs) {
+      item = docs
+      res.render('personalPage', {item: item, userMail: userMail, userType: userType});
     })
   })
 })
@@ -84,9 +86,10 @@ router.get('/editQuestionPage', function(req, res, next) {
   }
 })
 
-/* GET testPaper page. */
-router.get('/testPaperPage', function(req, res, next) {
-  res.render('testPaperPage', {})
+/* GET editAssignmentPage page. */
+router.get('/editAssignmentPage', function(req, res, next) {
+  var userMail = req.session.userMail || ''
+  res.render('editAssignmentPage', {userMail: userMail})
 })
 
 module.exports = router;

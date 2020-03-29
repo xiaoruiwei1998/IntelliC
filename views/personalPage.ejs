@@ -2,25 +2,21 @@
 <html lang = "">
   <head>
     <title>personalPage</title>
-    <%- include head %>
   </head>
   <body>
-    <div>好友信息展示</div>
-    <div class="list">
-        <% list.map(function(item, index) { %>
-            <div class="row">
-                <span><%= index+1 %></span>
-                <span><%= item.user_friends %></span>
-                <span><%= item.user_assignments %></span>
-                <span><%= item.user_name %></span>
-                <span>Submitted Date</span>
-                <span>Due Date</span>
-                </div>
-        <% }) %>
-    </div><br>
+    <div>Courses</div>
+      <% item.user_courses.map(function(course, index) { %>
+        <span><a href="/coursePage"><%= course %></a></span><br>
+        <!-- <span><a href="/coursePage?q_time=<%=item.q_time%>"><%= course %></a></span><br> -->
+        </div>
+      <% }) %><br>
 
-    <div>课程信息展示</div>
-    <div><a href="/coursePage">课程1</a></div>
-    <div><a href="/coursePage">课程2</a></div>
+    <div>
+          <form action="/courses/addCourse" method="post">
+            <div><input type="text" name="courseName" value="" placeholder="Input New Course Name"></div>
+            <div><input type="text" name="instMail" value="" placeholder="Input New Instructor's Mail"></div>
+            <div><input type="submit" name="" value="Add Course"></div>
+          </form>
+    </div>
   </body>
 </html>

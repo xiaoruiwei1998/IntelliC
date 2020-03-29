@@ -9,14 +9,15 @@
       <div>
         <form action="/users/loginPage" method="post">
           <div>
-            <input type="text" name="userMail" value="" placeholder="Input Email Address">
+              <select name="userType">
+              <option value="S">Student</option>
+              <option value="I">Instructor</option>
+              <option value="A">Administer</option>
+              </select>
           </div>
-          <div>
-            <input type="password" name="password" value="" placeholder="Input Password">
-          </div>
-          <div>
-            <input type="submit" name="" value="Login">
-          </div>
+          <div><input type="text" name="userMail" value="" placeholder="Input Email Address"></div>
+          <div><input type="password" name="password" value="" placeholder="Input Password"></div>
+          <div><input type="submit" name="" value="Login"></div>
         </form>
         <div> Don't Have An Account? <a href="/registerPage">Register Now</a> </div>
       </div>

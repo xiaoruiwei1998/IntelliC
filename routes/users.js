@@ -80,12 +80,11 @@ router.post('/register', function(req, res, next) {
   }
 })
 
-
-
 /* Login */
 router.post('/loginPage', function(req, res, next) {
   var inputPassword = req.body.password
   var data = {
+    user_type: req.body.userType,
     user_email: req.body.userMail,
     user_inputPassword: req.body.password
   }
@@ -93,7 +92,7 @@ router.post('/loginPage', function(req, res, next) {
   // query
   model.connect(function(db) {
     // verify userMail
-    db.collection('users').findOne({user_email: data.user_email}, function(err, docs) {
+    db.collection('users').findOne({user_email: data.user_email, user_type: data.user_type}, function(err, docs) {
       if (err || docs == null) {
         console.log("User not exists!")
         res.redirect('/loginPage')
@@ -113,6 +112,7 @@ router.post('/loginPage', function(req, res, next) {
           })
           // save to session
           req.session.userMail = data.user_email
+          req.session.userType = data.user_type
       }
     })
   })

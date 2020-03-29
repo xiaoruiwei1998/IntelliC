@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang = "">
+  <head>
+    <title>editAssignmentPage</title>
+  </head>
+  <body>
+      <div>
+          <form action="">
+            <div>
+                <select name="add_type">
+                    <option value="auto">自动组卷</option>
+                    <option value="manu">手动组卷</option>
+                </select>
+
+                <% if (0) { %>
+          
+                  <div>autoAdd</div>
+                  <div><input type="text" name="question_num" value="" placeholder="问题数量"></div>
+                  <div><form action="/assignments/autoAdd" method="post"></form></div>
+          
+                  <% } else { %>
+          
+                  <div>manuAdd</div>
+                  <div><input type="text" name="question_num" value="" placeholder="问题数量"></div>
+                  
+                  <div class="questions">
+                      <% list.map(function(item, index) { %>
+                        <div class="row">
+                          <span><%= index+1 %></span>
+                          <span><%= item.a_time %></span>
+                          <span>
+                              <a href="/editQuestionPage?q_type=<%=item.q_type%>&q_description=<%=item.q_description%>&page=<%=data.curPage%>">edit</a>
+                              <a href="questions/delete?q_time=<%=item.q_time%>&page=<%=data.curPage%>">delete</a>
+                          </span>
+                        </div>
+                      <% }) %>
+                  <div><a href="/">homePage</a> </div>
+
+                  <div>加新问题</div>
+                  <div>从数据库中选择问题</div>
+                  <div><form action="/assignments/manuAdd" method="post"></form></div>  
+          
+                  <% } %>
+            </div>
+          </form>
+      </div>
+    </body>
+  </html>
+  
+  

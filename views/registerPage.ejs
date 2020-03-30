@@ -2,37 +2,200 @@
 <html lang = "">
   <head>
     <title>registerPage</title>
-    <%- include head %>
+    <style>
+      body{
+        background: #E5E5E5;
+      }
+      .middle{
+        position: absolute;
+        width: 500px;
+        height: 1024px;
+        left: 570px;
+        top: 0px;
+        background: rgba(204, 203, 204, 0.24);
+        border: 1px solid #CCCBCC;
+        box-sizing: border-box;
+        backdrop-filter: blur(16px);
+        border-radius: 8px;
+      }
+      .register_font{
+        position: absolute;
+        width: 295px;
+        height: 52px;
+        left: 220px;
+        top: 230px;
+      }
+      #type{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+        width: 295px;
+        height: 52px;
+        background-color: #CC6969;
+        color:white;
+        padding-left: 20px;
+        font-size: 14px;
+        border: 1px solid #CCCBCC;
+      }
+      .selection{
+        position: absolute;
+        height: 52px;
+        left: 105px;
+        top: 320px;
+      }
+      .user_input{
+        position: absolute;
+        height: 52px;
+        left: 105px;
+        top: 390px;
+        outline: 0;
+        width: 295px;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+        background: #CC6969;
+        border-radius: 8px;
+        border: 1px solid #CCCBCC;
+      }
+      .e_input{
+        position: absolute;
+        height: 52px;
+        left: 105px;
+        top: 460px;
+        outline: 0;
+        width: 295px;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+        background: #CC6969;
+        border-radius: 8px;
+        border: 1px solid #CCCBCC;
+      }
+      .p_input{
+        position: absolute;
+        height: 52px;
+        left: 105px;
+        top: 530px;
+        outline: 0;
+        width: 295px;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+        background: #CC6969;
+        border-radius: 8px;
+        border: 1px solid #CCCBCC;
+      }
+      .p1_input{
+        position: absolute;
+        height: 52px;
+        left: 105px;
+        top: 600px;
+        outline: 0;
+        width: 295px;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+        background: #CC6969;
+        border-radius: 8px;
+        border: 1px solid #CCCBCC;
+      }
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: white;
+        opacity: 1; /* Firefox */
+      }
+      input[type=text] {
+          color: white;
+          font-size: 14px;
+      }
+      input[type=password] {
+          color: white;
+          font-size: 14px;
+      }
+      .register_button{
+        position: absolute;
+        width: 295px;
+        height: 52px;
+        left: 105px;
+        top: 720px;
+        appearance: none;
+        border-radius: 8px;
+        width: 295px;
+        height: 52px;
+        background-color: #CC6969;
+        color: white;
+        padding-right: 10px;
+        font-size: 18px;
+        border: 1px solid #CCCBCC;
+      }
+      .login{
+        position: absolute;
+        width: 267px;
+        height: 22px;
+        left: 185px;
+        top: 680px;
+
+        font-family: Salsa;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+        /* identical to box height */
+
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: #120E21;
+      }
+      .login_link{
+        color: #CC6969;
+      }
+
+    </style>
   </head>
   <body>
       
-      <div>
+      <div class = "middle">
         <form action="/users/register" method="post">
-          <div>
-              <select name="userType">
-              <option value="S">Student</option>
-              <option value="I">Instructor</option>
-              <option value="A">Administer</option>
+          <div class = "register_font"><h1>注册</h1></div>
+          <div class = "selection">
+              <select id = "type" name="userType">
+              <option value="S">学生</option>
+              <option value="I">教师</option>
+              <option value="A">管理员</option>
               </select>
           </div>
+          
           <div>
-            <input type="text" name="username" value="" placeholder="Input Username">
+            <input type="text" class = "user_input" name="username" value="" placeholder="用户名">
           </div>
+         
           <div>
-            <input type="text" name="userMail" value="" placeholder="Input Email Address">
+            <input type="text" class = "e_input" name="userMail" value="" placeholder="用户邮箱">
           </div>
+          
           <div>
-            <input type="password" name="password" value="" placeholder="Input Password">
+            <input type="password" class = "p_input " name="password" value="" placeholder="用户密码">
           </div>
+         
           <div>
-            <input type="password" name="password1" value="" placeholder="Input Password Again">
+            <input type="password" class = "p1_input" name="password1" value="" placeholder="确认密码">
           </div>
+          
           <div>
-          <input type="submit" name="" value="Register"></div>
-          </div>
+          <input type="submit" class = "register_button" name="" value="注册">
+        </div>
+          
 
         </form>
-        <div>Already Have An Account? <a href="/loginPage">Login</a> </div>
+        <div class = "login">已有账号?&nbsp&nbsp<a class = "login_link" href="/loginPage"> 登陆</a > </div>
       </div>
+
+
   </body>
 </html>

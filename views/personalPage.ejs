@@ -4,7 +4,13 @@
     <title>personalPage</title>
   </head>
   <body>
-    <div>Courses</div>
+    <div>user_photo</div>
+    <div><%= item.user_name %></div>
+    <div><%= item.user_email %></div>
+    <div><a href="/personalPage">courses_page(default)</a></div>
+    <div><a href="/analysisPage">analysis_page</a></div>
+
+    <div>My Courses</div>
       <% item.user_courses.map(function(course, index) { %>
         <span><a href="/coursePage"><%= course %></a></span><br>
         <!-- <span><a href="/coursePage?q_time=<%=item.q_time%>"><%= course %></a></span><br> -->

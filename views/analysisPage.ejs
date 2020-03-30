@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang = "">
+  <head>
+    <title>ayalysisPage</title>
+  </head>
+  <body>
+    <div>user_photo</div>
+    <div><%= item.user_name %></div>
+    <div><%= item.user_email %></div>
+    <div><a href="/personalPage">courses_page(default)</a></div>
+    <div><a href="/analysisPage">analysis_page</a></div>
+
+    <div>Academic Summary</div>
+    <div>course_name    Instructor    GPA</div>
+      <% item.user_courses.map(function(course, index) { %>
+        <span><%= course %></span>
+        <span>Instructor</span>
+        <span>GPA</span><br>
+        </div>
+      <% }) %><br>
+  </body>
+</html>

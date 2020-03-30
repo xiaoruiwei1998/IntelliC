@@ -34,6 +34,19 @@ router.get('/personalPage', function(req, res, next) {
   })
 })
 
+/* GET analysis page. */
+router.get('/analysisPage', function(req, res, next) {
+  var userMail = req.session.userMail || ''
+  var userType = req.session.userType || ''
+  var item = {}
+  model.connect(function(db) {
+    db.collection('users').findOne({user_email: userMail}, function(err, docs) {
+      item = docs
+      res.render('analysisPage', {item: item, userMail: userMail, userType: userType});
+    })
+  })
+})
+
 /* GET log page. */
 router.get('/oneAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
@@ -77,7 +90,6 @@ router.get('/editQuestionPage', function(req, res, next) {
     q_time: ''
 }
   if (req.query.q_description) {
-    console.log(req.query.q_description)
     model.connect(function(db) {
       db.collection('questions').findOne({q_type: req.query.q_type, q_description: req.query.q_description}, function(err, docs) {
           item = docs

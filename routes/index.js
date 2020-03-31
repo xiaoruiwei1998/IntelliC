@@ -55,9 +55,17 @@ router.get('/oneAssignmentPage', function(req, res, next) {
 
 /* GET course page. */
 router.get('/coursePage', function(req, res, next) {
-    var userMail = req.session.userMail || ''
-    res.render('coursePage', {userMail: userMail})
+  var userMail = req.session.userMail || ''
+  var userType = req.session.userType || ''
+
+  model.connect(function(db) {
+    db.collection('users').find({user_email: userMail}).toArray(function(err, docs) {
+        var list = docs
+        console.log(list)
+        res.render('coursePage', {userMail: userMail, userType: userType, list: list});
+    })
   })
+})
 
 /* GET all questions page. */
 router.get('/allQuestionsPage', function(req, res, next) {

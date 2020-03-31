@@ -2,21 +2,30 @@
 <html lang = "">
   <head>
     <title>coursePage</title>
-    <%- include head %>
   </head>
 
   <body>
-    <div>学生信息展示</div>
-    <div>答卷记录: 提交/批改状态 时间 其他信息</div>
-    <div><a href="/oneAssignmentPage">答卷记录1</a></div>
-    <div><a href="/oneAssignmentPage">答卷记录2</a></div>
-    <div><a href="/oneAssignmentPage">答卷记录3</a></div>
-    <div>----------------------------------------------------------</div>
-    <div>教师信息展示</div>
-    <div><a href="/editAssignmentPage">添加作业</a></div>
-    <div>作业记录: 作业标题 时间 提交人数 其他信息</div>
-    <div><a href="/oneAssignmentPage">作业记录1</a></div>
-    <div><a href="/oneAssignmentPage">作业记录2</a></div>
-      <div> Back to <a href="/">homePage</a> </div>
+    <div>课程名称</div>
+    <div><a href="/personalPage">个人主页</a>
+      <div>重新批改请求</div>
+      <div>任课教师</div>
+      <div>John Denero</div>
+      <div>Nick Weaver</div>
+
+    <div>课程名称</div>
+    <div>课程描述：</div>
+    <div>Name Status Release Due</div>
+    <div><a href="/oneAssignmentPage">作业记录1</a> <%= list %> <%= list %> <%= list %></div>
+    <div><a href="/oneAssignmentPage">作业记录2</a> <%= list %> <%= list %> <%= list %></div>
+    <div><a href="/oneAssignmentPage">作业记录3</a> <%= list %> <%= list %> <%= list %></div>
+
+    <% if (userType == 'I') { %>
+      <div><input type="submit" id = "login_button" name="add_assignment" value="添加作业"></div>
+      <div><input type="submit" id = "login_button" name="edit_assignment" value="编辑作业"></div>
+      <% } %>
+
+    <div>账户信息</div>
+
+    <div> Back to <a href="/">homePage</a> </div>
   </body>
 </html>

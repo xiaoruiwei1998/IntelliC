@@ -4,7 +4,7 @@
     <title>ayalysisPage</title>
     <style>
         body{
-            background: #E5E5E5;
+            background: #ffffff;
         }
         .left{
             position: absolute;
@@ -45,10 +45,36 @@
             color:white;
         }
         .course_link{
-            
+            position: absolute;
+            width: 200px;
+            left: 50px;
+            top:300px;
+            height: 100px;
+            color:white;
         }
         .analysis_link{
-            
+            position: absolute;
+            width: 200px;
+            left: 50px;
+            top:340px;
+            height: 100px;
+            color:white;
+        }
+        .middle{
+            display: flex;
+            flex-direction: column;
+            padding: 0px;
+
+            position: absolute;
+            width: 582px;
+            height: 372px;
+            left: 429px;
+            top: 59px;
+
+            mix-blend-mode: normal;
+            /* Big card shadow */
+
+            box-shadow: 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.00562291), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.00807786), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.01), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0119221), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0143771), 0px 100px 80px rgba(0, 0, 0, 0.02);
         }
 
 
@@ -57,20 +83,22 @@
   </head>
   <body>
     <div class = "left">
-        <div>user_photo</div>
+        <div><img href = "/Users/xrw/Desktop/Jony.jpeg"></div>
         <div class = "user_name"><%= item.user_name %></div>
         <div class = user_email><%= item.user_email %></div>
         <div class = "course_link"><a href="/personalPage">courses_page(default)</a></div>
         <div><a class = "analysis_link" href="/analysisPage">analysis_page</a></div>
     </div>
     <div class = "right">
-    <div>Academic Summary</div>
-    <div>course_name    Instructor    GPA</div>
-      <% item.user_courses.map(function(course, index) { %>
-        <span><%= course %></span>
-        <span>Instructor</span>
-        <span>GPA</span><br>
-      <% }) %><br>
+        <div class = "middle">
+            <div>Academic Summary</div>
+            <div>course_name    Instructor    GPA</div>
+            <% item.user_courses.map(function(course, index) { %>
+                <span><%= course %></span>
+                <span>Instructor</span>
+                <span>GPA</span><br>
+            <% }) %><br>
+        </div>
     </div>
   </body>
 </html>

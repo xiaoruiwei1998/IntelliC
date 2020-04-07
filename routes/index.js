@@ -4,9 +4,10 @@ var model = require('../model');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  var file = "print"
   model.connect(function(db) {
     db.collection('users').find().toArray(function(err, docs) {
-      res.render('index', { title: 'Express' });
+      res.render('index', { title: 'Express', file: file });
     })
   })
 });

@@ -107,7 +107,7 @@ router.post('/loginPage', function(req, res, next) {
               res.redirect('/loginPage')
             } else {
               console.log("password is true")
-              res.redirect('/')
+              res.redirect('/personalPage')
             }
           })
           // save to session

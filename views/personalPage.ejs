@@ -2,27 +2,264 @@
 <html lang = "">
   <head>
     <title>personalPage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body{
+          background: rgb(255, 253, 246);
+      }
+      .left{
+        position: absolute;
+        width: 280px;
+        height: 1024px;
+        left: 0px;
+        top: 0px;
+        background: #CC6969;
+        border: 1px solid #CCCBCC;
+        box-sizing: border-box;
+        backdrop-filter: blur(16px);
+    }
+    .right{
+        position: absolute;
+        width: 1480px;
+        height: 1024px;
+        left: 280px;
+        top: 0px;
+        background: rgba(204, 203, 204, 0.24);
+        border: 1px solid #CCCBCC;
+        box-sizing: border-box;
+        backdrop-filter: blur(16px);
+    }
+    .user_email{
+      position: absolute;
+      left: 26.65%;
+      right: 90.21%;
+      top: 15.75%;
+      bottom: 53.71%;
+      font-family: Salsa;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 25px;
+      display: flex;
+      align-items: center;
+
+      color: #FFFFFF;
+
+      mix-blend-mode: normal;
+  }
+  .course_link{
+      position: absolute;
+      left: 26.65%;
+      right: 90.21%;
+      top: 24.75%;
+      bottom: 53.71%;
+      width: 50%;
+      color:white;
+      font-family: Noto Sans SC;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 26px;
+      /* identical to box height */
+
+      display: flex;
+      align-items: center;
+
+      color: rgba(255, 255, 255, 0.7);
+
+      mix-blend-mode: normal;
+  }
+  .analysis_link{
+      position: absolute;
+      left: 26.65%;
+      right: 90.21%;
+      top: 33.75%;
+      bottom: 53.71%;
+      width: 50%;
+      font-family: Noto Sans SC;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 26px;
+      /* identical to box height */
+
+      display: flex;
+      align-items: center;
+
+      color: rgba(255, 255, 255, 0.7);
+
+      mix-blend-mode: normal;
+  }
+  .user_name{
+    font-family: Salsa;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    
+    color: #FFFFFF;
+    
+    mix-blend-mode: normal;
+    position: absolute;
+    left: 26.33%;
+    right: 72.92%;
+    top: 16.68%;
+    bottom: 71.68%;
+  }
+  .user_type{
+    position: absolute;
+    left: 34.82%;
+    right: 72.43%;
+    top: 19.71%;
+    width: 30%;
+    bottom: 68.65%;
+
+    font-family: Salsa;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+
+    mix-blend-mode: normal;
+  }
+  #book{
+    position: absolute;
+    width: 20px;
+    height: 16px;
+    left: 12%;
+    top: 34.75%;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  #courses{
+    position: absolute;
+    width: 20px;
+    height: 16px;
+    left: 12%;
+    top: 30.2%;
+    color: white;
+  }
+  #analysis{
+    position: absolute;
+    width: 28px;
+    height: 17px;
+    left: 12%;
+    top: 39.2%;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .my_class{
+    position: absolute;
+    left: 2.39%;
+    right: 66.39%;
+    top: 3.08%;
+    
+
+    font-family: Noto Sans SC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 38px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+
+    mix-blend-mode: normal;
+  }
+  .semester_one{
+    position: absolute;
+    left: 2.39%;
+    right: 66.39%;
+    top: 7.08%;
+    
+
+    font-family: Noto Sans SC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 38px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+
+    mix-blend-mode: normal;
+  }
+  .right_bottom{
+    padding-top:150px;
+  }
+
+
+
+
+
+    </style>
   </head>
   <body>
-    <div>user_photo</div>
-    <div><%= item.user_name %></div>
-    <div><%= item.user_email %></div>
-    <div><a href="/personalPage">courses_page(default)</a></div>
-    <div><a href="/analysisPage">analysis_page</a></div>
 
-    <div>My Courses</div>
-      <% item.user_courses.map(function(course, index) { %>
-        <span><a href="/coursePage"><%= course %></a></span><br>
-        <!-- <span><a href="/coursePage?q_time=<%=item.q_time%>"><%= course %></a></span><br> -->
-        </div>
-      <% }) %><br>
 
-    <div>
-          <form action="/courses/addCourse" method="post">
-            <div><input type="text" name="courseName" value="" placeholder="Input New Course Name"></div>
-            <div><input type="text" name="instMail" value="" placeholder="Input New Instructor's Mail"></div>
-            <div><input type="submit" name="" value="Add Course"></div>
-          </form>
+    <div class = "left">
+      
+
+      <div>user_photo</div>
+
+
+
+      <div class = "user_name"><%= item.user_name %></div>
+      <div class = "user_email"><%= item.user_email %></div>
+      
+      <% if (item.user_type == 'I'){ %>
+        <p class = "user_type">教授</p>
+      <% } else { %>
+        <div class = "user_type">学生</div>
+        <% } %>
+      <i id = "book" class = "fa fa-book"></i>
+      <i id = "courses" class = "fa fa-envelope-o"></i>
+      <i id = "analysis" class = "fa fa-address-card"></i>
+      <div ><a class = "course_link" href="/personalPage">课程主页</a></div>
+      <div ><a class = "analysis_link" href="/analysisPage">学情分析</a></div>
     </div>
+
+    <div class = "right">
+      <div class = "right_top">
+          <div class = "my_class">我的课程</div>
+          <div class = "semester_one">2020第一学期</div>
+
+
+      </div>
+      
+      
+      
+      <div class = "right_bottom">
+        <% item.user_courses.map(function(course, index) { %>
+          
+          
+                <span><a href="/coursePage"><%= course %></a>    </span>      <br>
+               
+          
+        <% }) %><br>
+
+      <div>
+            <form action="/courses/addCourse" method="post">
+              <div><input type="text" name="courseName" value="" placeholder="Input New Course Name"></div>
+              <div><input type="text" name="instMail" value="" placeholder="Input New Instructor's Mail"></div>
+              <div><input type="submit" name="" value="Add Course"></div>
+            </form>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
   </body>
 </html>
+ <!-- <span><a href="/coursePage?q_time=<%=item.q_time%>"><%= course %></a></span><br> -->

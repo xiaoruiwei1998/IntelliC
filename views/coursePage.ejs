@@ -5,23 +5,36 @@
   </head>
 
   <body>
-    <div>课程名称</div>
-    <div><a href="/personalPage">个人主页</a>
+      <div><%=course_name%></div>
+      <div><a href="/personalPage">个人主页</a>
       <div>重新批改请求</div>
       <div>任课教师</div>
-      <div>John Denero</div>
-      <div>Nick Weaver</div>
+      <div><%=course_inst%></div>
 
-    <div>课程名称</div>
+    <div><%=course_name%></div>
     <div>课程描述：</div>
-    <div>Name Status Release Due</div>
-    <div><a href="/oneAssignmentPage">作业记录1</a> <%= list %> <%= list %> <%= list %></div>
-    <div><a href="/oneAssignmentPage">作业记录2</a> <%= list %> <%= list %> <%= list %></div>
-    <div><a href="/oneAssignmentPage">作业记录3</a> <%= list %> <%= list %> <%= list %></div>
+    <div>C 语言是最为流行的通用程序设计语言之一，是许多计算机专业人员和计算机爱好者学习程序设计语言的首选。本书共12 章，内容包括C 语言程序设计预备知识，C 语言程序设计基础，基本数据类型、运算符与表达式，基本输入输出和顺序程序设计，选择结构程序设计，循环结构程序设计，数组，函数，指针，预处理命令，复杂数据类型，文件等。 本书注重教材的可读性和实用性，每章开头都给出了学习意义、学习目标及难点提示，对关键知识点进行了详细的说明，并附有大量的图表方便读者正确、直观地对问题进行理解，样例程序由浅入深，强化了知识点、算法、编程方法与技巧，并给出了详细的解释。</div>
+    <div>修改 作业名称 状态 开始日期 截止日期</div>
 
+    <% item.user_assignments.map(function(assignment, index) { %>
+      <% if (assignment.a_courseID == thisCourse) { 
+        var aData = {
+          a_name: assignment.a_name, 
+          a_courseID: assignment.a_courseID, 
+          a_status: assignment.a_status,
+          a_release: assignment.a_release, 
+          a_due: assignment.a_due,
+          a_questions: assignment.a_questions
+        }
+        %>
+        <div><a href="/">修改</a> <a href="/">删除</a> <a href="/oneAssignmentPage?thisAssignment=<%= aData%>"><%= assignment.a_name %></a> <%= assignment.a_status %> <%= assignment.a_release %> <%= assignment.a_due %></div>
+      <% } %>
+   <% })%>
+
+    
     <% if (userType == 'I') { %>
-      <div><input type="submit" id = "login_button" name="add_assignment" value="添加作业"></div>
-      <div><input type="submit" id = "login_button" name="edit_assignment" value="编辑作业"></div>
+      <div><a href="/manuAddAssignmentPage">手动添加作业</a></div>
+      <div><a href="/autoAddAssignmentPage">自动添加作业</a></div>
       <% } %>
 
     <div>账户信息</div>

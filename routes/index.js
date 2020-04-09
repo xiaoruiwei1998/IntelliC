@@ -4,7 +4,7 @@ var model = require('../model');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var file = "print"
+  var file = "pass into online compiler"
   model.connect(function(db) {
     db.collection('users').find().toArray(function(err, docs) {
       res.render('index', { title: 'Express', file: file });
@@ -26,11 +26,12 @@ router.get('/loginPage', function(req, res, next) {
 router.get('/personalPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
   var userType = req.session.userType || ''
+  var userName = req.session.userName || ''
   var item = {}
   model.connect(function(db) {
     db.collection('users').findOne({user_email: userMail}, function(err, docs) {
       item = docs
-      res.render('personalPage', {item: item, userMail: userMail, userType: userType});
+      res.render('personalPage', {item: item, userMail: userMail, userType: userType, userName: userName});
     })
   })
 })
@@ -39,11 +40,12 @@ router.get('/personalPage', function(req, res, next) {
 router.get('/analysisPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
   var userType = req.session.userType || ''
+  var userName = req.session.userName || ''
   var item = {}
   model.connect(function(db) {
     db.collection('users').findOne({user_email: userMail}, function(err, docs) {
       item = docs
-      res.render('analysisPage', {item: item, userMail: userMail, userType: userType});
+      res.render('analysisPage', {item: item, userMail: userMail, userType: userType, userName: userName});
     })
   })
 })
@@ -51,19 +53,22 @@ router.get('/analysisPage', function(req, res, next) {
 /* GET log page. */
 router.get('/oneAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
-  res.render('oneAssignmentPage', {userMail: userMail})
+  var thisAssignment = req.query.thisAssignment
+  res.render('oneAssignmentPage', {userMail: userMail, thisAssignment: thisAssignment})
 })
 
 /* GET course page. */
 router.get('/coursePage', function(req, res, next) {
   var userMail = req.session.userMail || ''
   var userType = req.session.userType || ''
-
+  var userName = req.session.userName || ''
+  var thisCourse = req.query.thisCourse
+  var course_name = thisCourse.split('_')[0]
+  var course_inst = thisCourse.split('_')[1]
   model.connect(function(db) {
-    db.collection('users').find({user_email: userMail}).toArray(function(err, docs) {
-        var list = docs
-        console.log(list)
-        res.render('coursePage', {userMail: userMail, userType: userType, list: list});
+    db.collection('users').findOne({user_email: userMail}, function(err, docs) {
+        var item = docs
+        res.render('coursePage', {userMail: userMail, userType: userType, userName: userName, item: item, course_name:course_name, course_inst: course_inst, thisCourse: thisCourse});
     })
   })
 })
@@ -109,10 +114,16 @@ router.get('/editQuestionPage', function(req, res, next) {
   }
 })
 
-/* GET editAssignmentPage page. */
-router.get('/editAssignmentPage', function(req, res, next) {
+/* GET manuAddAssignmentPage page. */
+router.get('/manuAddAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
-  res.render('editQuestionPage', {userMail: userMail})
+  res.render('manuAddAssignmentPage', {userMail: userMail})
+})
+
+/* GET autoAssignmentPage page. */
+router.get('/autoAddAssignmentPage', function(req, res, next) {
+  var userMail = req.session.userMail || ''
+  res.render('autoAddAssignmentPage', {userMail: userMail})
 })
 
 router.get('/chooseQuestionPage', function(req, res, next) {

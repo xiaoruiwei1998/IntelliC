@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang = "">
+  <head>
+    <title>manuAddAssignmentPage</title>
+  </head>
+  <body>
+      <div>
+          <form action="">
+            <div>
+                <select name="add_type">
+                    <option value="auto">自动组卷</option>
+                    <option value="manu">手动组卷</option>
+                </select>
+
+                <% if (0) { %>
+          
+                  <div>autoAdd</div>
+                  <div><input type="text" name="question_num" value="" placeholder="单选题题数量"></div>
+                  <div><input type="text" name="question_num" value="" placeholder="多选题题数量"></div>
+                  <div><input type="text" name="question_num" value="" placeholder="填空题题数量"></div>
+                  <div><input type="text" name="question_num" value="" placeholder="简答题题数量"></div>
+                  <div><input type="text" name="question_num" value="" placeholder="编程题题数量"></div>
+                  <div><form action="/assignments/autoAdd" method="post"></form></div>
+          
+                  <% } else { %>
+          
+                  <div>2. manuAdd</div>
+                  <div><a href="/editQuestionPage">(1)加新问题</a></div><br>
+                  <div><a href="/chooseQuestionPage">(2)从数据库中选择问题</a></div><br>
+                  <div>
+                      <select name="questionType">
+                      <option value="MC">单选题</option>
+                      <option value="NMC">多选题</option>
+                      <option value="B">填空题</option>
+                      <option value="W">简答题</option>
+                      <option value="C">编程题</option>
+                      </select>
+                  </div>
+                  <div>
+                      <select name="questionTag">
+                      </select>
+                  </div>
+                 
+                  <div>题目1</div><br>
+                  <div>题目n</div><br>
+                  <div><form action="/assignments/manuAdd" method="post"></form></div>  
+          
+                  <% } %>
+            </div>
+          </form>
+      </div>
+    </body>
+  </html>
+  
+  

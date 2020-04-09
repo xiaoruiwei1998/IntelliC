@@ -112,6 +112,7 @@ router.post('/loginPage', function(req, res, next) {
           })
           // save to session
           req.session.userMail = data.user_email
+          req.session.userName = docs.user_name
           req.session.userType = data.user_type
       }
     })

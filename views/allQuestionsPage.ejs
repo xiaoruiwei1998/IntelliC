@@ -5,22 +5,23 @@
   </head>
   <body>
 
-      <div>
-        <a href="/editQuestionPage">insert</a>
+      <div><a href="/editQuestionPage">insert</a></div>
 
       <div class="questions">
         <% list.map(function(item, index) { %>
           <div class="row">
+            <span>
+                <a href="/editQuestionPage?q_time=<%=item.q_time%>">edit</a>
+                <a href="questions/delete?q_time=<%=item.q_time%>">delete</a>
+            </span>
             <span><%= index+1 %></span>
             <span><%= item.q_type %></span>
             <span><%= item.q_title %></span>
+            <span><%= item.q_chapter %></span>
+            <span><%= item.q_cdifficulty %></span>
             <span><%= item.q_description %></span>
             <span><%= item.q_answer %></span>
             <span><%= item.q_time %></span>
-            <span>
-                <a href="/editQuestionPage?q_type=<%=item.q_type%>&q_description=<%=item.q_description%>&page=<%=data.curPage%>">edit</a>
-                <a href="questions/delete?q_time=<%=item.q_time%>&page=<%=data.curPage%>">delete</a>
-            </span>
           </div>
         <% }) %>
       <div><a href="/">homePage</a> </div>

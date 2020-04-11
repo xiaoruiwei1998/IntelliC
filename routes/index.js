@@ -4,10 +4,9 @@ var model = require('../model');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var file = "pass into online compiler"
   model.connect(function(db) {
     db.collection('users').find().toArray(function(err, docs) {
-      res.render('index', { title: 'Express', file: file });
+      res.render('index', { title: 'Express' });
     })
   })
 });
@@ -53,8 +52,15 @@ router.get('/analysisPage', function(req, res, next) {
 /* GET log page. */
 router.get('/oneAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
-  var thisAssignment = req.query.thisAssignment
-  res.render('oneAssignmentPage', {userMail: userMail, thisAssignment: thisAssignment})
+  var thisAssignment = {
+    a_name: req.query.a_name,
+    a_courseID: req.query.a_course,
+    a_status: req.query.a_status,
+    a_release: req.query.a_release,
+    a_due: req.query.a_due,
+    a_questions: req.query.a_questions
+  }
+  res.render('oneAssignmentPage', {userMail: userMail, thisAssignment: thisAssignment, test: 'a'})
 })
 
 /* GET course page. */
@@ -96,16 +102,19 @@ router.get('/allQuestionsPage', function(req, res, next) {
 router.get('/editQuestionPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
   var item = {
-    q_title: '',
-    q_type: '',
-    q_description: '',
-    q_answer: '',
-    q_explaination: '',
-    q_time: ''
+        q_title: '',
+        q_type: '',
+        q_chapter: '',
+        q_tags: '',
+        q_difficulty: '',
+        q_description: '',
+        q_answer: '',
+        q_explaination: '',
+        q_time: ''
 }
-  if (req.query.q_description) {
+  if (req.query.q_time) {
     model.connect(function(db) {
-      db.collection('questions').findOne({q_type: req.query.q_type, q_description: req.query.q_description}, function(err, docs) {
+      db.collection('questions').findOne({q_time: req.query.q_time}, function(err, docs) {
           item = docs
           res.render('editQuestionPage', {userMail: userMail, item: item})
       })
@@ -117,13 +126,13 @@ router.get('/editQuestionPage', function(req, res, next) {
 /* GET manuAddAssignmentPage page. */
 router.get('/manuAddAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
-  res.render('manuAddAssignmentPage', {userMail: userMail})
+  res.render('manuAddAssignmentPage', {userMail: userMail, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
 })
 
 /* GET autoAssignmentPage page. */
 router.get('/autoAddAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
-  res.render('autoAddAssignmentPage', {userMail: userMail})
+  res.render('autoAddAssignmentPage', {userMail: userMail, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
 })
 
 router.get('/chooseQuestionPage', function(req, res, next) {

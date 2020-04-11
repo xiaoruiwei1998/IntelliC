@@ -1,52 +1,78 @@
 <!DOCTYPE html>
 <html lang = "">
   <head>
-    <title>autoAddAssignmentPagee</title>
+    <title>autoAddAssignmentPage</title>
   </head>
   <body>
+        自动组卷
+        <div><%=course_name%></div>
+        <a href="/personalPage">主页</a>
+        重改申请
+        教师
+        <div><%=course_inst%></div>
+        账号
       <div>
-          <form action="">
+        <input type="text" class = "" name="a_name" placeholder="作业名称"><br>
+        开始日期<input type="datetime-local" name="release_date" value="" placeholder="开始日期"><br>
+        截止日期<input type="datetime-local" name="due_date" value="" placeholder="截止日期"><br>
+          <form action="/assignments/autoAddAssignment">
+            <div>题型  数量  章节  难度  考点</div>
             <div>
-                <select name="add_type">
-                    <option value="auto">自动组卷</option>
-                    <option value="manu">手动组卷</option>
-                </select>
-
-                <% if (0) { %>
-          
-                  <div>autoAdd</div>
-                  <div><input type="text" name="question_num" value="" placeholder="单选题题数量"></div>
-                  <div><input type="text" name="question_num" value="" placeholder="多选题题数量"></div>
-                  <div><input type="text" name="question_num" value="" placeholder="填空题题数量"></div>
-                  <div><input type="text" name="question_num" value="" placeholder="简答题题数量"></div>
-                  <div><input type="text" name="question_num" value="" placeholder="编程题题数量"></div>
-                  <div><form action="/assignments/autoAdd" method="post"></form></div>
-          
-                  <% } else { %>
-          
-                  <div>2. manuAdd</div>
-                  <div><a href="/editQuestionPage">(1)加新问题</a></div><br>
-                  <div><a href="/chooseQuestionPage">(2)从数据库中选择问题</a></div><br>
-                  <div>
-                      <select name="questionType">
-                      <option value="MC">单选题</option>
-                      <option value="NMC">多选题</option>
-                      <option value="B">填空题</option>
-                      <option value="W">简答题</option>
-                      <option value="C">编程题</option>
-                      </select>
-                  </div>
-                  <div>
-                      <select name="questionTag">
-                      </select>
-                  </div>
-                 
-                  <div>题目1</div><br>
-                  <div>题目n</div><br>
-                  <div><form action="/assignments/manuAdd" method="post"></form></div>  
-          
-                  <% } %>
+                <input type="checkbox" class = "" name="MC_true" value="" placeholder="选择题">
+                选择题
+                <input type="number" class = "" name="MC_num" value="" placeholder="选择题数目">
+                <input type="number" class = "" name="MC_chapter" value="" placeholder="选择题章节">
+                <input type="number" class = "" name="MC_min_difficulty" value="" placeholder="最低">
+                -
+                <input type="number" class = "" name="MC_max_difficulty" value="" placeholder="最高">
+                <input type="number" class = "" name="MC_tags" value="" placeholder="选择题考点">
+                <input type="button" class = "" name="MC_submit" value="选择题提交">
             </div>
+            <div>
+                <input type="checkbox" class = "" name="B_true" value="" placeholder="填空题">
+                填空题
+                <input type="number" class = "" name="B_num" value="" placeholder="填空题数目">
+                <input type="number" class = "" name="B_chapter" value="" placeholder="填空题章节">
+                <input type="number" class = "" name="B_min_difficulty" value="" placeholder="最低">
+                -
+                <input type="number" class = "" name="B_max_difficulty" value="" placeholder="最高">
+                <input type="number" class = "" name="B_tags" value="" placeholder="填空题考点">
+                <input type="button" class = "" name="B_submit" value="填空题提交">
+            </div>
+            <div>
+                <input type="checkbox" class = "" name="TF_true" value="" placeholder="判断题">
+                判断题
+                <input type="number" class = "" name="TF_num" value="" placeholder="判断题数目">
+                <input type="number" class = "" name="TF_chapter" value="" placeholder="判断题章节">
+                <input type="number" class = "" name="TF_min_difficulty" value="" placeholder="最低">
+                -
+                <input type="number" class = "" name="TF_max_difficulty" value="" placeholder="最高">
+                <input type="number" class = "" name="TF_tags" value="" placeholder="判断题考点">
+                <input type="button" class = "" name="TF_submit" value="判断题提交">
+            </div>
+            <div>
+                <input type="checkbox" class = "" name="W_true" value="" placeholder="简答题">
+                简答题
+                <input type="number" class = "" name="W_num" value="" placeholder="简答题数目">
+                <input type="number" class = "" name="W_chapter" value="" placeholder="简答题章节">
+                <input type="number" class = "" name="W_min_difficulty" value="" placeholder="最低">
+                -
+                <input type="number" class = "" name="W_max_difficulty" value="" placeholder="最高">
+                <input type="number" class = "" name="W_tags" value="" placeholder="简答题考点">
+                <input type="button" class = "" name="W_submit" value="简答题提交">
+            </div>
+            <div>
+                <input type="checkbox" class = "" name="C_true" value="" placeholder="编程题">
+                编程题
+                <input type="number" class = "" name="C_num" value="" placeholder="编程题数目">
+                <input type="number" class = "" name="C_chapter" value="" placeholder="编程题章节">
+                <input type="number" class = "" name="C_min_difficulty" value="" placeholder="最低">
+                -
+                <input type="number" class = "" name="C_max_difficulty" value="" placeholder="最高">
+                <input type="number" class = "" name="C_tags" value="" placeholder="编程题考点">
+                <input type="button" class = "" name="C_submit" value="编程题提交">
+            </div>
+            <input type="submit" class = "" name="submitAll" value="发布作业">
           </form>
       </div>
     </body>

@@ -18,6 +18,25 @@
               <option value="C">代码题</option>
               </select>
           </div>
+          <div>
+              <select name="chapter">
+              <option value="<%- item.q_chapter %>"><%- item.q_chapter %></option>
+              <option value="1">第1章</option>
+              <option value="2">第2章</option>
+              <option value="3">第3章</option>
+              <option value="4">第4章</option>
+              <option value="5">第5章</option>
+              <option value="6">第6章</option>
+              <option value="7">第7章</option>
+              <option value="8">第8章</option>
+              <option value="9">第9章</option>
+              <option value="10">第10章</option>
+              <option value="11">第11章</option>
+              <option value="12">第12章</option>
+              </select>
+          </div>
+          <textarea name="tags" placeholder="问题标签"><%- item.q_tags %></textarea><br>
+          <textarea name="difficulty" placeholder="问题难度"><%- item.q_difficulty %></textarea><br>
           <textarea name="description" placeholder="问题描述"><%- item.q_description %></textarea><br>
           <textarea name="answer" value="<%- item.q_answer %>" placeholder="正确答案"><%- item.q_answer %></textarea><br>
           <textarea name="explaination" value="<%- item.q_explaination %>" placeholder="问题解析"><%- item.q_explaination %></textarea><br>

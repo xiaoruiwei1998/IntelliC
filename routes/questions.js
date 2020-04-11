@@ -40,29 +40,7 @@ router.post("/insert", function(req, res, next) {
 
 // EDIT QUESTION
 router.get("/edit", function(req, res, next) {
-    var data = {
-        q_title: '',
-        q_type: '',
-        q_description: '',
-        q_answer: '',
-        q_explaination: '',
-        q_time: ''
-    }
-    if (req.query.q_time) {
-        model.connect(function(db) {
-            db.collection('questions').findOne({q_time: req.query.q_time}, function(err, docs) {
-                if (err) {
-                    console.log('Edit failed!')
-                } else {
-                    data = docs
-                    res.render('edit', {data: data})
-                    console.log('Edit successfully')
-                }
-            })
-        })
-    } else {
-        res.render('edit', {data: data})
-    }
+    console.log('useless!')
     
 });
 

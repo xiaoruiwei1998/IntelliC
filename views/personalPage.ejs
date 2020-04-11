@@ -224,6 +224,7 @@
     top:100px;
     width: 281px;
     height: 45px;
+    display: inline-block;
     backdrop-filter: blur(16px);
   }
 
@@ -236,7 +237,7 @@
     /* clear: inline-end; */
   }
   .add_box{
-    position: absolute;
+    position:sticky;
     background: lightgray;
     border: 1px solid #ffffff;
     box-sizing: border-box;
@@ -271,14 +272,13 @@
       ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: white;
         opacity: 1; /* Firefox */
-        padding-left: 5%;
       }
       input[type=text] {
           color: white;
           font-size: 16px;
       }
       .submit_button{
-        position: absolute;
+        position: relative;
         appearance: none;
         border-radius: 20px;
         left:73px;
@@ -294,13 +294,19 @@
         box-sizing: border-box;
         background: #CC6969;
         border-radius: 20px;
+        left: 3%;
+        position: relative;
         height:45px;
         width:200px;
-        padding-left: 5%;
+        padding-left: 1.5%;
         border: 1px solid #CCCBCC;
       }
       .submit_graph{
         padding-top: 30px;
+      }
+      .addcourse{
+        padding-top: 60px;
+        padding-left: 5%;
       }
 
     </style>
@@ -312,7 +318,7 @@
       
 
       <div class = "profile_pic"><img src="https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/nweaver.jpg" 
-          height="150" width="150" style="border-radius: 50%; border-style: solid; border-color: white"></div>
+           height="150" width="150" style="border-radius: 50%; border-style: solid; border-color: white"></div>
       <div class = "user_name"><%= item.user_name %></div>
       <div class = "user_email"><%= item.user_email %></div>
       
@@ -337,27 +343,27 @@
       
       
       <div class = "right_bottom">
-        <% item.user_courses.map(function(course, index) { 
-          var course_name = course.split('_')[0]
-          var course_inst = course.split('_')[1]
-          %>
-          <ul>
-            <li>
-              <div class = "box">
-                <a class = "course_name" href="/coursePage?thisCourse=<%=course%>"><h1 class = "course_id"><%= course_name %></h1></a >
-                <p class = "full_course_name"><%=course_inst%></p >
-                <div class = "inner_box"><h1 class = "num_assignments">5个作业</h1></div>
-            </div>
-            </li>
-          </ul>
-        <% })%>
+          <% item.user_courses.map(function(course, index) { 
+            var course_name = course.split('_')[0]
+            var course_inst = course.split('_')[1]
+            %>
+            <ul>
+              <li>
+                <div class = "box">
+                  <a class = "course_name" href="/coursePage?thisCourse=<%=course%>"><h1 class = "course_id"><%= course_name %></h1></a >
+                  <p class = "full_course_name"><%=course_inst%></p >
+                  <div class = "inner_box"><h1 class = "num_assignments">5个作业</h1></div>
+              </div>
+              </li>
+            </ul>
+          <% })%>
 
-        <div class = "add_box">
-          <form action="/courses/addCourse" method="post">
+        <!-- <div class = "add_box"> -->
+          <form class = "addcourse" action="/courses/addCourse" method="post">
             <div><input class = "input_class" type="text" name="courseName" value="" placeholder="请输入新增课程名称"></div>
             <div class = "submit_graph"><input class = "submit_button" type="submit" name="" value="确认"></div>
           </form>
-        </div>
+        <!-- </div> -->
 
       
     </div>

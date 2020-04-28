@@ -58,4 +58,15 @@ router.get("/delete", function(req, res, next) {
     })
 });
 
+// SUBMIT CODING QUESTIONS
+router.post("/submitCodingQuestion", function(req, res, next) {
+    console.log('submitCodingQuestion')
+    console.log("--------------------- req ---------------------------")
+    console.log(req)
+    console.log("--------------------- res ---------------------------")
+    console.log(res)
+})
+
+// GRADING CODING QUESTIONS
+
 module.exports = router;

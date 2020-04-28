@@ -344,8 +344,8 @@
       
       <div class = "right_bottom">
           <% item.user_courses.map(function(course, index) { 
-            var course_name = course.split('_')[0]
-            var course_inst = course.split('_')[1]
+            var course_name = course.course_id.split('_')[0]
+            var course_inst = course.course_id.split('_')[1]
             %>
             <ul>
               <li>
@@ -361,6 +361,7 @@
         <!-- <div class = "add_box"> -->
           <form class = "addcourse" action="/courses/addCourse" method="post">
             <div><input class = "input_class" type="text" name="courseName" value="" placeholder="请输入新增课程名称"></div>
+            <div><input class = "input_class" type="text" name="courseName" value="" placeholder="请输入教师名称"></div>
             <div class = "submit_graph"><input class = "submit_button" type="submit" name="" value="确认"></div>
           </form>
         <!-- </div> -->

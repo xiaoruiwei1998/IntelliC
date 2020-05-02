@@ -58,6 +58,24 @@ router.get("/delete", function(req, res, next) {
     })
 });
 
+// SEARCH QUESTION(when creating an assignment)
+router.post("/search", function(req, res, next) {
+    model.connect(function(db) {
+        // db.collection('questions').find({q_type: req.body.type}, {q_chapter: req.body.chapter}, {q_difficulty : {"$lte" : req.query.max_difficulty, "$gte" : req.query.min_difficulty}})
+        db.collection('questions').find({q_type: req.body.type}).toArray(function(err, docs){
+            var userMail = req.session.userMail || ''
+            console.log(docs)
+            res.render('manuAddAssignmentPage', {searchResult: docs, userMail: userMail, thisCourse: req.query.thisCourse, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1], qSet: req.query.qSet})
+        })
+    })
+});
+
+// ADD QUESTION TO AN ASSIGNMENT
+router.post("/addQ2A", function(req, res, next) {
+    var qSet = req.query.qSet.push(req.query.qid)
+    res.render('manuAddAssignmentPage', {searchResult: req.query.searchResult, userMail: req.session.userMail, thisCourse: req.query.thisCourse, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1], qSet:qSet})
+});
+
 // SUBMIT CODING QUESTIONS
 router.post("/submitCodingQuestion", function(req, res, next) {
     console.log('submitCodingQuestion')

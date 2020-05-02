@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var model = require('../model');
 
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   model.connect(function(db) {
@@ -127,7 +126,8 @@ router.get('/editQuestionPage', function(req, res, next) {
 /* GET manuAddAssignmentPage page. */
 router.get('/manuAddAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
-  res.render('manuAddAssignmentPage', {userMail: userMail, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
+  var qSet = [10]
+  res.render('manuAddAssignmentPage', {searchResult: null, userMail: userMail, thisCourse: req.query.thisCourse, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1], qSet: qSet})
 })
 
 /* GET autoAssignmentPage page. */

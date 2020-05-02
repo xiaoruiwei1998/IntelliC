@@ -11,7 +11,7 @@ router.post('/addCourse', function(req, res, next) {
       // If Inst: create new courses.
       if (uType == 'I') {
         var new_course = req.body.courseName + '_' + req.session.userName // 每个课程唯一识别码 = course_name + inst_mail
-        db.collection('users').updateOne({user_email: req.session.userMail}, {$addToSet: {user_courses: new_course}}, function(err, ret) {
+        db.collection('users').updateOne({user_email: req.session.userMail}, {$addToSet: {user_courses: {course_id: new_course, course_students:[req.session.userName]}}}, function(err, ret) {
           if (err) {
             console.log("inst add course err!")
           }

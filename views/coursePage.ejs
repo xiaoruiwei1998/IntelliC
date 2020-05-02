@@ -17,7 +17,13 @@
     <div>修改 作业名称 状态 开始日期 截止日期</div>
     <% item.user_assignments.map(function(assignment, index) { %>
       <% if (assignment.a_courseID == thisCourse) { %>
-        <div><a href="assignments/editAssignment?a_name=<%=assignment.a_name%>&course_name=<%=course_name%>&course_inst=<%=course_inst%>">修改</a> <a href="assignments/deleteAssignment?a_name=<%=assignment.a_name%>&course_name=<%=course_name%>&course_inst=<%=course_inst%>">删除</a> <a href="/oneAssignmentPage?a_name=<%= assignment.a_name%>&a_courseID=<%=assignment.a_courseID%>&a_status=<%=assignment.a_status%>&a_release=<%=assignment.a_release%>&a_due=<%=assignment.a_due%>&a_questions=<%=assignment.a_questions%>"><%= assignment.a_name %></a> <%= assignment.a_status %> <%= assignment.a_release %> <%= assignment.a_due %></div>
+        <div>
+        <% if (userType == 'I') { %>
+          <a href="assignments/editAssignment?a_name=<%=assignment.a_name%>&course_name=<%=course_name%>&course_inst=<%=course_inst%>">修改</a> 
+          <a href="assignments/deleteAssignment?a_name=<%=assignment.a_name%>&course_name=<%=course_name%>&course_inst=<%=course_inst%>">删除</a> 
+        <% } %>
+          <a href="/oneAssignmentPage?a_name=<%= assignment.a_name%>&a_courseID=<%=assignment.a_courseID%>&a_status=<%=assignment.a_status%>&a_release=<%=assignment.a_release%>&a_due=<%=assignment.a_due%>&a_questions=<%=assignment.a_questions%>"><%= assignment.a_name %></a> <%= assignment.a_status %> <%= assignment.a_release %> <%= assignment.a_due %>
+        </div>
     <% } %>
    <% })%>
     

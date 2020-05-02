@@ -45,21 +45,21 @@ router.post('/autoAddAssignment', function(req, res, next) {
 
 /* Manu-add assignment */
 router.post('/manuAddAssignment', function(req, res, next) {
-  console.log('manu发布试卷')
   var thisAssignment = {
-    a_name: req.query.a_name,
-    a_release: req.query.a_release,
-    a_due: req.query.a_due,
-    a_questions: req.query.a_questions
+    a_name: req.body.a_name,
+    a_courseID: req.query.thisCourse,
+    a_release: req.body.a_release,
+    a_due: req.body.a_due,
+    a_questions: req.body.a_questions
   }
   model.connect(function(db) {
-    db.collection('users').updateMany({user_courses:{$all:[req.query.thisCourse]}}, {$addToSet: {user_assignments: thisAssignment}}, function(err, ret) {
+    db.collection('users').updateMany({"user_courses.course_id": req.query.thisCourse}, {$addToSet: {user_assignments: thisAssignment}}, function(err, ret) {
       if (err) {
         console.log('Add Assignment Failed!')
         } else {
             console.log('Add Assignment successfully')
         }
-        res.redirect('/coursePage?thisCourse='+req.query.course_name+'_'+req.query.course_inst)
+        res.redirect('/coursePage?thisCourse='+req.query.thisCourse)
     })
   })
 })

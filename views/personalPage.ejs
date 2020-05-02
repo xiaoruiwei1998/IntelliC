@@ -315,8 +315,7 @@
 
 
     <div class = "left">
-      
-
+    
       <div class = "profile_pic"><img src="https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/nweaver.jpg" 
            height="150" width="150" style="border-radius: 50%; border-style: solid; border-color: white"></div>
       <div class = "user_name"><%= item.user_name %></div>
@@ -350,7 +349,7 @@
             <ul>
               <li>
                 <div class = "box">
-                  <a class = "course_name" href="/coursePage?thisCourse=<%=course%>"><h1 class = "course_id"><%= course_name %></h1></a >
+                  <a class = "course_name" href="/coursePage?thisCourse=<%=course.course_id%>"><h1 class = "course_id"><%= course_name %></h1></a >
                   <p class = "full_course_name"><%=course_inst%></p >
                   <div class = "inner_box"><h1 class = "num_assignments">5个作业</h1></div>
               </div>
@@ -361,7 +360,6 @@
         <!-- <div class = "add_box"> -->
           <form class = "addcourse" action="/courses/addCourse" method="post">
             <div><input class = "input_class" type="text" name="courseName" value="" placeholder="请输入新增课程名称"></div>
-            <div><input class = "input_class" type="text" name="courseName" value="" placeholder="请输入教师名称"></div>
             <div class = "submit_graph"><input class = "submit_button" type="submit" name="" value="确认"></div>
           </form>
         <!-- </div> -->

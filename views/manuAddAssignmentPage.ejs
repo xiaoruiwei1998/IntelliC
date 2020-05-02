@@ -12,27 +12,57 @@
     <div><%=course_inst%></div>
     账号
       <div>
-        <input type="text" class = "" name="a_name" placeholder="作业名称"><br>
-        开始日期<input type="datetime-local" name="release_date" value="" placeholder="开始日期"><br>
-        截止日期<input type="datetime-local" name="due_date" value="" placeholder="截止日期"><br>
-        <input type="number" class = "" name="chapter" placeholder="章节">
-        <select name="type">
-                <option value="MC">单选题</option>
-                <option value="NMC">多选题</option>
-                <option value="B">填空题</option>
-                <option value="TF">判断题</option>
-                <option value="W">简答题</option>
-                <option value="C">代码题</option>
-        </select>
-        <input type="number" class = "" name="min_difficulty" placeholder="最低">
-        -
-        <input type="number" class = "" name="max_difficulty" placeholder="最高">
-        <input type="number" class = "" name="tags" placeholder="考点">
-        <input type="button" class = "" name="submit" value="手动组卷">
-      <div>
-          <form action="/assignments/manuAddAssignment"></form>
-          第一题 <a href="">删除</a> <br>
-          第二题 <a href="">删除</a> <br>
+        <form action="/assignments/manuAddAssignment?thisCourse=<%=thisCourse%>" method="post">
+            <input type="text" class = "" name="a_name" placeholder="作业名称"><br>
+            开始日期<input type="datetime-local" name="a_release" value="" placeholder="开始日期"><br>
+            截止日期<input type="datetime-local" name="a_due" value="" placeholder="截止日期"><br>
+          <input type="submit" class = "" name="submit" value="手动组卷">
+        </form>
+
+
+        <form action="/questions/search?thisCourse=<%=thisCourse%>&qSet=<%=qSet%>" method="post">
+          <input type="number" class = "" name="chapter" placeholder="章节">
+          <select name="type">
+                  <option value="MC">单选题</option>
+                  <option value="NMC">多选题</option>
+                  <option value="B">填空题</option>
+                  <option value="TF">判断题</option>
+                  <option value="W">简答题</option>
+                  <option value="C">代码题</option>
+          </select>
+          <input type="number" class = "" name="min_difficulty" placeholder="最低">
+          -
+          <input type="number" class = "" name="max_difficulty" placeholder="最高">
+          <input type="number" class = "" name="tags" placeholder="考点">
+          <input type="submit" class = "" name="submit" value="搜索"><br>
+          <div>
+          ---------------------------------------  搜索部分  ---------------------------------------
+            <% if (searchResult!= null) { %>
+              <script>
+                  function addQ2A(q) {
+                    qSet.push(q.q_id)
+                    document.write(q)
+                    console.log(q)
+                  }
+                </script>
+              <% searchResult.map(function(q, index) { %>
+                <div class="row">
+                  <span><button type="button" onclick="addQ2A(q)">add</button></span>
+                  <span><%= index+1 %></span>
+                  <span><%= q.q_id %></span>
+                  <span><%= q.q_type %></span>
+                  <span><%= q.q_title %></span>
+                  <span><%= q.q_chapter %></span>
+                  <span><%= q.q_difficulty %></span><br>
+                  <span><%= q.q_description %></span><br>
+                  <span><%= q.q_answer %></span><br>
+                </div>
+              <% }) %>
+            <% } %><br>
+          </div>
+        </form>
+        --------------------------------------- 已添加题目部分 ---------------------------------------
+        <br><%=qSet%>
       </div>
     </body>
   </html>

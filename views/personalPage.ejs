@@ -360,6 +360,9 @@
         <!-- <div class = "add_box"> -->
           <form class = "addcourse" action="/courses/addCourse" method="post">
             <div><input class = "input_class" type="text" name="courseName" value="" placeholder="请输入新增课程名称"></div>
+            <% if (userType == 'S') { %>
+              <div><input class = "input_class" type="text" name="instName" value="" placeholder="请输入新增课程教师"></div>
+            <% } %>
             <div class = "submit_graph"><input class = "submit_button" type="submit" name="" value="确认"></div>
           </form>
         <!-- </div> -->

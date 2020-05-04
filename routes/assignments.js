@@ -58,10 +58,19 @@ router.post('/manuAddAssignment', function(req, res, next) {
 })
 
 router.get('/addQ2A', function(req, res, next) {
-  var qPreview = {
-    q_type: req.query.q_type,
-    q_title: req.query.q_title,
-    q_description: req.query.q_description
+  if (req.query.q_type == "MC" || req.query.q_type == "NMC") {
+    var qPreview = {
+      q_type: req.query.q_type,
+      q_title: req.query.q_title,
+      q_choices: req.query.q_choices,
+      q_description: req.query.q_description
+    }
+  } else {
+      var qPreview = {
+        q_type: req.query.q_type,
+        q_title: req.query.q_title,
+        q_description: req.query.q_description
+      }
   }
   if (a_questionIds.indexOf(req.query.q_id) == -1) {
     a_questionIds.push(req.query.q_id)

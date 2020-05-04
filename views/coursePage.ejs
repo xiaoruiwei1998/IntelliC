@@ -9,22 +9,22 @@
           background: white;
       }
       .left{
-        position: absolute;
-        width: 280px;
+        position: fixed;
+        width: 16%;
         height: 100%;
         left: 0px;
         top: 0px;
+        z-index: 1;
         background: #CC6969;
         border: 1px solid #CCCBCC;
         box-sizing: border-box;
         backdrop-filter: blur(16px);
     }
     .right{
-        position: absolute;
-        width: 1430px;
+        position: relative;
+        width: 82.5%;
         height: 100%;
-        left: 280px;
-        top: 0px;
+        left: 16%;
         background: rgba(204, 203, 204, 0.24);
         border: 1px solid #CCCBCC;
         box-sizing: border-box;
@@ -101,9 +101,9 @@
       position: relative;
     }
     .course_name_2{
-      position: absolute;
+      position: relative;
       font-size: 26px;
-      top: 3%;
+      padding-top: 3%;
       left: 2%;
 
     }
@@ -117,7 +117,6 @@
     .horizontal_line{
       left: 2%;
       position: relative;
-      padding-top: 6%;
       border-top: transparent;
       border-left: transparent;
       border-right: transparent;
@@ -263,6 +262,9 @@
 
           <% } %>
 
+        
+
+        <% if(userType == 'I') { %>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <div class = "row">
           <div class = "col-lg-2">
@@ -275,6 +277,24 @@
             <div class = "account">账号</div>
           </div>
         </div>
+        <% } %>
+
+        <% if(userType == 'S') { %>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <div class = "row">
+            <div class = "col-lg-2">
+              
+            </div>
+            <div class = "col-lg-2">
+              <i id = "account_icon" class = "fa fa-user-circle-o"></i>
+            </div>
+            <div class = "col-lg-4">
+              <div class = "account">账号</div>
+            </div>
+          </div>
+          <% } %>
+
+
       </div>
 
       <div class = "right">
@@ -325,11 +345,7 @@
             </div>
           </div>
           <% } %>
-
-
-      
-    
-    
+  
     <% item.user_assignments.map(function(assignment, index) { %>
       <% if (assignment.a_courseID == thisCourse) { %>
         <% if (userType == 'I') { %>
@@ -357,6 +373,29 @@
             <% } %>
     <% } %>
    <% })%>
+
+   <% item.user_assignments.map(function(assignment, index) { %>
+    <% if (assignment.a_courseID == thisCourse) { %>
+      <% if (userType == 'S') { %>
+        <div id = "row_2" class = "row">
+          <div class = "col-lg-3">
+            <a class = "homework_name" href="/oneAssignmentPage?a_name=<%= assignment.a_name%>&a_courseID=<%=assignment.a_courseID%>&a_status=<%=assignment.a_status%>&a_release=<%=assignment.a_release%>&a_due=<%=assignment.a_due%>&a_questions=<%=assignment.a_questions%>">
+              <%= assignment.a_name %></a > 
+          </div>
+          <div class = "col-lg-3">
+            <%= assignment.a_status %> 
+          </div>
+          <div class = "col-lg-3">
+            <%= assignment.a_release %> 
+          </div>
+          <div class = "col-lg-3">
+            <%= assignment.a_due %> 
+          </div>
+          <div class = "bottom_line"></div>
+        </div>         
+          <% } %>
+  <% } %>
+ <% })%>
     
     
   </div>

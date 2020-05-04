@@ -40,28 +40,90 @@
             <% if (searchResult!= null) { %>
               <% searchResult.map(function(q, index) { %>
                 <div class="row">
-                  <span><a href="/assignments/addQ2A?thisCourse=<%=thisCourse%>&q_title=<%= q.q_title %>&q_description=<%= q.q_description %>&q_id=<%=q.q_id%>&q_type=<%=q.q_type%>">add1</a></span>
-                  <span><%= index+1 %></span>
-                  <span><%= q.q_id %></span>
-                  <span><%= q.q_type %></span>
-                  <span><%= q.q_title %></span>
-                  <span><%= q.q_chapter %></span>
-                  <span><%= q.q_difficulty %></span><br>
-                  <span><%= q.q_description %></span><br>
-                  <span><%= q.q_answer %></span><br>
+                  <span><a href="/assignments/addQ2A?thisCourse=<%=thisCourse%>&q_title=<%= q.q_title %>&q_description=<%= q.q_description %>&q_id=<%=q.q_id%>&q_type=<%=q.q_type%>&q_choices=<%=q.q_choices%>">add</a></span>
+                  
+                  <% if (q.q_type == "TF") { %>
+                    <span>【判断题】</span>
+                    <span><%= q.q_description%></span><br><br>
+                  <% } %>
+      
+                  <% if (q.q_type == "B") { %>
+                    <span>【填空题】</span>
+                    <span><%= q.q_description%></span><br><br>
+                  <% } %>
+      
+                  <% if (q.q_type == "W") { %>
+                    <span>【简答题】</span>
+                    <span><%= q.q_description%></span><br>
+                  <% } %>
+      
+                  <% if (q.q_type == "C") { %>
+                    <span>【编程题】</span>
+                    <span><%= q.q_description%></span><br>
+                  <% } %>
+      
+                  <% if (q.q_type == "MC") { %>
+                    <span>【单选题】</span>
+                    <span><%= q.q_description%></span><br>
+                    <% for (var i=1; i<=q.q_choices.length; i++) { %>
+                      <span><%=q.q_choices[i]%></span><br>
+                    <% } %>
+                  <% } %>
+      
+                  <% if (q.q_type == "NMC") { %>
+                    <span>【多选题】</span>
+                    <span><%= q.q_description%></span><br>
+                    <% for (var i=1; i<=q.q_choices.length; i++) { %>
+                      <span><%=q.q_choices[i]%></span><br>
+                    <% } %>
+                  <% } %>
+                  <span>答案：<%= q.q_answer %></span><br>
                 </div>
               <% }) %>
             <% } %><br>
-          </div
+              </div>
         </form>
         --------------------------------------- 已添加题目部分 ---------------------------------------
         <br>
         <% if (preview != null) { %>
           <% preview.map(function(q, index) { %>
             <span><%= index+1 %></span>
-            <span><%= q.q_type%></span>
-            <span><%= q.q_title%></span><br>
-            <span><%= q.q_description%></span><br><br>
+            <% if (q.q_type == "TF") { %>
+              <span>【判断题】</span>
+              <span><%= q.q_description%></span><br><br>
+            <% } %>
+
+            <% if (q.q_type == "B") { %>
+              <span>【填空题】</span>
+              <span><%= q.q_description%></span><br><br>
+            <% } %>
+
+            <% if (q.q_type == "W") { %>
+              <span>【简答题】</span>
+              <span><%= q.q_description%></span><br>
+            <% } %>
+
+            <% if (q.q_type == "C") { %>
+              <span>【编程题】</span>
+              <span><%= q.q_description%></span><br>
+            <% } %>
+
+            <% if (q.q_type == "MC") { %>
+              <span>【单选题】</span>
+              <span><%= q.q_description%></span><br>
+              <% for (var i=1; i<=q.q_choices.split(",")[0]; i++) { %>
+                <span><%=q.q_choices.split(",")[i]%></span><br>
+              <% } %>
+            <% } %>
+
+            <% if (q.q_type == "NMC") { %>
+              <span>【多选题】</span>
+              <span><%= q.q_description%></span><br>
+              <% for (var i=1; i<=q.q_choices.split(",")[0]; i++) { %>
+                <span><%=q.q_choices.split(",")[i]%></span><br>
+              <% } %>
+            <% } %>
+
           <% }) %>
         <% } %>
       </div>

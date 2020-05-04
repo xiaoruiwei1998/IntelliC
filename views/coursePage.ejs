@@ -2,37 +2,363 @@
 <html lang = "">
   <head>
     <title>coursePage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+    <style>
+      body{
+          background: white;
+      }
+      .left{
+        position: absolute;
+        width: 280px;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        background: #CC6969;
+        border: 1px solid #CCCBCC;
+        box-sizing: border-box;
+        backdrop-filter: blur(16px);
+    }
+    .right{
+        position: absolute;
+        width: 1430px;
+        height: 100%;
+        left: 280px;
+        top: 0px;
+        background: rgba(204, 203, 204, 0.24);
+        border: 1px solid #CCCBCC;
+        box-sizing: border-box;
+        backdrop-filter: blur(16px);
+    }
+    .course_id{
+      position: relative;
+      color:white;
+      font-size: 26px;
+      left: 10%;
+      top:6%;
+    }
+    .course_name{
+      position: relative;
+      font-size: 18px;
+      left: 10%;
+      top:7%;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    #dashboard_icon{
+      position: relative;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+    }
+    .personal_link{
+      font-size: 18px;
+      position: relative;
+      /* identical to box height */
+      color: rgba(255, 255, 255, 0.7);
+      left:52%;
+      top: -108%;
+    }
+    #regrade_icon{
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 24px;
+      left:10%;
+      padding-top: 5%;
+    }
+    .regrade{
+      position: relative;
+      font-size: 18px;
+      left:38%;
+      color: rgba(255, 255, 255, 0.7);
+      top:-108%;
+    }
+    .instructor_list{
+      position: relative;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      left:10%;
+      padding-bottom: 3%;
+    }
+    #teacher_icon{
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      position:relative;
+      left:20%;
+      padding-top:4%;
+    }
+    .instructor_name{
+      color: rgba(255, 255, 255, 0.7);
+      position:relative;
+      font-size: 20px;
+    }
+    #account_icon{
+      color:rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 40px;
+    }
+    .account{
+      font-size: 26px;
+      color: rgba(255, 255, 255, 0.6);
+      position: relative;
+    }
+    .course_name_2{
+      position: absolute;
+      font-size: 26px;
+      top: 3%;
+      left: 2%;
+
+    }
+    .descripiton_title{
+      position: relative;
+      font-size: 20px;
+      top: 8%;
+      left: 2%;
+      color: rgba(0, 0, 0, 0.6);
+    }
+    .horizontal_line{
+      left: 2%;
+      position: relative;
+      padding-top: 6%;
+      border-top: transparent;
+      border-left: transparent;
+      border-right: transparent;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+      border-style: solid;
+      width:500px;
+    }
+    .description{
+      padding-top: 0.5%;
+      position: relative;
+      left: 2%;
+      padding-right: 50%;
+
+    }
+    #row_1{
+      padding-left: 2%;
+    }
+    .category{
+      font-size: 20px;
+      /* border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+      width:100px;
+      border-bottom-width: 2px; */
+    }
+    #row_2{
+      padding-left: 2%;
+      padding-bottom: 1%;
+    }
+    #pencil_icon{
+      font-size: 24px;
+      color:rgba(0, 0, 0, 0.8);
+    }
+    #delete_icon{
+      font-size: 24px;
+      color:rgba(0, 0, 0, 0.8);
+    }
+    a.button {
+    border: 2px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+}
+  .bottom_line{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    width: 1350px;
+    padding-bottom: 1%;
+    padding-top: -3%;
+  }
+  .homework_name{
+    color:rgba(0, 0, 0, 0.8);
+  }
+  #row_3{
+    position: relative;
+    top: 0%;
+  }
+  .manual_add{
+    left:38%;
+    top: -108%;
+    position: relative;
+  }
+  .auto_add{
+    left:38%;
+    top: -108%;
+    position: relative;
+  }
+
+
+
+
+
+
+    </style>
   </head>
-
   <body>
-      <div><%=course_name%></div>
-      <div><a href="/personalPage">个人主页</a></div>
-      <div>重新批改请求</div>
-      <div>任课教师</div>
-      <div><%=course_inst%></div>
+      <div class = "left">
+        <div class = "course_id"><%=course_name%></div>
+        <div class = "course_name">C语言程序设计</div>
+        <br><br><br><br>
 
-    <div><%=course_name%></div>
-    <div>课程描述：</div>
-    <div>C 语言是最为流行的通用程序设计语言之一，是许多计算机专业人员和计算机爱好者学习程序设计语言的首选。本书共12 章，内容包括C 语言程序设计预备知识，C 语言程序设计基础，基本数据类型、运算符与表达式，基本输入输出和顺序程序设计，选择结构程序设计，循环结构程序设计，数组，函数，指针，预处理命令，复杂数据类型，文件等。 本书注重教材的可读性和实用性，每章开头都给出了学习意义、学习目标及难点提示，对关键知识点进行了详细的说明，并附有大量的图表方便读者正确、直观地对问题进行理解，样例程序由浅入深，强化了知识点、算法、编程方法与技巧，并给出了详细的解释。</div>
-    <div>修改 作业名称 状态 开始日期 截止日期</div>
+        <div class = "row">
+          <div class = "col-lg-1">
+            
+          </div>
+          <div class = "col-lg-4">
+            <i id = "dashboard_icon" class = "fa fa-align-justify" ></i>
+          </div>
+          <div class = "col-lg-7">
+            <a class = "personal_link" href=" ">主页</a >
+          </div>
+        </div>
+
+        <div class = "row">
+          <div class = "col-lg-1">
+            
+          </div>
+          <div class = "col-lg-2">
+            <i id = "regrade_icon" class = "fa fa-share" ></i>
+          </div>
+          <div class = "col-lg-9">
+            <div class = "regrade">重改申请</div>
+          </div>
+        </div>
+        
+        <div class = "instructor_list">教师</div>
+
+        <div class = "row">
+          <div class = "col-lg-1">
+            
+          </div>
+          <div class = "col-lg-2">
+            <i id = "teacher_icon" class = "fa fa-user-circle"></i>
+          </div>
+          <div class = "col-lg-1">
+            <div class = "instructor_name"><%=course_inst%></div>
+          </div>
+        </div>
+        <br><br><br>
+
+        <% if (userType == 'I') { %>
+          <div class = "instructor_list">添加作业</div>
+          <div class = "row">
+            <div class = "col-lg-1">
+              
+            </div>
+            <div class = "col-lg-2">
+              <i id = "regrade_icon" class = "fa fa-plus-square" ></i>
+            </div>
+            <div class = "col-lg-9">
+              <div class = "manual_add"><a class = "button" href="/manuAddAssignmentPage?thisCourse=<%=thisCourse%>">手动添加作业</a ></div>
+            </div>
+          </div>
+
+          <div class = "row">
+            <div class = "col-lg-1">
+              
+            </div>
+            <div class = "col-lg-2">
+              <i id = "regrade_icon" class = "fa fa-plus-square" ></i>
+            </div>
+            <div class = "col-lg-9">
+              <div class = "auto_add"><a class = "button" href="/autoAddAssignmentPage?thisCourse=<%=thisCourse%>">自动添加作业</a ></div>
+            </div>
+          </div>
+              
+
+          <% } %>
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class = "row">
+          <div class = "col-lg-2">
+            
+          </div>
+          <div class = "col-lg-2">
+            <i id = "account_icon" class = "fa fa-user-circle-o"></i>
+          </div>
+          <div class = "col-lg-4">
+            <div class = "account">账号</div>
+          </div>
+        </div>
+      </div>
+
+      <div class = "right">
+        <div class = "course_name_2"><%=course_name%></div>
+        <div class = "descripiton_title">课程描述</div>
+        <div class = "horizontal_line"></div>
+        <div class = "description"><p>C 语言是最为流行的通用程序设计语言之一，是许多计算机专业人员和计算机爱好者学习程序设计语言的首选。本书共12 章，
+          内容包括C 语言程序设计预备知识，C 语言程序设计基础，基本数据类型、运算符与表达式，基本输入输出和顺序程序设计，选择结构程序设计，循环结构程序设计，
+          数组，函数，指针，预处理命令，复杂数据类型，文件等。 本书注重教材的可读性和实用性，每章开头都给出了学习意义、学习目标及难点提示，对关键知识点进行了详细的说明，
+          并附有大量的图表方便读者正确、直观地对问题进行理解，样例程序由浅入深，强化了知识点、算法、编程方法与技巧，并给出了详细的解释</p ></div>
+
+
+
+
+        <% if(userType == 'I') { %>
+        <div id = "row_1" class = "row">
+          <div class = "col-lg-3">
+            <p class = "category">修改</p >
+          </div>
+          <div class = "col-lg-3">
+            <p class = "category">作业名称</p >
+          </div>
+          <div class = "col-lg-2">
+            <p class = "category">状态</p >
+          </div>
+          <div class = "col-lg-2">
+            <p class = "category">开始日期</p >
+          </div>
+          <div class = "col-lg-2">
+            <p class = "category">截止日期</p >
+          </div> 
+        </div>
+        <% } %>
+
+        <% if(userType == 'S') { %>
+          <div id = "row_1" class = "row">
+            <div class = "col-lg-3">
+              <p class = "category">作业名称</p >
+            </div>
+            <div class = "col-lg-3">
+              <p class = "category">状态</p >
+            </div>
+            <div class = "col-lg-3">
+              <p class = "category">开始日期</p >
+            </div>
+            <div class = "col-lg-3">
+              <p class = "category">截止日期</p >
+            </div>
+          </div>
+          <% } %>
+
+
+      
+    
+    
     <% item.user_assignments.map(function(assignment, index) { %>
       <% if (assignment.a_courseID == thisCourse) { %>
-        <div>
         <% if (userType == 'I') { %>
-          <a href="assignments/editAssignment?a_name=<%=assignment.a_name%>&course_name=<%=course_name%>&course_inst=<%=course_inst%>">修改</a> 
-          <a href="assignments/deleteAssignment?a_name=<%=assignment.a_name%>&course_name=<%=course_name%>&course_inst=<%=course_inst%>">删除</a> 
-        <% } %>
-          <a href="/oneAssignmentPage?a_name=<%= assignment.a_name%>&a_courseID=<%=assignment.a_courseID%>&a_status=<%=assignment.a_status%>&a_release=<%=assignment.a_release%>&a_due=<%=assignment.a_due%>&a_questions=<%=assignment.a_questions%>"><%= assignment.a_name %></a> <%= assignment.a_status %> <%= assignment.a_release %> <%= assignment.a_due %>
-        </div>
+          <div id = "row_2" class = "row">
+            <div class = "col-lg-3">
+              <a class = "edit" href="assignments/editAssignment?a_name=<%=assignment.a_name%>&course_name=<%=course_name%>&course_inst=<%=course_inst%>"><i id = "pencil_icon" class = "fa fa-pencil"></i></a > 
+              &nbsp
+              <a class = "delete" href="assignments/deleteAssignment?a_name=<%=assignment.a_name%>&course_name=<%=course_name%>&course_inst=<%=course_inst%>"><i id = "delete_icon" class = "fa fa-window-close-o"></i></a > 
+            </div>
+            <div class = "col-lg-3">
+              <a class = "homework_name" href="/oneAssignmentPage?a_name=<%= assignment.a_name%>&a_courseID=<%=assignment.a_courseID%>&a_status=<%=assignment.a_status%>&a_release=<%=assignment.a_release%>&a_due=<%=assignment.a_due%>&a_questions=<%=assignment.a_questions%>">
+                <%= assignment.a_name %></a > 
+            </div>
+            <div class = "col-lg-2">
+              <%= assignment.a_status %> 
+            </div>
+            <div class = "col-lg-2">
+              <%= assignment.a_release %> 
+            </div>
+            <div class = "col-lg-2">
+              <%= assignment.a_due %> 
+            </div>
+            <div class = "bottom_line"></div>
+          </div>         
+            <% } %>
     <% } %>
    <% })%>
     
-    <% if (userType == 'I') { %>
-      <div><a href="/manuAddAssignmentPage?thisCourse=<%=thisCourse%>">手动添加作业</a></div>
-      <div><a href="/autoAddAssignmentPage?thisCourse=<%=thisCourse%>">自动添加作业</a></div>
-      <% } %>
-
-    <div>账户</div>
+    
+  </div>
   </body>
 </html>
-

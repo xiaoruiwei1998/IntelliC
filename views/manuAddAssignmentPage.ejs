@@ -20,7 +20,7 @@
         </form>
 
 
-        <form action="/questions/search?thisCourse=<%=thisCourse%>&qSet=<%=qSet%>" method="post">
+        <form action="/questions/search?thisCourse=<%=thisCourse%>" method="post">
           <input type="number" class = "" name="chapter" placeholder="章节">
           <select name="type">
                   <option value="MC">单选题</option>
@@ -38,16 +38,9 @@
           <div>
           ---------------------------------------  搜索部分  ---------------------------------------
             <% if (searchResult!= null) { %>
-              <script>
-                  function addQ2A(q) {
-                    qSet.push(q.q_id)
-                    document.write(q)
-                    console.log(q)
-                  }
-                </script>
               <% searchResult.map(function(q, index) { %>
                 <div class="row">
-                  <span><button type="button" onclick="addQ2A(q)">add</button></span>
+                  <span><a href="/assignments/addQ2A?thisCourse=<%=thisCourse%>&q_title=<%= q.q_title %>&q_description=<%= q.q_description %>&q_id=<%=q.q_id%>&q_type=<%=q.q_type%>">add1</a></span>
                   <span><%= index+1 %></span>
                   <span><%= q.q_id %></span>
                   <span><%= q.q_type %></span>
@@ -59,12 +52,19 @@
                 </div>
               <% }) %>
             <% } %><br>
-          </div>
+          </div
         </form>
         --------------------------------------- 已添加题目部分 ---------------------------------------
-        <br><%=qSet%>
+        <br>
+        <% if (preview != null) { %>
+          <% preview.map(function(q, index) { %>
+            <span><%= index+1 %></span>
+            <span><%= q.q_type%></span>
+            <span><%= q.q_title%></span><br>
+            <span><%= q.q_description%></span><br><br>
+          <% }) %>
+        <% } %>
       </div>
     </body>
   </html>
-  
   

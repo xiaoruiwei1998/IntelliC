@@ -22,14 +22,20 @@ router.post('/addCourse', function(req, res, next) {
           course_id: req.body.courseName + '_' + req.body.instName,
           course_grade: 0
         }
-        if (db.collection('users').find({user_name: req.body.instName, "user_courses.course_id": new_course.course_id})) {
           db.collection('users').updateOne({user_email: req.session.userMail}, {$addToSet: {user_courses: new_course}}, function(err, ret) {
-            if (err) {
-              console.log("stu add course err!")
-            }
-            res.redirect('/personalPage')
           })
-        }
+          console.log(new_course.course_id)
+          db.collection('users').updateOne({user_name:req.body.instName}, {$addToSet:{"user_courses.course_id":"RuiweiXiao"}}, function(err, ret){
+            if (err) {
+              console.log("update err!")
+            }
+          })
+          // db.collection('users').updateOne({user_name: req.body.instName, "user_courses.course_id": new_course.course_id}, {$addToSet: {"user_courses.course_students": req.session.userName}}, function(err, ret) {
+          //   if (err) {
+          //     console.log("inst add course err!")
+          //   }
+          //   res.redirect('/personalPage')
+          // })
       }
     })
   })

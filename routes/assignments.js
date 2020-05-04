@@ -24,24 +24,15 @@ router.get('/deleteAssignment', function(req, res, next) {
   })
 });
 
-a_questions = [0]
-function choose(type, title, chapter) {
-  model.connect(function(db) {
-    db.collection('questions').find({q_type: type, q_title: title, q_chapter: chapter}, function(err, docs){
-      if (err) {
-        console.log('choose failed!')
-      } else {
-        a_questions.push(docs.q_id)
-      }
-    })
-  })
-}
-
 /* Auto-add assignment */
 router.post('/autoAddAssignment', function(req, res, next) {
   console.log('自动发布试卷')
   
 })
+
+var a_questionIds = []
+var a_preview = []
+var count = 0
 
 /* Manu-add assignment */
 router.post('/manuAddAssignment', function(req, res, next) {
@@ -50,20 +41,38 @@ router.post('/manuAddAssignment', function(req, res, next) {
     a_courseID: req.query.thisCourse,
     a_release: req.body.a_release,
     a_due: req.body.a_due,
-    a_questions: req.body.a_questions
+    a_questions: a_questionIds
   }
+  a_questionIds = []
+  a_preview = []
   model.connect(function(db) {
     db.collection('users').updateMany({"user_courses.course_id": req.query.thisCourse}, {$addToSet: {user_assignments: thisAssignment}}, function(err, ret) {
       if (err) {
         console.log('Add Assignment Failed!')
         } else {
-            console.log('Add Assignment successfully')
+            console.log(thisAssignment)
         }
         res.redirect('/coursePage?thisCourse='+req.query.thisCourse)
     })
   })
 })
 
+router.get('/addQ2A', function(req, res, next) {
+  var qPreview = {
+    q_type: req.query.q_type,
+    q_title: req.query.q_title,
+    q_description: req.query.q_description
+  }
+  if (a_questionIds.indexOf(req.query.q_id) == -1) {
+    a_questionIds.push(req.query.q_id)
+    a_preview.push(qPreview)
+  }
+  // console.log(a_questionIds)
+  // console.log(a_preview)
+  console.log("test")
+  console.log(req.query.thisCourse)
+  res.render('manuAddAssignmentPage', {preview: a_preview, searchResult: null, userMail: req.session.userMail, thisCourse: req.query.thisCourse, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
+})
 /* autoGradingCode */
 // router.post('/submitAssignment', function(req, res, next) {
 //   thisLog = ''

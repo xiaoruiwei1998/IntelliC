@@ -126,8 +126,7 @@ router.get('/editQuestionPage', function(req, res, next) {
 /* GET manuAddAssignmentPage page. */
 router.get('/manuAddAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
-  var qSet = [10]
-  res.render('manuAddAssignmentPage', {searchResult: null, userMail: userMail, thisCourse: req.query.thisCourse, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1], qSet: qSet})
+  res.render('manuAddAssignmentPage', {preview: null, searchResult: null, userMail: userMail, thisCourse: req.query.thisCourse, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
 })
 
 /* GET autoAssignmentPage page. */

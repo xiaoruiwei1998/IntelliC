@@ -8,13 +8,53 @@
       <div><%= thisAssignment.a_release%></div>
       <div><%= thisAssignment.a_due%></div>
       <div><%= thisAssignment.a_questions%></div>
-      ------------ coding question testing -------------<br>
-     <form action="/questions/submitCodingQuestion" method="post">
-      <textarea name="ans_code" placeholder="Your code start here:"></textarea> or <input type="file" class = "" name="ans_code_file" value="" placeholder=""><br>
-      <div><a href="https://c.runoob.com/compile/11?code=<%=test%>">C compiler</a> </div>
-    </form>
+
+      <% qSet.map(function(q, index) { %>
+        <span><%= index+1%></span>
+        <% if (q.q_type == "TF") { %>
+          <span>【判断题】</span>
+          <span><%= q.q_description%></span><br>
+          <input type="radio" name="stu_answer" value=1>正确<br>
+          <input type="radio" name="stu_answer" value=0>错误<br>
+        <% } %>
+
+        <% if (q.q_type == "B") { %>
+          <span>【填空题】</span>
+          <span><%= q.q_description%></span><br>
+          <% for (var i=0; i<q.q_num_of_blanks; i++) { %>
+            <input type="text" name="stu_answer<%=i+1%>" placeholder="第<%=i+1%>空"><br>
+            <% } %>
+        <% } %>
+
+        <% if (q.q_type == "W") { %>
+          <span>【简答题】</span>
+          <span><%= q.q_description%></span><br>
+          <textarea name="stu_answer"" placeholder="输入答案"></textarea><br>
+        <% } %>
+
+        <% if (q.q_type == "C") { %>
+          <span>【编程题】</span>
+          <span><%= q.q_description%></span><br>
+          <textarea name="stu_answer" placeholder="输入代码"></textarea> or <input type="file" class = "" name="ans_code_file" value="" placeholder=""><br>
+        <% } %>
+
+        <% if (q.q_type == "MC") { %>
+          <span>【单选题】</span>
+          <span><%= q.q_description%></span><br>
+          <% for (var i=1; i<q.q_choices.length; i++) { %>
+            <input type="radio" name="stu_answer" value="<%=i%>"><%=q.q_choices[i]%><br>
+          <% } %>
+        <% } %>
+
+        <% if (q.q_type == "NMC") { %>
+          <span>【多选题】</span>
+          <span><%= q.q_description%></span><br>
+          <% for (var i=1; i<q.q_choices.length; i++) { %>
+            <input type="checkbox" name="stu_ans" value="<%=i%>"><%=q.q_choices[i]%><br>
+          <% } %>
+        <% } %>
+        提交状态<br><br>
+      <% }) %>
+      
   </body>
 </html>
-
-
-      <!-- <input type="submit" value="submit"> -->

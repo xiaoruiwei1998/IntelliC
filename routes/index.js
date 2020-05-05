@@ -49,7 +49,7 @@ router.get('/analysisPage', function(req, res, next) {
   })
 })
 
-/* GET log page. */
+/* GET one assignment page. */
 router.get('/oneAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
   var thisAssignment = {
@@ -58,9 +58,14 @@ router.get('/oneAssignmentPage', function(req, res, next) {
     a_status: req.query.a_status,
     a_release: req.query.a_release,
     a_due: req.query.a_due,
-    a_questions: req.query.a_questions
+    a_questions: eval('['+req.query.a_questions+']') // String to Array
   }
-  res.render('oneAssignmentPage', {userMail: userMail, thisAssignment: thisAssignment, test: 'a'})
+  model.connect(function(db) {
+    db.collection('questions').find({q_id:{$in: thisAssignment.a_questions}}).toArray(function(err, docs) {
+      console.log(docs)
+      res.render('oneAssignmentPage', {qSet: docs, userMail: userMail, thisAssignment: thisAssignment, test: 'a'})
+    })
+  })
 })
 
 /* GET course page. */

@@ -77,7 +77,20 @@ router.post("/submitOneQuestion", function(req, res, next) {
         a_due: req.query.a_due,
         a_questions: eval('['+req.query.a_questions+']')
     }
-    req.session.stu_answers[req.query.q_id] = req.body.stu_answer
+    if (req.query.q_type == "NMC") {
+        req.session.stu_answers[req.query.a_name+'_'+req.query.q_id] = []
+        for (var i=1; i<req.query.n; i++)  {
+            req.session.stu_answers[req.query.a_name+'_'+req.query.q_id].push(eval('req.body.stu_answer'+i))
+        }
+    } else if (req.query.q_type == "B") {
+        req.session.stu_answers[req.query.a_name+'_'+req.query.q_id] = []
+        for (var i=0; i<req.query.n; i++)  {
+            req.session.stu_answers[req.query.a_name+'_'+req.query.q_id].push(eval('req.body.stu_answer'+i))
+        }
+    } else {
+        req.session.stu_answers[req.query.a_name+'_'+req.query.q_id] = req.body.stu_answer
+    }
+    
     console.log(req.body.stu_answer)
     console.log(req.session.stu_answers)
     model.connect(function(db) {

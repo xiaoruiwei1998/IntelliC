@@ -64,7 +64,7 @@ router.get('/oneAssignmentPage', function(req, res, next) {
   model.connect(function(db) {
     db.collection('questions').find({q_id:{$in: thisAssignment.a_questions}}).toArray(function(err, docs) {
       console.log(docs)
-      req.session.stu_answers = new Array(thisAssignment.a_questions.length+1)
+      req.session.stu_answers = {}
       res.render('oneAssignmentPage', {stu_answers: req.session.stu_answers, qSet: docs, userMail: userMail, thisAssignment: thisAssignment})
     })
   })

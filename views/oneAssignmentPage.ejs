@@ -14,11 +14,11 @@
         <% if (q.q_type == "TF") { %>
           <span>【判断题】</span>
           <span><%= q.q_description%></span><br>
-          <form action="/questions/submitOneQuestion?index=<%=index%>&a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
-            <% if (stu_answers[q.q_id] == '1') {%>
+          <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+            <% if (stu_answers[thisAssignment.a_name+'_'+q.q_id] == '1') {%>
               <input type="radio" name="stu_answer" value=1 checked/>正确<br>
               <input type="radio" name="stu_answer" value=0>错误<br>
-            <% } else if (stu_answers[q.q_id] == '0') { %>
+            <% } else if (stu_answers[thisAssignment.a_name+'_'+q.q_id] == '0') { %>
               <input type="radio" name="stu_answer" value=1>正确<br>
               <input type="radio" name="stu_answer" value=0 checked/>错误<br>
             <% } else { %>
@@ -32,16 +32,23 @@
         <% if (q.q_type == "B") { %>
           <span>【填空题】</span>
           <span><%= q.q_description%></span><br>
-          <% for (var i=0; i<q.q_num_of_blanks; i++) { %>
-            <input type="text" name="stu_answer" placeholder="第<%=i+1%>空"><br>
-          <% } %>
+          <form action="/questions/submitOneQuestion?q_type=<%=q.q_type%>&n=<%=q.q_num_of_blanks%>&a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+            <% for (var i=0; i<q.q_num_of_blanks; i++) { %>
+              <% if (stu_answers[thisAssignment.a_name+'_'+q.q_id] == null) {%>
+                <input type="text" name="stu_answer<%=i%>" value="" placeholder="第<%=i+1%>空"><br>
+              <% } else { %>
+              <input type="text" name="stu_answer<%=i%>" value="<%= stu_answers[thisAssignment.a_name+'_'+q.q_id][i]%>" placeholder="第<%=i+1%>空"><br>
+              <% } %>
+            <% } %>
+            <input type="submit" name="submit">
+          </form>
         <% } %>
 
         <% if (q.q_type == "W") { %>
           <span>【简答题】</span>
           <span><%= q.q_description%></span><br>
-          <form action="" method="post">
-            <textarea name="stu_answer" value="" placeholder="输入答案"></textarea><br>
+          <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+            <input type="text" name="stu_answer" value="<%= stu_answers[thisAssignment.a_name+'_'+q.q_id]%>" placeholder="输入答案"><br>
             <input type="submit" name="submit">
           </form>
         <% } %>
@@ -49,8 +56,8 @@
         <% if (q.q_type == "C") { %>
           <span>【编程题】</span>
           <span><%= q.q_description%></span><br>
-          <form action="" method="post">
-            <textarea name="stu_answer" placeholder="输入代码" value=""></textarea> or <input type="file" class = "" name="ans_code_file" value="" placeholder=""><br>
+          <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+            <input type="text" name="stu_answer" value="<%= stu_answers[thisAssignment.a_name+'_'+q.q_id]%>" placeholder="输入答案"><br>
             <input type="submit" name="submit">
           </form>
         <% } %>
@@ -58,17 +65,31 @@
         <% if (q.q_type == "MC") { %>
           <span>【单选题】</span>
           <span><%= q.q_description%></span><br>
-          <% for (var i=1; i<q.q_choices.length; i++) { %>
-            <input type="radio" name="stu_answer" value="<%=i%>"><%=q.q_choices[i]%><br>
-          <% } %>
+          <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+            <% for (var i=1; i<q.q_choices.length; i++) { %>
+              <% if (stu_answers[thisAssignment.a_name+'_'+q.q_id]==i) { %>
+                <input type="radio" name="stu_answer" value="<%=i%>" checked/><%=q.q_choices[i]%><br>
+              <% } else { %>
+                <input type="radio" name="stu_answer" value="<%=i%>"><%=q.q_choices[i]%><br>
+              <% } %>
+            <% } %>
+            <input type="submit" name="submit">
+          </form>
         <% } %>
 
         <% if (q.q_type == "NMC") { %>
           <span>【多选题】</span>
           <span><%= q.q_description%></span><br>
-          <% for (var i=1; i<q.q_choices.length; i++) { %>
-            <input type="checkbox" name="stu_answer" value="<%=i%>"><%=q.q_choices[i]%><br>
-          <% } %>
+          <form action="/questions/submitOneQuestion?q_type=NMC&n=<%=q.q_choices.length%>&a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+            <% for (var i=1; i<q.q_choices.length; i++) { %>
+              <% if (stu_answers[thisAssignment.a_name+'_'+q.q_id]!=null && stu_answers[thisAssignment.a_name+'_'+q.q_id].indexOf(eval('\''+i+'\''))>=0) { %>
+                <input type="checkbox" name="stu_answer<%=i%>" value="<%=i%>" checked/><%=q.q_choices[i]%><br>
+              <% } else { %>
+                <input type="checkbox" name="stu_answer<%=i%>" value="<%=i%>"><%=q.q_choices[i]%><br>
+              <% } %>
+            <% } %>
+            <input type="submit" name="submit">
+          </form>
         <% } %>
         提交状态<br><br>
       <% }) %>

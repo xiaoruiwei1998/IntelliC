@@ -14,11 +14,11 @@
         <% if (q.q_type == "TF") { %>
           <span>【判断题】</span>
           <span><%= q.q_description%></span><br>
-          <form action="/questions/submitOneQuestion?index=<%=index%>&a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_release%>&a_name=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
-            <% if (stu_answers[index] == '1') {%>
+          <form action="/questions/submitOneQuestion?index=<%=index%>&a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+            <% if (stu_answers[q.q_id] == '1') {%>
               <input type="radio" name="stu_answer" value=1 checked/>正确<br>
               <input type="radio" name="stu_answer" value=0>错误<br>
-            <% } else if (stu_answers[index] == '0') { %>
+            <% } else if (stu_answers[q.q_id] == '0') { %>
               <input type="radio" name="stu_answer" value=1>正确<br>
               <input type="radio" name="stu_answer" value=0 checked/>错误<br>
             <% } else { %>

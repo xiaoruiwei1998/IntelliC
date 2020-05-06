@@ -77,7 +77,7 @@ router.post("/submitOneQuestion", function(req, res, next) {
         a_due: req.query.a_due,
         a_questions: eval('['+req.query.a_questions+']')
     }
-    req.session.stu_answers[req.query.index] = req.body.stu_answer
+    req.session.stu_answers[req.query.q_id] = req.body.stu_answer
     console.log(req.body.stu_answer)
     console.log(req.session.stu_answers)
     model.connect(function(db) {

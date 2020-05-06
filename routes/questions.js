@@ -69,13 +69,23 @@ router.post("/search", function(req, res, next) {
     })
 });
 
-// SUBMIT CODING QUESTIONS
-router.post("/submitCodingQuestion", function(req, res, next) {
-    console.log('submitCodingQuestion')
-    console.log("--------------------- req ---------------------------")
-    console.log(req)
-    console.log("--------------------- res ---------------------------")
-    console.log(res)
+// student submit a question, and auto-grading
+router.post("/submitOneQuestion", function(req, res, next) {
+    var thisAssignment = {
+        a_name: req.query.a_name,
+        a_release: req.query.a_release,
+        a_due: req.query.a_due,
+        a_questions: eval('['+req.query.a_questions+']')
+    }
+    req.session.stu_answers[req.query.index] = req.body.stu_answer
+    console.log(req.body.stu_answer)
+    console.log(req.session.stu_answers)
+    model.connect(function(db) {
+        db.collection('users').updateOne({ "user_name" : req.session.userName}, {$addToSet: {user_logs:{"q_assignment": thisAssignment.a_name, "q_id" : req.query.q_id, "q_percentage" : (req.body.stu_answer == req.query.q_right), "q_time":moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')}}})
+        db.collection('questions').find({q_id:{$in: thisAssignment.a_questions}}).toArray(function(err, docs) {
+            res.render('oneAssignmentPage', {stu_answers: req.session.stu_answers, qSet: docs, userMail: req.session.userMail, thisAssignment: thisAssignment})
+          })
+    })
 })
 
 // GRADING CODING QUESTIONS

@@ -41,7 +41,8 @@ router.post('/manuAddAssignment', function(req, res, next) {
     a_courseID: req.query.thisCourse,
     a_release: req.body.a_release,
     a_due: req.body.a_due,
-    a_questions: a_questionIds
+    a_questions: a_questionIds,
+    a_log: []
   }
   a_questionIds = []
   a_preview = []
@@ -76,39 +77,10 @@ router.get('/addQ2A', function(req, res, next) {
     a_questionIds.push(req.query.q_id)
     a_preview.push(qPreview)
   }
-  // console.log(a_questionIds)
-  // console.log(a_preview)
   console.log("test")
   console.log(req.query.thisCourse)
   res.render('manuAddAssignmentPage', {preview: a_preview, searchResult: null, userMail: req.session.userMail, thisCourse: req.query.thisCourse, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
 })
-/* autoGradingCode */
-// router.post('/submitAssignment', function(req, res, next) {
-//   thisLog = ''
-//   model.connect(function(db) {
-//     db.collection('users').updateOne({user_name:{req.query.user_name}}, {$addToSet: {user_logs: thisLog}}, function(err, ret) {
-//       if (err) {
-//         console.log('Add Log Failed!')
-//         } else {
-//             console.log('Add Log successfully')
-//         }
-//         res.redirect('/coursePage?thisCourse='+req.query.course_name+'_'+req.query.course_inst)
-//     })
-//   })
-// })
-
-// router.post('/editScore', function(req, res, next) {
-//   model.connect(function(db) {
-//     db.collection('users').updateOne({user_name:{req.query.user_name}}, {$Set: {user_logs: {percentage: req.query.newPercentage}}}, function(err, ret) {
-//       if (err) {
-//         console.log('Edit Score Failed!')
-//         } else {
-//             console.log('Edit Score successfully')
-//         }
-//         res.redirect('/coursePage?thisAssignment='+req.query.assignmentID+'_'+req.query.stu_email)
-//     })
-//   })
-// })
 
 module.exports = router;
 

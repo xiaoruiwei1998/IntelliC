@@ -58,12 +58,14 @@ router.get('/oneAssignmentPage', function(req, res, next) {
     a_status: req.query.a_status,
     a_release: req.query.a_release,
     a_due: req.query.a_due,
-    a_questions: eval('['+req.query.a_questions+']') // String to Array
+    a_questions: eval('['+req.query.a_questions+']'), // String to Array
+    a_stu_answers: eval('['+req.query.a_stu_answers+']')
   }
   model.connect(function(db) {
     db.collection('questions').find({q_id:{$in: thisAssignment.a_questions}}).toArray(function(err, docs) {
       console.log(docs)
-      res.render('oneAssignmentPage', {qSet: docs, userMail: userMail, thisAssignment: thisAssignment, test: 'a'})
+      req.session.stu_answers = new Array(thisAssignment.a_questions.length+1)
+      res.render('oneAssignmentPage', {stu_answers: req.session.stu_answers, qSet: docs, userMail: userMail, thisAssignment: thisAssignment})
     })
   })
 })

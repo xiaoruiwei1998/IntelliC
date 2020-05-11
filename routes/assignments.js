@@ -32,7 +32,7 @@ router.post('/autoAddAssignment', function(req, res, next) {
 
 var a_questionIds = []
 var a_preview = []
-var count = 0
+var a_log = []
 
 /* Manu-add assignment */
 router.post('/manuAddAssignment', function(req, res, next) {
@@ -42,10 +42,8 @@ router.post('/manuAddAssignment', function(req, res, next) {
     a_release: req.body.a_release,
     a_due: req.body.a_due,
     a_questions: a_questionIds,
-    a_log: []
+    a_log: a_log
   }
-  a_questionIds = []
-  a_preview = []
   model.connect(function(db) {
     db.collection('users').updateMany({"user_courses.course_id": req.query.thisCourse}, {$addToSet: {user_assignments: thisAssignment}}, function(err, ret) {
       if (err) {
@@ -53,9 +51,12 @@ router.post('/manuAddAssignment', function(req, res, next) {
         } else {
             console.log(thisAssignment)
         }
-        res.redirect('/coursePage?thisCourse='+req.query.thisCourse)
     })
   })
+  a_questionIds = []
+  a_preview = []
+  a_log = []
+  res.redirect('/coursePage?thisCourse='+req.query.thisCourse)
 })
 
 router.get('/addQ2A', function(req, res, next) {
@@ -76,10 +77,14 @@ router.get('/addQ2A', function(req, res, next) {
   if (a_questionIds.indexOf(req.query.q_id) == -1) {
     a_questionIds.push(req.query.q_id)
     a_preview.push(qPreview)
+    a_log.push([req.query.q_id, null, req.query.q_difficulty, 0]) // 每张试卷的log{q_id:[学生答案，该题分数（难度），学生得分]}
   }
-  console.log("test")
-  console.log(req.query.thisCourse)
+  console.log(a_log)
   res.render('manuAddAssignmentPage', {preview: a_preview, searchResult: null, userMail: req.session.userMail, thisCourse: req.query.thisCourse, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
+})
+
+router.post('/submitAssignment', function(req, res, next) {
+  res.redirect('coursePage?thisCourse='+req.query.thisCourse)
 })
 
 module.exports = router;

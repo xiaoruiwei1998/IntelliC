@@ -40,7 +40,7 @@
             <% if (searchResult!= null) { %>
               <% searchResult.map(function(q, index) { %>
                 <div class="row">
-                  <span><a href="/assignments/addQ2A?thisCourse=<%=thisCourse%>&q_title=<%= q.q_title %>&q_description=<%= q.q_description %>&q_id=<%=q.q_id%>&q_type=<%=q.q_type%>&q_choices=<%=q.q_choices%>">add</a></span>
+                  <span><a href="/assignments/addQ2A?thisCourse=<%=thisCourse%>&q_title=<%= q.q_title %>&q_difficulty=<%=q.q_difficulty%>&q_description=<%= q.q_description %>&q_id=<%=q.q_id%>&q_type=<%=q.q_type%>&q_choices=<%=q.q_choices%>">add</a></span>
                   
                   <% if (q.q_type == "TF") { %>
                     <span>【判断题】</span>

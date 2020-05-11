@@ -52,20 +52,34 @@ router.get('/analysisPage', function(req, res, next) {
 /* GET one assignment page. */
 router.get('/oneAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
+  var a_array = null
   var thisAssignment = {
     a_name: req.query.a_name,
-    a_courseID: req.query.a_course,
+    a_courseID: req.query.a_courseID,
     a_status: req.query.a_status,
     a_release: req.query.a_release,
     a_due: req.query.a_due,
     a_questions: eval('['+req.query.a_questions+']'), // String to Array
-    a_stu_answers: eval('['+req.query.a_stu_answers+']')
+    a_log: null
   }
   model.connect(function(db) {
+    db.collection('users').findOne({user_email:req.session.userMail, "user_assignments.a_name":thisAssignment.a_name}, function(err, docs) {
+      if (docs!=null){
+        a_array = docs['user_assignments']
+        for (var i=0; i<a_array.length; i++) {
+          if (a_array[i].a_name==req.query.a_name) {
+            thisAssignment.a_log = a_array[i].a_log
+
+            console.log("--------------index---------------")
+            console.log(a_array[i])
+            console.log("--------------------------------")
+            console.log(thisAssignment.a_log)
+          }
+        }
+      }
+    })
     db.collection('questions').find({q_id:{$in: thisAssignment.a_questions}}).toArray(function(err, docs) {
-      console.log(docs)
-      req.session.stu_answers = {}
-      res.render('oneAssignmentPage', {stu_answers: req.session.stu_answers, qSet: docs, userMail: userMail, thisAssignment: thisAssignment})
+      res.render('oneAssignmentPage', {qSet: docs, userMail: userMail, thisAssignment: thisAssignment})
     })
   })
 })

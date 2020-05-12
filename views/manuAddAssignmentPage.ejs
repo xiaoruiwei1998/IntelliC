@@ -2,24 +2,263 @@
 <html lang = "">
   <head>
     <title>manuAddAssignmentPage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
   </head>
+  <style>
+    body{
+          background: rgba(204, 203, 204, 0.24);
+      }
+      .left{
+        position: fixed;
+        width: 16%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        z-index: 1;
+        background: #CC6969;
+        border: 1px solid #CCCBCC;
+        box-sizing: border-box;
+        backdrop-filter: blur(16px);
+    }
+    .right{
+        position: absolute;
+        width: 82%;
+        height: 100%;
+        left: 18%;
+        background: ffffff;
+        border: 1px solid rgba(204, 203, 204, 0.24);
+        border: transparent;
+        backdrop-filter: blur(16px);
+    }
+    .course_id{
+      position: relative;
+      color:white;
+      font-size: 26px;
+      left: 10%;
+      top:6%;
+    }
+    .course_name{
+      position: relative;
+      font-size: 18px;
+      left: 10%;
+      top:7%;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    #dashboard_icon{
+      position: relative;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      left:12%;
+    }
+    .personal_link{
+      font-size: 18px;
+      position: relative;
+      /* identical to box height */
+      color: rgba(255, 255, 255, 0.7);
+      left:15%;
+      padding-top:-2%;
+    }
+    #regrade_icon{
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 24px;
+      left:12%;
+    }
+    .regrade{
+      position: relative;
+      font-size: 18px;
+      left:15%;
+      color: rgba(255, 255, 255, 0.7);
+  
+    }
+    .instructor_list{
+      position: relative;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      left:10%;
+      padding-bottom: 3%;
+    }
+    #teacher_icon{
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      position:relative;
+      left:12%;
+      padding-top:4%;
+    }
+    .instructor_name{
+      color: rgba(255, 255, 255, 0.7);
+      position:relative;
+      font-size: 20px;
+      left:15%
+    }
+    #account_icon{
+      color:rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 40px;
+      left: 12%;
+    }
+    .account{
+      font-size: 26px;
+      color: rgba(255, 255, 255, 0.6);
+      position: relative;
+      left:15%;
+    }
+    input[type=text] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+        width: 20%;
+        height: 52px;
+        background-color: #ffffff;
+        color:#000000;
+        padding-left: 20px;
+        font-size: 14px;
+        border: 1px solid #CC6969;
+        margin-bottom: 2%;
+        margin-right: 3%;
+      }
+      input[type=number] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+        width: 12.5%;
+        height: 52px;
+        background-color: #ffffff;
+        color:#000000;
+        padding-left: 20px;
+        font-size: 14px;
+        border: 1px solid #CC6969;
+        margin-bottom: 2%;
+        margin-right: 3%;
+      }
+      input[type=submit] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 36px;
+        width: 13%;
+        height: 52px;
+        background-color: #CC6969;
+        color:#ffffff;
+        padding-left: 3px;
+        font-size: 14px;
+        border: 1px solid #ffffff;
+        margin-bottom: 2%;
+      }
+      select{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+        width: 13%;
+        height: 52px;
+        background-color: #ffffff;
+        color:#000000;
+        padding-left: 20px;
+        font-size: 14px;
+        border: 1px solid #CC6969;
+        margin-bottom: 2%;
+        margin-right: 3%;
+      }
+      .to_symbol{
+        margin-right: 1%;
+        margin-left: -2%;
+        font-size: 22px;
+      }
+      input[type=datetime-local] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+        width: 20%;
+        height: 52px;
+        background-color: #ffffff;
+        color:#000000;
+        padding-left: 20px;
+        font-size: 14px;
+        border: 1px solid #CC6969;
+        margin-bottom: 2%;
+        margin-right: 3%;
+      }
+      .top_box{
+        height:60px;
+        width: 100%;
+        background:rgba(204, 203, 204, 0.7);
+      }
+      .search_title{
+        font-size: 20px;
+        margin-left: 38%;
+        padding-top: 1%;
+      }
+      .Search{
+        border: 1px solid rgb(165, 165, 165,0.6);
+        box-sizing: border-box;
+        width: 90%;
+        backdrop-filter: blur(16px);
+      }
+      .long_answer{
+        margin-left: 1%;
+      } 
+      .search_results{
+        margin-left: 2%;
+        margin-right: 2%;
+        text-align: left;
+        margin-top: 1%;
+      }
+      .added_questions{
+        border: 1px solid rgb(165, 165, 165,0.6);
+        box-sizing: border-box;
+        width: 90%;
+        backdrop-filter: blur(16px);
+      }
+      .added_results{
+        margin-left: 2%;
+        margin-right: 2%;
+        text-align: left;
+        margin-top: 1%;
+        margin-bottom: 1%;
+      }
+      .test_points{
+        padding-left: 0.3%;
+      }
+      
+      
+  </style>
   <body>
-    手动组卷
-    <div><%=course_name%></div>
-    <a href="/personalPage">主页</a>
-    重改申请
-    教师
-    <div><%=course_inst%></div>
-    账号
-      <div>
+    <div class = "left">
+      <div class = "course_id"><%=course_name%></div>
+      <div class = "course_name">C语言程序设计</div>
+      <br><br><br><br>
+           <span><i id = "dashboard_icon" class = "fa fa-align-justify" ></i></span> 
+           <span><a class = "personal_link" href="/personalPage">主页</a></span> 
+            <br>
+            <br>
+            <span><i id = "regrade_icon" class = "fa fa-share" ></i></span>
+            <span class = "regrade">重改申请</span>
+
+          <br><br>
+        <div class = "instructor_list">教师</div>
+           <span> <i id = "teacher_icon" class = "fa fa-user-circle"></i></span>
+            <span class = "instructor_name">王敬华</span>
+        <br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+            <span><i id = "account_icon" class = "fa fa-user-circle-o"></i></span>
+            <span class = "account">账号</span>
+    </div>
+
+
+    <div class = "right">
+        <br><br>
         <form action="/assignments/manuAddAssignment?thisCourse=<%=thisCourse%>" method="post">
-            <input type="text" class = "" name="a_name" placeholder="作业名称"><br>
-            开始日期<input type="datetime-local" name="a_release" value="" placeholder="开始日期"><br>
-            截止日期<input type="datetime-local" name="a_due" value="" placeholder="截止日期"><br>
-          <input type="submit" class = "" name="submit" value="手动组卷">
-        </form>
-
-
+          <span><input type="text" class = "" name="a_name" placeholder="作业名称"></span>
+          <span>开始日期</span> <span><input type="datetime-local" name="a_release" value="" placeholder="开始日期"></span>
+          <span>截止日期</span>  <span><input type="datetime-local" name="a_due" value="" placeholder="截止日期"></span>
+        <span><input type="submit" class = "" name="submit" value="手动组卷"></span>
+      </form>
+      <br>
         <form action="/questions/search?thisCourse=<%=thisCourse%>" method="post">
           <input type="number" class = "" name="chapter" placeholder="章节">
           <select name="type">
@@ -30,18 +269,25 @@
                   <option value="W">简答题</option>
                   <option value="C">代码题</option>
           </select>
-          <input type="number" class = "" name="min_difficulty" placeholder="最低">
-          -
-          <input type="number" class = "" name="max_difficulty" placeholder="最高">
-          <input type="number" class = "" name="tags" placeholder="考点">
-          <input type="submit" class = "" name="submit" value="搜索"><br>
-          <div>
-          ---------------------------------------  搜索部分  ---------------------------------------
+          
+          <span class = "low_diff"><input type="number" class = "" name="min_difficulty" placeholder="最低"></span>
+          <span class = "to_symbol">-</span>
+          <span><input type="number" class = "" name="max_difficulty" placeholder="最高"></span>
+          <span class = "test_points"><input type="number" class = "" name="tags" placeholder="考点"></span>
+          <span class = "search_button"><input type="submit" class = "" name="submit" value="搜索"><br></span>
+         
+          
+          
+          <div class = "Search">
+            <div class = "top_box">
+              <p class = "search_title">以下为符合搜索条件结果</p>
+            </div>
+         
+            <div class = "search_results">
             <% if (searchResult!= null) { %>
               <% searchResult.map(function(q, index) { %>
                 <div class="row">
-                  <span><a href="/assignments/addQ2A?thisCourse=<%=thisCourse%>&q_title=<%= q.q_title %>&q_description=<%= q.q_description %>&q_id=<%=q.q_id%>&q_type=<%=q.q_type%>&q_choices=<%=q.q_choices%>">add</a></span>
-                  
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span><a href="/assignments/addQ2A?thisCourse=<%=thisCourse%>&q_title=<%= q.q_title %>&q_description=<%= q.q_description %>&q_id=<%=q.q_id%>&q_type=<%=q.q_type%>&q_choices=<%=q.q_choices%>">添加</a></span>
                   <% if (q.q_type == "TF") { %>
                     <span>【判断题】</span>
                     <span><%= q.q_description%></span><br><br>
@@ -54,7 +300,7 @@
       
                   <% if (q.q_type == "W") { %>
                     <span>【简答题】</span>
-                    <span><%= q.q_description%></span><br>
+                    <span class = "long_answer"><%= q.q_description%></span><br>
                   <% } %>
       
                   <% if (q.q_type == "C") { %>
@@ -79,23 +325,30 @@
                   <% } %>
                   <span>答案：<%= q.q_answer %></span><br>
                 </div>
+              
               <% }) %>
-            <% } %><br>
+            <% } %>
               </div>
+            <br>
+          </div>
+          <br>
         </form>
-        --------------------------------------- 已添加题目部分 ---------------------------------------
-        <br>
+        <div class = "added_questions">
+        <div class = "top_box">
+          <p class = "search_title">已添加题目部分</p>
+        </div>
+        <div class = "added_results">
         <% if (preview != null) { %>
           <% preview.map(function(q, index) { %>
             <span><%= index+1 %></span>
             <% if (q.q_type == "TF") { %>
               <span>【判断题】</span>
-              <span><%= q.q_description%></span><br><br>
+              <span><%= q.q_description%></span><br>
             <% } %>
 
             <% if (q.q_type == "B") { %>
               <span>【填空题】</span>
-              <span><%= q.q_description%></span><br><br>
+              <span><%= q.q_description%></span><br>
             <% } %>
 
             <% if (q.q_type == "W") { %>
@@ -123,10 +376,12 @@
                 <span><%=q.q_choices.split(",")[i]%></span><br>
               <% } %>
             <% } %>
-
+                <br>
           <% }) %>
         <% } %>
       </div>
+      </div>
+    </div>
     </body>
   </html>
   

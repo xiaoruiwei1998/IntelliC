@@ -2,97 +2,377 @@
 <html lang = "">
   <head>
     <title>oneAssignmentPage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
   </head>
-  <body>
-      <div><%= thisAssignment.a_name%></div>
-      <div><%= thisAssignment.a_release%></div>
-      <div><%= thisAssignment.a_due%></div>
-      <div><%= thisAssignment.a_questions%></div>
 
+  <style>
+      body{
+          background: rgba(204, 203, 204, 0.24);
+      }
+      .left{
+        position: fixed;
+        width: 16%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        z-index: 1;
+        background: #CC6969;
+        border: 1px solid #CCCBCC;
+        box-sizing: border-box;
+        backdrop-filter: blur(16px);
+    }
+    .right{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 18%;
+        background: ffffff;
+        border: 1px solid rgba(204, 203, 204, 0.24);
+        border: transparent;
+        backdrop-filter: blur(16px);
+    }
+    .right_most{
+      position: fixed;
+      width: 26%;
+      height: 100%;
+      left: 75%;
+      background: rgba(204, 203, 204, 0.7);
+    }
+    .course_id{
+      position: relative;
+      color:white;
+      font-size: 26px;
+      left: 10%;
+      top:6%;
+    }
+    .course_name{
+      position: relative;
+      font-size: 18px;
+      left: 10%;
+      top:7%;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    #dashboard_icon{
+      position: relative;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      left:12%;
+    }
+    .personal_link{
+      font-size: 18px;
+      position: relative;
+      /* identical to box height */
+      color: rgba(255, 255, 255, 0.7);
+      left:15%;
+      padding-top:-2%;
+    }
+    #regrade_icon{
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 24px;
+      left:12%;
+    }
+    .regrade{
+      position: relative;
+      font-size: 18px;
+      left:15%;
+      color: rgba(255, 255, 255, 0.7);
+  
+    }
+    .instructor_list{
+      position: relative;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      left:10%;
+      padding-bottom: 3%;
+    }
+    #teacher_icon{
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      position:relative;
+      left:12%;
+      padding-top:4%;
+    }
+    .instructor_name{
+      color: rgba(255, 255, 255, 0.7);
+      position:relative;
+      font-size: 20px;
+      left:15%
+    }
+    #account_icon{
+      color:rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 40px;
+      left: 12%;
+    }
+    .account{
+      font-size: 26px;
+      color: rgba(255, 255, 255, 0.6);
+      position: relative;
+      left:15%;
+    }
+    .assignment_name{
+      position: relative;
+      font-size: 26px;
+    }
+    .questions{
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-sizing: border-box;
+      width: 90%;
+      backdrop-filter: blur(16px);
+      padding-bottom: 1%;
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 20px;
+      left:5%;
+    }
+    .top_question{
+      font-size: 20px;
+      width: 100%;
+      background:rgba(204, 203, 204, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      color: #CC6969;
+      padding-top: 1%;
+      padding-bottom: 1%;
+    }
+    input[type=text] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+        width: 295px;
+        height: 52px;
+        background-color: #ffffff;
+        color:#000000;
+        padding-left: 20px;
+        font-size: 14px;
+        border: 1px solid #CC6969;
+        margin-bottom: 2%;
+      }
+      #submit_button{
+        appearance: none;
+        border-radius: 60px;
+        width: 80px;
+        height: 42px;
+        background-color: #CC6969;
+        color: white;
+        padding-right: 10px;
+        font-size: 13px;
+        border: 1px solid #CCCBCC;
+      }
+      .submit_position{
+        padding-left:85%;
+      }
+      .background{
+        background-color: rgb(165, 165, 165,0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 2%;
+      }
+      .description{
+        margin-right: 3%;
+        margin-left: 3%;
+        margin-top: 1%;
+      }
+      .contents{
+        margin-left: 6%;
+      }
+      .points{
+        color: #CC6969;
+        margin-right: 1%;
+      }
+  </style>
+  <body>
+      <div class = "left">
+        <div class = "course_id">CS61C</div>
+        <div class = "course_name">C语言程序设计</div>
+        <br><br><br><br>
+
+
+
+
+           <span><i id = "dashboard_icon" class = "fa fa-align-justify" ></i></span> 
+           <span><a class = "personal_link" href="/personalPage">主页</a></span> 
+            <br>
+            <br>
+            <span><i id = "regrade_icon" class = "fa fa-share" ></i></span>
+            <span class = "regrade">重改申请</span>
+
+          <br><br>
+        <div class = "instructor_list">教师</div>
+         
+ 
+           <span> <i id = "teacher_icon" class = "fa fa-user-circle"></i></span>
+            <span class = "instructor_name">王敬华</span>
+    
+        
+        <br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+       
+
+
+            <span><i id = "account_icon" class = "fa fa-user-circle-o"></i></span>
+            <span class = "account">账号</span>
+    
+        
+      </div>
+      <div class = "right">
+
+        <br><br>
+
+      <div class = "background">
       <% qSet.map(function(q, index) { %>
-        <span><%= index+1%></span>
-        <% if (q.q_type == "TF") { %>
-          <span>【判断题】</span>
-          <span><%= q.q_description%></span><br>
-          <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
-            <% if (stu_answers[thisAssignment.a_name+'_'+q.q_id] == '1') {%>
-              <input type="radio" name="stu_answer" value=1 checked/>正确<br>
-              <input type="radio" name="stu_answer" value=0>错误<br>
-            <% } else if (stu_answers[thisAssignment.a_name+'_'+q.q_id] == '0') { %>
-              <input type="radio" name="stu_answer" value=1>正确<br>
-              <input type="radio" name="stu_answer" value=0 checked/>错误<br>
-            <% } else { %>
-            <input type="radio" name="stu_answer" value=1>正确<br>
-            <input type="radio" name="stu_answer" value=0>错误<br>
-            <% } %>
-            <input type="submit" name="submit">
-          </form>
+      
+        <div class = "questions">
+          <% if (q.q_type == "TF") { %>
+          <div class = "top_question">
+            &nbsp&nbsp
+            <span><%= index+1%></span>
+            <span>【判断题】</span>
+            <span>提交状态</span>
+          </div>
+          <div class = "description"><span><%= q.q_description%></span></div><br>
+            <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+              <% if (stu_answers[thisAssignment.a_name+'_'+q.q_id] == '1') {%>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="radio" name="stu_answer" value=1 checked/> &nbsp正确<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="radio" name="stu_answer" value=0> &nbsp错误<br>
+              <% } else if (stu_answers[thisAssignment.a_name+'_'+q.q_id] == '0') { %>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="radio" name="stu_answer" value=1> &nbsp正确<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="radio" name="stu_answer" value=0 checked/> &nbsp错误<br>
+              <% } else { %>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              <input type="radio" name="stu_answer" value=1> &nbsp正确<br>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              <input type="radio" name="stu_answer" value=0> &nbsp错误<br>
+              <% } %>
+              <div class = "submit_position"><input id = "submit_button" type="submit" name="submit" value="提交"></div>
+            </form>
         <% } %>
 
         <% if (q.q_type == "B") { %>
-          <span>【填空题】</span>
-          <span><%= q.q_description%></span><br>
+          <div class = "top_question">
+            &nbsp&nbsp
+            <span><%= index+1%></span>
+            <span>【填空题】</span>
+            <span>提交状态</span>
+          </div>
+         <div class = "description"><span><%= q.q_description%></span></div><br>
           <form action="/questions/submitOneQuestion?q_type=<%=q.q_type%>&n=<%=q.q_num_of_blanks%>&a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
             <% for (var i=0; i<q.q_num_of_blanks; i++) { %>
               <% if (stu_answers[thisAssignment.a_name+'_'+q.q_id] == null) {%>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <input type="text" name="stu_answer<%=i%>" value="" placeholder="第<%=i+1%>空"><br>
               <% } else { %>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
               <input type="text" name="stu_answer<%=i%>" value="<%= stu_answers[thisAssignment.a_name+'_'+q.q_id][i]%>" placeholder="第<%=i+1%>空"><br>
               <% } %>
             <% } %>
-            <input type="submit" name="submit">
+            <div class = "submit_position"><input id = "submit_button" type="submit" name="submit" value="提交"></div>
           </form>
         <% } %>
 
         <% if (q.q_type == "W") { %>
+          <div class = "top_question">
+            &nbsp&nbsp
+          <span><%= index+1%></span>
           <span>【简答题】</span>
-          <span><%= q.q_description%></span><br>
+          <span>提交状态</span>
+        </div>
+        <div class = "description"><span><%= q.q_description%></span></div><br>
           <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <input type="text" name="stu_answer" value="<%= stu_answers[thisAssignment.a_name+'_'+q.q_id]%>" placeholder="输入答案"><br>
-            <input type="submit" name="submit">
+            <div class = "submit_position"><input id = "submit_button" type="submit" name="submit" value="提交"></div>
           </form>
         <% } %>
 
         <% if (q.q_type == "C") { %>
+          <div class = "top_question">
+            &nbsp&nbsp
+          <span><%= index+1%></span>
           <span>【编程题】</span>
-          <span><%= q.q_description%></span><br>
+          <span>提交状态</span>
+        </div>
+        <div class = "description"><span><%= q.q_description%></span></div><br>
           <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <input type="text" name="stu_answer" value="<%= stu_answers[thisAssignment.a_name+'_'+q.q_id]%>" placeholder="输入答案"><br>
-            <input type="submit" name="submit">
+            <div class = "submit_position"><input id = "submit_button" type="submit" name="submit" value="提交"></div>
           </form>
         <% } %>
 
         <% if (q.q_type == "MC") { %>
+          <div class = "top_question">
+            &nbsp&nbsp
+          <span><%= index+1%></span>
           <span>【单选题】</span>
-          <span><%= q.q_description%></span><br>
+          <span>提交状态</span>
+        </div>
+        <div class = "description"><span><%= q.q_description%></span></div><br>
           <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
             <% for (var i=1; i<q.q_choices.length; i++) { %>
               <% if (stu_answers[thisAssignment.a_name+'_'+q.q_id]==i) { %>
-                <input type="radio" name="stu_answer" value="<%=i%>" checked/><%=q.q_choices[i]%><br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="radio" name="stu_answer" value="<%=i%>" checked/> &nbsp<%=q.q_choices[i]%><br>
               <% } else { %>
-                <input type="radio" name="stu_answer" value="<%=i%>"><%=q.q_choices[i]%><br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="radio" name="stu_answer" value="<%=i%>"> &nbsp<%=q.q_choices[i]%><br>
               <% } %>
             <% } %>
-            <input type="submit" name="submit">
+            <div class = "submit_position"><input id = "submit_button" type="submit" name="submit" value="提交"></div>
           </form>
         <% } %>
 
         <% if (q.q_type == "NMC") { %>
+          <div class = "top_question">
+            &nbsp&nbsp
+          <span><%= index+1%></span>
           <span>【多选题】</span>
-          <span><%= q.q_description%></span><br>
+          <span>提交状态</span>
+        </div>
+        <div class = "description"><span><%= q.q_description%></span></div><br>
           <form action="/questions/submitOneQuestion?q_type=NMC&n=<%=q.q_choices.length%>&a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
             <% for (var i=1; i<q.q_choices.length; i++) { %>
               <% if (stu_answers[thisAssignment.a_name+'_'+q.q_id]!=null && stu_answers[thisAssignment.a_name+'_'+q.q_id].indexOf(eval('\''+i+'\''))>=0) { %>
-                <input type="checkbox" name="stu_answer<%=i%>" value="<%=i%>" checked/><%=q.q_choices[i]%><br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="checkbox" name="stu_answer<%=i%>" value="<%=i%>" checked/> &nbsp<%=q.q_choices[i]%><br>
               <% } else { %>
-                <input type="checkbox" name="stu_answer<%=i%>" value="<%=i%>"><%=q.q_choices[i]%><br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="checkbox" name="stu_answer<%=i%>" value="<%=i%>"> &nbsp<%=q.q_choices[i]%><br>
               <% } %>
             <% } %>
-            <input type="submit" name="submit">
+            <div class = "submit_position"><input id = "submit_button" type="submit" name="submit" value="提交"></div>
           </form>
         <% } %>
-        提交状态<br><br>
+      </div>
+    
+      <br>
       <% }) %>
-      
+    </div>
+    </div>
+    <div class = "right_most">
+      <div class = "contents">
+      <br>
+      <br>
+      <div class = "assignment_name"><%= thisAssignment.a_name%></div>
+       <br>
+        <span class = "student_name"><b>学生姓名：</b></span>
+         <span><%= userName%></span>
+        <br>
+        <br>
+        <span class = "total_points"><b>作业总分: </b></span>
+        <span>100分</span><br>
+
+        <% qSet.map(function(q, index) { %>
+          <span><b>第<%= index+1%>题</b></span>
+          <span class = "points">(<%=q.q_difficulty%>分)</span> 
+          <div class = "question_title"><%= q.q_title%><br>
+        <% }) %>
+      </div>
+    </div>
   </body>
 </html>

@@ -4,16 +4,18 @@
     <title>personalPage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+  </head>
     <style>
       body{
-          background: white;
+          background: rgba(204, 203, 204, 0.24);
       }
       .left{
-        position: absolute;
-        width: 280px;
-        height: 1024px;
+        position: fixed;
+        width: 16%;
+        height: 100%;
         left: 0px;
         top: 0px;
+        z-index: 1;
         background: #CC6969;
         border: 1px solid #CCCBCC;
         box-sizing: border-box;
@@ -21,176 +23,82 @@
     }
     .right{
         position: absolute;
-        width: 1480px;
-        height: 1024px;
-        left: 280px;
-        top: 0px;
-        background: rgba(204, 203, 204, 0.24);
-        border: 1px solid #CCCBCC;
-        box-sizing: border-box;
+        width: 82%;
+        height: 100%;
+        left: 18%;
+        background: ffffff;
+        border: 1px solid rgba(204, 203, 204, 0.24);
+        border: transparent;
         backdrop-filter: blur(16px);
     }
     .user_email{
       position: absolute;
       left: 26.65%;
-      right: 90.21%;
-      top: 29.75%;
-      font-family: Salsa;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 15px;
-      line-height: 25px;
-      display: flex;
-      align-items: center;
-
-      color: #FFFFFF;
-
-      mix-blend-mode: normal;
-  }
+      top: 32%;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 18px;
+    }
+      
   .course_link{
       position: absolute;
       left: 26.65%;
-      right: 90.21%;
-      top: 34.25%;
-      width: 200px;
-      color:white;
-      font-family: Noto Sans SC;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 15px;
-      line-height: 26px;
-      /* identical to box height */
-
-      display: flex;
-      align-items: center;
-
-      color: rgba(255, 255, 255, 0.7);
-
-      mix-blend-mode: normal;
+      top: 37%;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 18px;
   }
   .analysis_link{
       position: absolute;
       left: 26.65%;
-      right: 90.21%;
-      top: 38.75%;
-      width: 200px;
-      font-family: Noto Sans SC;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 15px;
-      line-height: 26px;
-      /* identical to box height */
-
-      display: flex;
-      align-items: center;
-
-      color: rgba(255, 255, 255, 0.7);
-
-      mix-blend-mode: normal;
+      top: 42%;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 18px;
   }
   .user_name{
-    font-family: Salsa;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 25px;
-    display: flex;
-    align-items: center;
-    
+    font-size: 25px;
     color: #FFFFFF;
-    
-    mix-blend-mode: normal;
     position: absolute;
-    left: 26.33%;
-    right: 72.92%;
-    top: 16.68%;
-    bottom: 71.68%;
+    left: 24%;
+    top: 22%;
   }
   .user_type{
     position: absolute;
-    left: 34.82%;
-    right: 72.43%;
-    top: 19.71%;
-    width: 30%;
-    bottom: 68.65%;
-
-    font-family: Salsa;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 25px;
-    display: flex;
-    align-items: center;
-
+    font-size: 22px;
     color: #FFFFFF;
-
-    mix-blend-mode: normal;
+    left: 37%;
+    top: 26%;
   }
   #book{
     position: absolute;
-    width: 20px;
-    height: 16px;
     left: 12%;
-    top: 34.75%;
+    top: 37%;
+    font-size: 24px;
     color: rgba(255, 255, 255, 0.7);
   }
   #courses{
     position: absolute;
-    width: 20px;
-    height: 16px;
     left: 12%;
-    top: 30.2%;
+    top: 32%;
+    font-size: 24px;
     color: white;
   }
   #analysis{
     position: absolute;
-    width: 28px;
-    height: 17px;
+    font-size: 24px;
     left: 12%;
-    top: 39.2%;
+    top: 42%;
     color: rgba(255, 255, 255, 0.7);
   }
   .my_class{
     position: absolute;
     left: 2.39%;
-    right: 66.39%;
     top: 3.08%;
-    
-
-    font-family: Noto Sans SC;
-    font-style: normal;
-    font-weight: normal;
     font-size: 26px;
-    line-height: 38px;
-    /* identical to box height */
-
-    display: flex;
-    align-items: center;
-
-    color: #000000;
-
-    mix-blend-mode: normal;
   }
   .semester_one{
     position: absolute;
     left: 2.39%;
-    right: 66.39%;
     top: 7.08%;
-    
-
-    font-family: Noto Sans SC;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 38px;
-    /* identical to box height */
-
-    display: flex;
-    align-items: center;
-
-    color: #000000;
-
-    mix-blend-mode: normal;
+    font-size: 20px;
   }
   .right_bottom{
     padding-top:150px;
@@ -231,7 +139,7 @@
   ul li {
     display: inline; /* Prevents "stepdown" */
     position: relative;
-    padding-left: 50px;
+    padding-left: 35px;
     padding-bottom: 100px;
     float: left;
     /* clear: inline-end; */
@@ -308,9 +216,20 @@
         padding-top: 60px;
         padding-left: 5%;
       }
+      #account_icon{
+      color:rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 40px;
+      left: 12%;
+    }
+    .account{
+      font-size: 26px;
+      color: rgba(255, 255, 255, 0.6);
+      position: relative;
+      left:15%;
+    }
 
     </style>
-  </head>
   <body>
 
 
@@ -318,19 +237,28 @@
     
       <div class = "profile_pic"><img src="https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/nweaver.jpg" 
            height="150" width="150" style="border-radius: 50%; border-style: solid; border-color: white"></div>
+
       <div class = "user_name"><%= item.user_name %></div>
-      <div class = "user_email"><%= item.user_email %></div>
-      
       <% if (item.user_type == 'I'){ %>
-        <p class = "user_type">教授</p >
+        <p class = "user_type">教授</p>
+       
       <% } else { %>
         <div class = "user_type">学生</div>
+        
         <% } %>
-      <i id = "book" class = "fa fa-book"></i>
-      <i id = "courses" class = "fa fa-envelope-o"></i>
-      <i id = "analysis" class = "fa fa-address-card"></i>
-      <div ><a class = "course_link" href=" ">课程主页</a ></div>
-      <div ><a class = "analysis_link" href="/analysisPage">学情分析</a ></div>
+        <br><br> <br><br>
+      <span><i id = "courses" class = "fa fa-envelope-o"></i></span>
+      <span class = "user_email"><%= item.user_email %></span>
+      <br>
+      <span><i id = "book" class = "fa fa-book"></i></span>
+      <span><a class = "course_link" href=" ">课程主页</a ></span>
+      <br>
+      <span><i id = "analysis" class = "fa fa-address-card"></i></span>
+      <span><a class = "analysis_link" href="/analysisPage">学情分析</a ></span>
+
+        <br><br><br> <br><br><br><br> <br><br><br><br> <br><br><br><br> <br><br><br><br> <br><br><br><br> <br><br>
+        <span><i id = "account_icon" class = "fa fa-user-circle-o"></i></span>
+        <span class = "account">账号</span>
     </div>
 
     <div class = "right">
@@ -346,7 +274,7 @@
             var course_name = course.course_id.split('_')[0]
             var course_inst = course.course_id.split('_')[1]
             %>
-            <ul>
+            <span div class = "classes_box"><ul>
               <li>
                 <div class = "box">
                   <a class = "course_name" href="/coursePage?thisCourse=<%=course.course_id%>"><h1 class = "course_id"><%= course_name %></h1></a >
@@ -355,6 +283,7 @@
               </div>
               </li>
             </ul>
+          </span>
           <% })%>
 
         <!-- <div class = "add_box"> -->

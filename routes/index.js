@@ -65,7 +65,7 @@ router.get('/oneAssignmentPage', function(req, res, next) {
     db.collection('questions').find({q_id:{$in: thisAssignment.a_questions}}).toArray(function(err, docs) {
       console.log(docs)
       req.session.stu_answers = {}
-      res.render('oneAssignmentPage', {stu_answers: req.session.stu_answers, qSet: docs, userMail: userMail, thisAssignment: thisAssignment})
+      res.render('oneAssignmentPage', {stu_answers: req.session.stu_answers, qSet: docs, userMail: userMail, userName: req.session.userName, thisAssignment: thisAssignment})
     })
   })
 })

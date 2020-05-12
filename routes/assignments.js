@@ -27,7 +27,20 @@ router.get('/deleteAssignment', function(req, res, next) {
 /* Auto-add assignment */
 router.post('/autoAddAssignment', function(req, res, next) {
   console.log('自动发布试卷')
-  
+  // call.js
+  const exec = require('child_process').exec;
+  const execSync = require('child_process').execSync;
+  // 异步执行
+  exec('python input_data.py',function(error,stdout,stderr){
+      if(error) {
+          console.info('stderr : '+stderr);
+      }
+      console.log('exec: ' + stdout);
+  })
+  // 同步执行
+  const output = execSync('python input_data.py')
+  console.log('sync: ' + output.toString())
+  console.log('over')
 })
 
 var a_questionIds = []

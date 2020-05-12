@@ -2,10 +2,161 @@
 <html lang = "">
   <head>
     <title>inst2StudentAssignmentsPage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
   </head>
-
+  <style>
+    body{
+          background: rgba(204, 203, 204, 0.24);
+      }
+      .left{
+        position: fixed;
+        width: 16%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        z-index: 1;
+        background: #CC6969;
+        border: 1px solid #CCCBCC;
+        box-sizing: border-box;
+        backdrop-filter: blur(16px);
+    }
+    .right{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 18%;
+        background: ffffff;
+        border: 1px solid rgba(204, 203, 204, 0.24);
+        border: transparent;
+        backdrop-filter: blur(16px);
+    }
+    .right_most{
+      position: fixed;
+      width: 26%;
+      height: 100%;
+      left: 75%;
+      background: rgba(204, 203, 204, 0.7);
+    }
+    .course_id{
+      position: relative;
+      color:white;
+      font-size: 26px;
+      left: 10%;
+      top:6%;
+    }
+    .course_name{
+      position: relative;
+      font-size: 18px;
+      left: 10%;
+      top:7%;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    #dashboard_icon{
+      position: relative;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      left:12%;
+    }
+    .personal_link{
+      font-size: 18px;
+      position: relative;
+      /* identical to box height */
+      color: rgba(255, 255, 255, 0.7);
+      left:15%;
+      padding-top:-2%;
+    }
+    #regrade_icon{
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 24px;
+      left:12%;
+    }
+    .regrade{
+      position: relative;
+      font-size: 18px;
+      left:15%;
+      color: rgba(255, 255, 255, 0.7);
+  
+    }
+    .instructor_list{
+      position: relative;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      left:10%;
+      padding-bottom: 3%;
+    }
+    #teacher_icon{
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      position:relative;
+      left:12%;
+      padding-top:4%;
+    }
+    .instructor_name{
+      color: rgba(255, 255, 255, 0.7);
+      position:relative;
+      font-size: 20px;
+      left:15%
+    }
+    #account_icon{
+      color:rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 40px;
+      left: 12%;
+      padding-top: 215%;
+    }
+    .account{
+      font-size: 26px;
+      color: rgba(255, 255, 255, 0.6);
+      position: relative;
+      left:15%;
+    }
+    .category{
+      font-size: 20px;
+      text-align: center;
+    }
+    .category_2{
+      font-size: 17px;
+      color: rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+    #pencil_icon{
+        font-size: 24px;
+        color:rgba(0, 0, 0, 0.8);
+      }
+    .bottom_line{
+      border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+      width: 100%;
+      margin-left: 5%;
+      margin-top: 0.3%;
+      margin-bottom: 2%;
+    }
+    .bottom_line_2{
+      border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+      margin-left: 5%;
+      width: 100%;
+      margin-bottom: 2%;
+    }
+    .assignment_name{
+      position: relative;
+      font-size: 26px;
+    }
+    .contents{
+      margin-left: 6%;
+    }
+    .each_row{
+      margin-bottom: 3%;
+    }
+    .words_2{
+      color: rgba(0, 0, 0, 0.5);
+    }
+    .edit{
+      margin-left: 25%
+    }
+  </style>
   <body>
-      <div class = "">
+      <div class = "left">
           <div class = "course_id"><%=course_name%></div>
           <div class = "course_name">C语言程序设计</div>
           <br><br><br><br>
@@ -20,37 +171,99 @@
             <div class = "instructor_list">教师</div>
                <span> <i id = "teacher_icon" class = "fa fa-user-circle"></i></span>
                 <span class = "instructor_name">王敬华</span>
-            <br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+            <br>
                 <span><i id = "account_icon" class = "fa fa-user-circle-o"></i></span>
                 <span class = "account">账号</span>
-        </div><br><br><br><br>
-    ========================= 中间栏 =========================<br>
-    编号      学生姓名      学生邮箱    作业状态    批改<br>
+        </div>
+
+      <div class = "right">
+        <br>
+        <br>
+        <div id = "row_1" class = "row">
+          <div class = "col-xl-2">
+            <p class = "category">编号</p >
+          </div>
+          <div class = "col-xl-2">
+            <p class = "category">学生姓名 </p >
+          </div>
+          <div class = "col-xl-4">
+            <p class = "category">学生邮箱</p >
+          </div>
+          <div class = "col-xl-3">
+            <p class = "category">作业状态</p >
+          </div>
+          <div class = "col-xl-1">
+            <p class = "category">批改</p >
+          </div> 
+          <div class = "bottom_line_2"></div>
+        </div>
+
     <% course_students.map(function(stu, i) { %>
       <% stu.user_assignments.map(function(a, j) { %>
         <% if (a.a_name == a_name) {%>
-          <%=i+1%>
-          <%=stu.user_name%>
-          <%=stu.user_email%>
-          100 / 100 
-          <a href="/oneAssignmentPage?a_log=<%= a.a_log%>&a_name=<%= a.a_name%>&a_courseID=<%=a.a_courseID%>&a_status=<%=a.a_status%>&a_release=<%=a.a_release%>&a_due=<%=a.a_due%>&a_questions=<%=a.a_questions%>">批改按钮</a><br>
+          <div id = "row_1" class = "row">
+            <div class = "col-xl-2">
+              <p class = "category_2"><%=i+1%></p >
+            </div>
+            <div class = "col-xl-2">
+              <p class = "category_2"><%=stu.user_name%> </p >
+            </div>
+            <div class = "col-xl-4">
+              <p class = "category_2"><%=stu.user_email%></p >
+            </div>
+            <div class = "col-xl-3">
+              <p class = "category_2">100 / 100 </p >
+            </div>
+            <div class = "col-xl-1">
+              <a class = "edit" href="/oneAssignmentPage?a_log=<%= a.a_log%>&a_name=<%= a.a_name%>&a_courseID=<%=a.a_courseID%>&a_status=<%=a.a_status%>&a_release=<%=a.a_release%>&a_due=<%=a.a_due%>&a_questions=<%=a.a_questions%>"><i id = "pencil_icon" class = "fa fa-pencil"></i></a ><br>
+            </div> 
+            <div class = "bottom_line"></div>
+          </div>
         <% } %>
       <% }) %>
-    <% }) %><br><br><br><br>
-    ========================= 右边栏 =========================<br>
-    <%=a_name%><br>
-    开始日期：<%=a_release%><br>
-    截止日期：<%=a_due%><br>
-    作业完成情况：<br>
-    总分：100分<br>
-    学生人数：2人<br>
-    提交人数：2人<br>
-    最高分：100分<br>
-    最低分：100分<br>
-    平均分：100分<br>
-    中位数：100分<br>
-    得分分布图：<br>
-    （图表）<br>
+    <% }) %>
+  </div>
+
+
+  <div class = "right_most">
+    <br>
+    <br>
+    <div class = "contents">
+    <div class = "assignment_name"><%=a_name%></div>
+    <br>
+    <div class = "each_row"><span class = "words"><b>开始日期: </b></span><span class = "words_2"><%=a_release%></span></div>
+    <div class = "each_row">
+    <span class = "words"><b>截止日期：</b></span><span class = "words_2"><%=a_due%></span>
+    </div>
+    <div class = "each_row">
+    <span class = "words"><b>作业完成情况：</b></span>
+    </div>
+    <div class = "each_row">
+    <span class = "words"><b>总分：</b></span><span class = "words_2">100分</span>
+    </div>
+    <div class = "each_row">
+    <span class = "words"><b>学生人数：</b></span><span class = "words_2">2人</span>
+  </div>
+  <div class = "each_row">
+    <span class = "words"><b>提交人数：</b></span><span class = "words_2">2人</span>
+  </div>
+  <div class = "each_row">
+    <span class = "words"><b>最高分：</b></span><span class = "words_2">100分</span>
+  </div>
+  <div class = "each_row">
+    <span class = "words"><b>最低分：</b></span><span class = "words_2">100分</span>
+  </div>
+  <div class = "each_row">
+    <span class = "words"><b>平均分：</b></span><span class = "words_2">100分</span>
+  </div>
+  <div class = "each_row">
+    <span class = "words"><b>中位数：</b></span><span class = "words_2">100分</span>
+  </div>
+    <div><b>得分分布图：</b></div>
+    <br>
+    <div class = "analysis_graph"><img src="https://alesandrab.files.wordpress.com/2013/04/first-attempt.png" height="300" width="350"></div>
+  </div>
+
+  </div>
   </body>
 </html>

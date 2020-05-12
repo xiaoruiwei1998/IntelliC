@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
     <style>
       body{
-          background: white;
+          background: rgba(204, 203, 204, 0.24);
       }
       .left{
         position: fixed;
@@ -21,13 +21,13 @@
         backdrop-filter: blur(16px);
     }
     .right{
-        position: relative;
-        width: 82.5%;
+        position: absolute;
+        width: 82%;
         height: 100%;
-        left: 16%;
-        background: rgba(204, 203, 204, 0.24);
-        border: 1px solid #CCCBCC;
-        box-sizing: border-box;
+        left: 18%;
+        background: ffffff;
+        border: 1px solid rgba(204, 203, 204, 0.24);
+        border: transparent;
         backdrop-filter: blur(16px);
     }
     .course_id{
@@ -48,28 +48,28 @@
       position: relative;
       color: rgba(255, 255, 255, 0.7);
       font-size: 24px;
+      left:12%;
     }
     .personal_link{
       font-size: 18px;
       position: relative;
       /* identical to box height */
       color: rgba(255, 255, 255, 0.7);
-      left:52%;
-      top: -108%;
+      left:15%;
+      padding-top:-2%;
     }
     #regrade_icon{
       color: rgba(255, 255, 255, 0.7);
       position: relative;
       font-size: 24px;
-      left:10%;
-      padding-top: 5%;
+      left:12%;
     }
     .regrade{
       position: relative;
       font-size: 18px;
-      left:38%;
+      left:15%;
       color: rgba(255, 255, 255, 0.7);
-      top:-108%;
+  
     }
     .instructor_list{
       position: relative;
@@ -82,23 +82,26 @@
       color: rgba(255, 255, 255, 0.7);
       font-size: 24px;
       position:relative;
-      left:20%;
+      left:12%;
       padding-top:4%;
     }
     .instructor_name{
       color: rgba(255, 255, 255, 0.7);
       position:relative;
       font-size: 20px;
+      left:15%
     }
     #account_icon{
       color:rgba(255, 255, 255, 0.7);
       position: relative;
       font-size: 40px;
+      left: 12%;
     }
     .account{
       font-size: 26px;
       color: rgba(255, 255, 255, 0.6);
       position: relative;
+      left:15%;
     }
     .course_name_2{
       position: relative;
@@ -110,7 +113,6 @@
     .descripiton_title{
       position: relative;
       font-size: 20px;
-      top: 8%;
       left: 2%;
       color: rgba(0, 0, 0, 0.6);
     }
@@ -122,7 +124,7 @@
       border-right: transparent;
       border-bottom: 1px solid rgba(0, 0, 0, 0.6);
       border-style: solid;
-      width:500px;
+      width:40%px;
     }
     .description{
       padding-top: 0.5%;
@@ -159,7 +161,7 @@
 }
   .bottom_line{
     border-bottom: 1px solid rgba(0, 0, 0, 0.6);
-    width: 1350px;
+    width: 95%;
     padding-bottom: 1%;
     padding-top: -3%;
   }
@@ -191,46 +193,19 @@
   <body>
       <div class = "left">
         <div class = "course_id"><%=course_name%></div>
-        <div class = "course_name">C语言程序设计</div>
-        <br><br><br><br>
+      <div class = "course_name">C语言程序设计</div>
+      <br><br><br><br>
+           <span><i id = "dashboard_icon" class = "fa fa-align-justify" ></i></span> 
+           <span><a class = "personal_link" href="/personalPage">主页</a ></span> 
+            <br>
+            <br>
+            <span><i id = "regrade_icon" class = "fa fa-share" ></i></span>
+            <span class = "regrade">重改申请</span>
 
-        <div class = "row">
-          <div class = "col-lg-1">
-            
-          </div>
-          <div class = "col-lg-4">
-            <i id = "dashboard_icon" class = "fa fa-align-justify" ></i>
-          </div>
-          <div class = "col-lg-7">
-            <a class = "personal_link" href="/personalPage">主页</a >
-          </div>
-        </div>
-
-        <div class = "row">
-          <div class = "col-lg-1">
-            
-          </div>
-          <div class = "col-lg-2">
-            <i id = "regrade_icon" class = "fa fa-share" ></i>
-          </div>
-          <div class = "col-lg-9">
-            <div class = "regrade">重改申请</div>
-          </div>
-        </div>
-        
+          <br><br>
         <div class = "instructor_list">教师</div>
-
-        <div class = "row">
-          <div class = "col-lg-1">
-            
-          </div>
-          <div class = "col-lg-2">
-            <i id = "teacher_icon" class = "fa fa-user-circle"></i>
-          </div>
-          <div class = "col-lg-1">
-            <div class = "instructor_name"><%=course_inst%></div>
-          </div>
-        </div>
+           <span> <i id = "teacher_icon" class = "fa fa-user-circle"></i></span>
+            <span class = "instructor_name">王敬华</span>
         <br><br><br>
 
         <% if (userType == 'I') { %>
@@ -265,33 +240,15 @@
         
 
         <% if(userType == 'I') { %>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <div class = "row">
-          <div class = "col-lg-2">
-            
-          </div>
-          <div class = "col-lg-2">
-            <i id = "account_icon" class = "fa fa-user-circle-o"></i>
-          </div>
-          <div class = "col-lg-4">
-            <div class = "account">账号</div>
-          </div>
-        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <span><i id = "account_icon" class = "fa fa-user-circle-o"></i></span>
+        <span class = "account">账号</span>
         <% } %>
 
         <% if(userType == 'S') { %>
           <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <div class = "row">
-            <div class = "col-lg-2">
-              
-            </div>
-            <div class = "col-lg-2">
-              <i id = "account_icon" class = "fa fa-user-circle-o"></i>
-            </div>
-            <div class = "col-lg-4">
-              <div class = "account">账号</div>
-            </div>
-          </div>
+          <span><i id = "account_icon" class = "fa fa-user-circle-o"></i></span>
+          <span class = "account">账号</span>
           <% } %>
 
 
@@ -356,14 +313,13 @@
               <a class = "delete" href="assignments/deleteAssignment?a_name=<%=assignment.a_name%>&course_name=<%=course_name%>&course_inst=<%=course_inst%>"><i id = "delete_icon" class = "fa fa-window-close-o"></i></a > 
             </div>
             <div class = "col-lg-3">
-
-            <% if(userType == 'I') { %>
-              <a class = "homework_name" href="/inst2StudentAssignmentsPage?thisCourse=<%=thisCourse%>">
-                <%= assignment.a_name %></a > 
-            <% } else { %>
-              <a class = "homework_name" href="/oneAssignmentPage?a_log=<%= assignment.a_log%>&a_name=<%= assignment.a_name%>&a_courseID=<%=assignment.a_courseID%>&a_status=<%=assignment.a_status%>&a_release=<%=assignment.a_release%>&a_due=<%=assignment.a_due%>&a_questions=<%=assignment.a_questions%>">
-                <%= assignment.a_name %></a > 
-            <% } %>
+              <% if(userType == 'I') { %>
+                <a class = "homework_name" href="/inst2StudentAssignmentsPage?thisCourse=<%=thisCourse%>&thisAssignment=<%= assignment.a_name %>">
+                  <%= assignment.a_name %></a > 
+              <% } else { %>
+                <a class = "homework_name" href="/oneAssignmentPage?a_log=<%= assignment.a_log%>&a_name=<%= assignment.a_name%>&a_courseID=<%=assignment.a_courseID%>&a_status=<%=assignment.a_status%>&a_release=<%=assignment.a_release%>&a_due=<%=assignment.a_due%>&a_questions=<%=assignment.a_questions%>">
+                  <%= assignment.a_name %></a > 
+              <% } %>
             </div>
             <div class = "col-lg-2">
               <%= assignment.a_status %> 

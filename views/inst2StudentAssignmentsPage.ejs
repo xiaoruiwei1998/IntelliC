@@ -4,29 +4,15 @@
     <title>inst2StudentAssignmentsPage</title>
   </head>
   <body>
-
-      <div><a href="/editQuestionPage">insert</a></div>
-
-      <div class="questions">
-        <% list.map(function(item, index) { %>
-          <div class="row">
-            <span>
-                <a href="/editQuestionPage?q_time=<%=item.q_time%>">edit</a>
-                <a href="questions/delete?q_time=<%=item.q_time%>">delete</a>
-            </span>
-            <span><%= index+1 %></span>
-            <span><%= item.q_type %></span>
-            <span><%= item.q_title %></span>
-            <span><%= item.q_chapter %></span>
-            <span><%= item.q_difficulty %></span>
-            <span><%= item.q_description %></span>
-            <span><%= item.q_answer %></span>
-            <span><%= item.q_time %></span>
-          </div>
-        <% }) %>
-      <div><a href="/">homePage</a> </div>
-
-    </body>
-  </html>
-  
-  
+    <%=a_name%><br>
+    学生姓名    作业状态<br>
+    <% course_students.map(function(stu, i) { %>
+      <% stu.user_assignments.map(function(a, j) { %>
+        <% if (a.a_name == a_name) {%>
+          <a href="/oneAssignmentPage?a_log=<%= a.a_log%>&a_name=<%= a.a_name%>&a_courseID=<%=a.a_courseID%>&a_status=<%=a.a_status%>&a_release=<%=a.a_release%>&a_due=<%=a.a_due%>&a_questions=<%=a.a_questions%>"><%=stu.user_name%></a> 
+          <%=a.a_status%><br>
+        <% } %>
+      <% }) %>
+    <% }) %>
+  </body>
+</html>

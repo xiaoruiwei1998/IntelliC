@@ -314,7 +314,7 @@
             </div>
             <div class = "col-lg-3">
               <% if(userType == 'I') { %>
-                <a class = "homework_name" href="/inst2StudentAssignmentsPage?thisCourse=<%=thisCourse%>&thisAssignment=<%= assignment.a_name %>">
+                <a class = "homework_name" href="/inst2StudentAssignmentsPage?thisCourse=<%=thisCourse%>&thisAssignment=<%= assignment.a_name %>&a_release=<%=assignment.a_release%>&a_due=<%=assignment.a_due%>">
                   <%= assignment.a_name %></a > 
               <% } else { %>
                 <a class = "homework_name" href="/oneAssignmentPage?a_log=<%= assignment.a_log%>&a_name=<%= assignment.a_name%>&a_courseID=<%=assignment.a_courseID%>&a_status=<%=assignment.a_status%>&a_release=<%=assignment.a_release%>&a_due=<%=assignment.a_due%>&a_questions=<%=assignment.a_questions%>">

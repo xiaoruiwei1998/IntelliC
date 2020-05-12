@@ -2,103 +2,192 @@
 <html lang = "">
   <head>
     <title>ayalysisPage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
     <style>
-        body{
-            background: rgb(255, 253, 246);
-        }
-        .left{
-            position: absolute;
-            width: 280px;
-            height: 1024px;
-            left: 0px;
-            top: 0px;
-            background: #CC6969;
-            border: 1px solid #CCCBCC;
-            box-sizing: border-box;
-            backdrop-filter: blur(16px);
-        }
-        .right{
-            position: absolute;
-            width: 1480px;
-            height: 1024px;
-            left: 280px;
-            top: 0px;
-            background: rgba(204, 203, 204, 0.24);
-            border: 1px solid #CCCBCC;
-            box-sizing: border-box;
-            backdrop-filter: blur(16px);
-        }
-        .user_name{
-            position: absolute;
-            width: 200px;
-            left: 80px;
-            top:220px;
-            height: 100px;
-            color:white;
-        }
-        .user_email{
-            position: absolute;
-            width: 200px;
-            left: 50px;
-            top:260px;
-            height: 100px;
-            color:white;
-        }
-        .course_link{
-            position: absolute;
-            width: 200px;
-            left: 50px;
-            top:300px;
-            height: 100px;
-            color:white;
-        }
-        .analysis_link{
-            position: absolute;
-            width: 200px;
-            left: 50px;
-            top:340px;
-            height: 100px;
-            color:white;
-        }
-        .middle{
-            display: flex;
-            flex-direction: column;
-            padding: 0px;
-
-            position: absolute;
-            width: 582px;
-            height: 372px;
-            left: 429px;
-            top: 59px;
-
-            mix-blend-mode: normal;
-            /* Big card shadow */
-
-            box-shadow: 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.00562291), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.00807786), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.01), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0119221), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0143771), 0px 100px 80px rgba(0, 0, 0, 0.02);
-        }
-
-
-
+       body{
+          background: rgba(204, 203, 204, 0.24);
+      }
+      .left{
+        position: fixed;
+        width: 16%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        z-index: 1;
+        background: #CC6969;
+        border: 1px solid #CCCBCC;
+        box-sizing: border-box;
+        backdrop-filter: blur(16px);
+    }
+    .right{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 18%;
+        background: ffffff;
+        border: 1px solid rgba(204, 203, 204, 0.24);
+        border: transparent;
+        backdrop-filter: blur(16px);
+    }
+    .right_most{
+      position: fixed;
+      width: 26%;
+      height: 100%;
+      left: 75%;
+      background: rgba(204, 203, 204, 0.7);
+    }
+    .course_id{
+      position: relative;
+      color:white;
+      font-size: 26px;
+      left: 10%;
+      top:6%;
+    }
+    .course_name{
+      position: relative;
+      font-size: 18px;
+      left: 10%;
+      top:7%;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    #dashboard_icon{
+      position: relative;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      left:12%;
+    }
+    .personal_link{
+      font-size: 18px;
+      position: relative;
+      /* identical to box height */
+      color: rgba(255, 255, 255, 0.7);
+      left:15%;
+      padding-top:-2%;
+    }
+    #regrade_icon{
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 24px;
+      left:12%;
+    }
+    .regrade{
+      position: relative;
+      font-size: 18px;
+      left:15%;
+      color: rgba(255, 255, 255, 0.7);
+  
+    }
+    .instructor_list{
+      position: relative;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      left:10%;
+      padding-bottom: 3%;
+    }
+    #teacher_icon{
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      position:relative;
+      left:12%;
+      padding-top:4%;
+    }
+    .instructor_name{
+      color: rgba(255, 255, 255, 0.7);
+      position:relative;
+      font-size: 20px;
+      left:15%
+    }
+    #account_icon{
+      color:rgba(255, 255, 255, 0.7);
+      position: relative;
+      font-size: 40px;
+      padding-top:215%;
+      left: 12%;
+    }
+    .account{
+      font-size: 26px;
+      color: rgba(255, 255, 255, 0.6);
+      position: relative;
+      left:15%;
+    }
+    .top_box{
+        background:#CC6969;
+        height:150%;
+        width:100%;
+    }
+    .semester{
+        font-size: 20px;
+        margin-left: 2%;
+        padding-top: 2%;
+        color:white;
+        padding-bottom: 2%;
+    }
+    .catelog{
+        color: #000000;
+        font-size: 20px;
+        margin-left: 3%;
+        margin-right: 5%;
+        padding-top: 5%;
+    }
+    .catelog_2{
+        color: #000000;
+        font-size: 20px;
+        padding-left: 40%;
+    }
+    .catelog_3{
+        color: #000000;
+        font-size: 20px;
+        padding-left: 25%;
+    }
+    .analysis_box{
+        box-sizing: border-box;
+        border: 1px solid rgb(165, 165, 165,0.6);
+        width: 80%;
+        margin-left: 10%;
+    }
     </style>
   </head>
   <body>
     <div class = "left">
-        <div><img href = "/Users/xrw/Desktop/Jony.jpeg"></div>
-        <div class = "user_name"><%= item.user_name %></div>
-        <div class = user_email><%= item.user_email %></div>
-        <div class = "course_link"><a href="/personalPage">courses_page(default)</a></div>
-        <div><a class = "analysis_link" href="/analysisPage">analysis_page</a></div>
+        <div class = "course_id">CS61C</div>
+        <div class = "course_name">C语言程序设计</div>
+        <br><br><br><br>
+             <span><i id = "dashboard_icon" class = "fa fa-align-justify" ></i></span> 
+             <span><a class = "personal_link" href="/personalPage">主页</a ></span> 
+              <br>
+              <br>
+              <span><i id = "regrade_icon" class = "fa fa-share" ></i></span>
+              <span class = "regrade">重改申请</span>
+  
+            <br><br>
+          <div class = "instructor_list">教师</div>
+             <span> <i id = "teacher_icon" class = "fa fa-user-circle"></i></span>
+              <span class = "instructor_name">王敬华</span>
+            <br>
+              <span><i id = "account_icon" class = "fa fa-user-circle-o"></i></span>
+              <span class = "account">账号</span>
     </div>
     <div class = "right">
-        <div class = "middle">
-            <div>Academic Summary</div>
-            <div>course_name    Instructor    GPA</div>
-            <% item.user_courses.map(function(course, index) { %>
-                <span><%= course %></span>
-                <span>Instructor</span>
-                <span>GPA</span><br>
-            <% }) %><br>
+        <br><br>
+      
+        <div class = "analysis_box">
+            <div class = "top_box">
+                <p class = "semester">2020 春季</p >
+            </div>
+            <span class = "catelog">课程ID</span>
+            <span class = "catelog">课程名称</span>
+            <span class = "catelog_2">平均成绩</span>
+            <br><br>
+            <span class = "catelog">CS 61C</span>
+            <span class = "catelog">Computer Architecture</span>
+            <span class = "catelog_3">2.3</span><br><br>
+            
         </div>
+<br>
+    </div>
+    <div class = "right_most">
+
     </div>
   </body>
 </html>

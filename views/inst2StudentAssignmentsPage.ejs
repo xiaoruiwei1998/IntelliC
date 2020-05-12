@@ -3,16 +3,54 @@
   <head>
     <title>inst2StudentAssignmentsPage</title>
   </head>
+
   <body>
-    <%=a_name%><br>
-    学生姓名    作业状态<br>
+      <div class = "">
+          <div class = "course_id"><%=course_name%></div>
+          <div class = "course_name">C语言程序设计</div>
+          <br><br><br><br>
+               <span><i id = "dashboard_icon" class = "fa fa-align-justify" ></i></span> 
+               <span><a class = "personal_link" href="/personalPage">主页</a ></span> 
+                <br>
+                <br>
+                <span><i id = "regrade_icon" class = "fa fa-share" ></i></span>
+                <span class = "regrade">重改申请</span>
+    
+              <br><br>
+            <div class = "instructor_list">教师</div>
+               <span> <i id = "teacher_icon" class = "fa fa-user-circle"></i></span>
+                <span class = "instructor_name">王敬华</span>
+            <br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+                <span><i id = "account_icon" class = "fa fa-user-circle-o"></i></span>
+                <span class = "account">账号</span>
+        </div><br><br><br><br>
+    ========================= 中间栏 =========================<br>
+    编号      学生姓名      学生邮箱    作业状态    批改<br>
     <% course_students.map(function(stu, i) { %>
       <% stu.user_assignments.map(function(a, j) { %>
         <% if (a.a_name == a_name) {%>
-          <a href="/oneAssignmentPage?a_log=<%= a.a_log%>&a_name=<%= a.a_name%>&a_courseID=<%=a.a_courseID%>&a_status=<%=a.a_status%>&a_release=<%=a.a_release%>&a_due=<%=a.a_due%>&a_questions=<%=a.a_questions%>"><%=stu.user_name%></a> 
-          <%=a.a_status%><br>
+          <%=i+1%>
+          <%=stu.user_name%>
+          <%=stu.user_email%>
+          100 / 100 
+          <a href="/oneAssignmentPage?a_log=<%= a.a_log%>&a_name=<%= a.a_name%>&a_courseID=<%=a.a_courseID%>&a_status=<%=a.a_status%>&a_release=<%=a.a_release%>&a_due=<%=a.a_due%>&a_questions=<%=a.a_questions%>">批改按钮</a><br>
         <% } %>
       <% }) %>
-    <% }) %>
+    <% }) %><br><br><br><br>
+    ========================= 右边栏 =========================<br>
+    <%=a_name%><br>
+    开始日期：<%=a_release%><br>
+    截止日期：<%=a_due%><br>
+    作业完成情况：<br>
+    总分：100分<br>
+    学生人数：2人<br>
+    提交人数：2人<br>
+    最高分：100分<br>
+    最低分：100分<br>
+    平均分：100分<br>
+    中位数：100分<br>
+    得分分布图：<br>
+    （图表）<br>
   </body>
 </html>

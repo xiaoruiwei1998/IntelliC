@@ -138,7 +138,7 @@ router.get('/inst2StudentAssignmentsPage', function(req, res, next) {
   model.connect(function(db) {
     db.collection('users').find({'user_assignments.a_name': req.query.thisAssignment, user_name: {$ne: req.session.userName}}).toArray(function(err, docs){
       console.log("all stu:"+docs)
-      res.render('inst2StudentAssignmentsPage', {course_students: docs, userMail: userMail, a_name: req.query.thisAssignment, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
+      res.render('inst2StudentAssignmentsPage', {a_release:req.query.a_release, a_due: req.query.a_due, course_students: docs, userMail: userMail, a_name: req.query.thisAssignment, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
     })
   })
 })

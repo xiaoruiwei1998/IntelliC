@@ -57,28 +57,28 @@
       position: relative;
       color: rgba(255, 255, 255, 0.7);
       font-size: 24px;
+      left:12%;
     }
     .personal_link{
       font-size: 18px;
       position: relative;
       /* identical to box height */
       color: rgba(255, 255, 255, 0.7);
-      left:52%;
-      top: -108%;
+      left:15%;
+      padding-top:-2%;
     }
     #regrade_icon{
       color: rgba(255, 255, 255, 0.7);
       position: relative;
       font-size: 24px;
-      left:10%;
-      padding-top: 5%;
+      left:12%;
     }
     .regrade{
       position: relative;
       font-size: 18px;
-      left:38%;
+      left:15%;
       color: rgba(255, 255, 255, 0.7);
-      top:-108%;
+  
     }
     .instructor_list{
       position: relative;
@@ -91,24 +91,27 @@
       color: rgba(255, 255, 255, 0.7);
       font-size: 24px;
       position:relative;
-      left:20%;
+      left:12%;
       padding-top:4%;
     }
     .instructor_name{
       color: rgba(255, 255, 255, 0.7);
       position:relative;
       font-size: 20px;
-      width: 200px;
+      left:15%
     }
     #account_icon{
       color:rgba(255, 255, 255, 0.7);
       position: relative;
       font-size: 40px;
+      left: 12%;
+      padding-top: 215%;
     }
     .account{
       font-size: 26px;
       color: rgba(255, 255, 255, 0.6);
       position: relative;
+      left:15%;
     }
     .assignment_name{
       position: relative;
@@ -124,6 +127,18 @@
       color: rgba(0, 0, 0, 0.5);
       font-size: 20px;
       left:5%;
+    }
+    .hard_questions{
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-sizing: border-box;
+      width: 90%;
+      backdrop-filter: blur(16px);
+      padding-bottom: 1%;
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 20px;
+      left:5%;
+      margin-bottom: 2%;
     }
     .top_question{
       font-size: 20px;
@@ -148,6 +163,20 @@
         border: 1px solid #CC6969;
         margin-bottom: 2%;
       }
+      input[type=grading] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+        width: 45px;
+        height: 25px;
+        background-color: #ffffff;
+        color:#000000;
+        padding-left: 15px;
+        font-size: 14px;
+        border: 1px solid #CC6969;
+        margin-bottom: 2%;
+      }
       #submit_button{
         appearance: none;
         border-radius: 60px;
@@ -158,6 +187,18 @@
         padding-right: 10px;
         font-size: 13px;
         border: 1px solid #CCCBCC;
+      }
+      #submit_button_2{
+        appearance: none;
+        border-radius: 60px;
+        width: 80px;
+        height: 42px;
+        background-color: #CC6969;
+        color: white;
+        padding-right: 10px;
+        font-size: 13px;
+        border: 1px solid #CCCBCC;
+        text-align: center;
       }
       .submit_position{
         padding-left:85%;
@@ -179,69 +220,154 @@
         color: #CC6969;
         margin-right: 1%;
       }
+      .grade{
+        margin-left: 1%;
+      }
+      .submit_position_2{
+        margin-top:10%;
+      }
+      .indexes{
+        margin-top: 2%;
+      }
   </style>
   <body>
       <div class = "left">
-        <div class = "course_id">CS 61C</div>
-        <div class = "course_name">C语言程序设计</div>
-        <br><br><br><br>
-
-
-        <div class = "row">
-          <div class = "col-lg-1">
-            
-          </div>
-          <div class = "col-lg-4">
-            <i id = "dashboard_icon" class = "fa fa-align-justify" ></i>
-          </div>
-          <div class = "col-lg-7">
-            <a class = "personal_link" href="/personalPage">主页</a >
-          </div>
-        </div>
-
-        <div class = "row">
-          <div class = "col-lg-1">
-            
-          </div>
-          <div class = "col-lg-2">
-            <i id = "regrade_icon" class = "fa fa-share" ></i>
-          </div>
-          <div class = "col-lg-9">
-            <div class = "regrade">重改申请</div>
-          </div>
-        </div>
-
-        <div class = "instructor_list">教师</div>
-
-        <div class = "row">
-          <div class = "col-lg-1">
-            
-          </div>
-          <div class = "col-lg-2">
-            <i id = "teacher_icon" class = "fa fa-user-circle"></i>
-          </div>
-          <div class = "col-lg-1">
-            <div class = "instructor_name">王敬华</div>
-          </div>
-        </div>
-        <br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <div class = "row">
-          <div class = "col-lg-2">
-            
-          </div>
-          <div class = "col-lg-2">
-            <i id = "account_icon" class = "fa fa-user-circle-o"></i>
-          </div>
-          <div class = "col-lg-4">
-            <div class = "account">账号</div>
-          </div>
-        </div>
+        <div class = "course_id">CS61C</div>
+          <div class = "course_name">C语言程序设计</div>
+          <br><br><br><br>
+               <span><i id = "dashboard_icon" class = "fa fa-align-justify" ></i></span> 
+               <span><a class = "personal_link" href="/personalPage">主页</a ></span> 
+                <br>
+                <br>
+                <span><i id = "regrade_icon" class = "fa fa-share" ></i></span>
+                <span class = "regrade">重改申请</span>
+    
+              <br><br>
+            <div class = "instructor_list">教师</div>
+               <span> <i id = "teacher_icon" class = "fa fa-user-circle"></i></span>
+                <span class = "instructor_name">王敬华</span>
+            <br>
+                <span><i id = "account_icon" class = "fa fa-user-circle-o"></i></span>
+                <span class = "account">账号</span>
       </div>
       <div class = "right">
-
+        
+        <!-- ------------------------------------------Auto-questions------------------------------------------ -->
+    <% if (a_type == "A") { %>
+      <div class = "auto_questions">
+      <br><br>
+      <div id = "question_1" class = "hard_questions">
+        <div class = "top_question">
+              &nbsp&nbsp
+            <span>1.</span>
+            <span>[ 1, 0, 1, 1, 0, 0, 1, 0, 0, 1 ]</span>
+        </div>
+        <p class = "description">"percentage" : 4%</p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="stu_answer" value="" placeholder="输入答案"><br>
+          <div class = "submit_position"><button id = "submit_button_2" onclick="function1();">提交</button></div>
+      </div>
+  
+      <div id = "question_2" class = "hard_questions" style = "visibility:hidden">
+        <div class = "top_question">
+              &nbsp&nbsp
+            <span>2.</span>
+            <span> [ 0, 0, 1, 1, 1, 1, 1, 0, 0, 1 ], </span>
+        </div>
+        <p class = "description">"percentage" : 10%</p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="stu_answer" value="" placeholder="输入答案"><br>
+          <div class = "submit_position"><button id = "submit_button_2" onclick="function2();">提交</button></div>
+      </div>
+  
+      <div id = "question_3" class = "hard_questions" style = "visibility:hidden">
+        <div class = "top_question">
+              &nbsp&nbsp
+            <span>3.</span>
+            <span>[ 0, 1, 1, 1, 1, 0, 0, 1, 1, 0 ]</span>
+        </div>
+        <p class = "description">"percentage" : 11%</p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="stu_answer" value="" placeholder="输入答案"><br>
+          <div class = "submit_position"><button id = "submit_button_2" onclick="function3();">提交</button></div>
+      </div>
+  
+      <div id = "question_4" class = "hard_questions" style = "visibility:hidden">
+        <div class = "top_question">
+              &nbsp&nbsp
+            <span>4.</span>
+            <span>[ 1, 0, 1, 1, 1, 0, 1, 0, 0, 1 ]</span>
+        </div>
+        <p class = "description">"percentage" : 11%</p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="stu_answer" value="" placeholder="输入答案"><br>
+          <div class = "submit_position"><button id = "submit_button_2" onclick="function4();">提交</button></div>
+      </div>
+  
+      <div id = "question_5" class = "hard_questions" style = "visibility:hidden">
+        <div class = "top_question">
+              &nbsp&nbsp
+            <span>5.</span>
+            <span>[ 0, 1, 1, 1, 0, 1, 1, 0, 1, 0 ]</span>
+        </div>
+        <p class = "description">"percentage" : 11%</p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="stu_answer" value="" placeholder="输入答案"><br>
+          <div class = "submit_position"><button id = "submit_button_2" onclick="function5();">提交</button></div>
+      </div>
+  
+      <div id = "question_6" class = "hard_questions" style = "visibility:hidden">
+        <div class = "top_question">
+              &nbsp&nbsp
+            <span>6.</span>
+            <span>[ 0, 0, 0, 1, 1, 0, 1, 0, 1, 1 ]</span>
+        </div>
+        <p class = "description">"percentage" : 13%</p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="stu_answer" value="" placeholder="输入答案"><br>
+          <div class = "submit_position"><button id = "submit_button_2" onclick="function6();">提交</button></div>
+      </div>
+  
+      <div id = "question_7" class = "hard_questions" style = "visibility:hidden">
+        <div class = "top_question">
+              &nbsp&nbsp
+            <span>7.</span>
+            <span>[ 0, 0, 0, 1, 1, 0, 1, 0, 1, 1 ]</span>
+        </div>
+        <p class = "description">"percentage" : 13%</p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="stu_answer" value="" placeholder="输入答案"><br>
+          <div class = "submit_position"><button id = "submit_button_2" onclick="function7();">提交</button></div>
+      </div>
+  
+      <div id = "question_8" class = "hard_questions" style = "visibility:hidden">
+        <div class = "top_question">
+              &nbsp&nbsp
+            <span>8.</span>
+            <span>[ 0, 0, 1, 1, 0, 0, 0, 1, 1, 1 ]</span>
+        </div>
+        <p class = "description">"percentage" : 14%</p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="stu_answer" value="" placeholder="输入答案"><br>
+          <div class = "submit_position"><button id = "submit_button_2" onclick="function8();">提交</button></div>
+      </div>
+  
+      <div id = "question_9" class = "hard_questions" style = "visibility:hidden">
+        <div class = "top_question">
+              &nbsp&nbsp
+            <span>9.</span>
+            <span>[ 1, 1, 1, 0, 1, 1, 0, 0, 1, 0 ]</span>
+        </div>
+        <p class = "description">"percentage" : 14%</p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="stu_answer" value="" placeholder="输入答案"><br>
+          <div class = "submit_position"><button id = "submit_button_2" onclick="function9();">提交</button></div>
+      </div>
+  
+      <div id = "question_10" class = "hard_questions" style = "visibility:hidden">
+        <div class = "top_question">
+              &nbsp&nbsp
+            <span>10.</span>
+            <span>[ 0, 1, 0, 1, 0, 0, 0, 1, 0, 1 ]</span>
+        </div>
+        <p class = "description">"percentage" : 14%</p>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="stu_answer" value="" placeholder="输入答案"><br>
+          <div class = "submit_position"><button id = "submit_button_2" onclick="function10();">提交</button></div>
+      </div>
+    </div>
+    <% }else{%>
         <br><br>
-
       <div class = "background">
       <% qSet.map(function(q, index) { %>
       
@@ -251,10 +377,9 @@
             &nbsp&nbsp
             <span><%= index+1%></span>
             <span>【判断题】</span>
-            <span>提交状态</span>
           </div>
           <div class = "description"><span><%= q.q_description%></span></div><br>
-            <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
+            <form action="/questions/submitOneQuestion?a_type=<%=thisAssignment.a_type%>&a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
               <% if (stu_answers[thisAssignment.a_name+'_'+q.q_id] == '1') {%>
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <input type="radio" name="stu_answer" value=1 checked/> &nbsp正确<br>
@@ -280,7 +405,6 @@
             &nbsp&nbsp
             <span><%= index+1%></span>
             <span>【填空题】</span>
-            <span>提交状态</span>
           </div>
          <div class = "description"><span><%= q.q_description%></span></div><br>
           <form action="/questions/submitOneQuestion?q_type=<%=q.q_type%>&n=<%=q.q_num_of_blanks%>&a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
@@ -302,7 +426,6 @@
             &nbsp&nbsp
           <span><%= index+1%></span>
           <span>【简答题】</span>
-          <span>提交状态</span>
         </div>
         <div class = "description"><span><%= q.q_description%></span></div><br>
           <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
@@ -317,7 +440,6 @@
             &nbsp&nbsp
           <span><%= index+1%></span>
           <span>【编程题】</span>
-          <span>提交状态</span>
         </div>
         <div class = "description"><span><%= q.q_description%></span></div><br>
           <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
@@ -332,7 +454,6 @@
             &nbsp&nbsp
           <span><%= index+1%></span>
           <span>【单选题】</span>
-          <span>提交状态</span>
         </div>
         <div class = "description"><span><%= q.q_description%></span></div><br>
           <form action="/questions/submitOneQuestion?a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>&q_type=MC" method="post">
@@ -354,7 +475,6 @@
             &nbsp&nbsp
           <span><%= index+1%></span>
           <span>【多选题】</span>
-          <span>提交状态</span>
         </div>
         <div class = "description"><span><%= q.q_description%></span></div><br>
           <form action="/questions/submitOneQuestion?q_type=NMC&n=<%=q.q_choices.length%>&a_questions=<%=thisAssignment.a_questions%>&a_name=<%=thisAssignment.a_name%>&a_release=<%=thisAssignment.a_release%>&a_due=<%=thisAssignment.a_due%>&q_id=<%=q.q_id%>&q_right=<%=q.q_answer%>&q_full_score=<%=q.q_difficulty%>" method="post">
@@ -375,26 +495,141 @@
       <br>
       <% }) %>
     </div>
-    </div>
-    <div class = "right_most">
-      <div class = "contents">
-      <br>
-      <br>
-      <div class = "assignment_name"><%= thisAssignment.a_name%></div>
-       <br>
-        <span class = "student_name"><b>学生姓名：</b></span>
-         <span><%= userName%></span>
-        <br>
-        <br>
-        <span class = "total_points"><b>作业总分: </b></span>
-        <span class = "points"><%= all_over_score%> / 26分</span><br>
+    <% }%>
 
-        <% qSet.map(function(q, index) { %>
-          <span><b>第<%= index+1%>题</b></span>
-          <span class = "points">(<%= stu_scores[thisAssignment.a_name+'_'+q.q_id]%> / <%=q.q_difficulty%>分)</span> 
-          <div class = "question_title"><%= q.q_title%><br>
-        <% }) %>
-      </div>
+
+
+
+
     </div>
+
+    <div class = "right_most">
+        <% if (a_type == "A") { %>
+          <br>
+          <br>
+          <div class = "contents">
+          <div class = "assignment_name"><%= thisAssignment.a_name%></div>
+          <br>
+           <span class = "student_name"><b>学生姓名：</b></span>
+            <span><%= userName%></span>
+           <br>
+           <br>
+           <span class = "total_points"><b>作业总分: </b></span>
+           <span class = "points"><%= all_over_score%> / 26分</span><br>
+          
+        <div id = "index_1" class = "indexes">
+          <span><b>第1题</b></span>
+          <span class = "points">( / 1 分)</span>
+        </div>
+        <div id = "index_2" class = "indexes" style = "visibility:hidden">
+            <span><b>第2题</b></span>
+            <span class = "points">( / 1 分)</span>
+        </div>
+        <div id = "index_3" class = "indexes" style = "visibility:hidden">
+            <span><b>第3题</b></span>
+            <span class = "points">( / 1 分)</span>
+        </div>
+        <div id = "index_4" class = "indexes" style = "visibility:hidden">
+            <span><b>第4题</b></span>
+            <span class = "points">( / 1 分)</span>
+        </div>
+        <div id = "index_5" class = "indexes" style = "visibility:hidden">
+            <span><b>第5题</b></span>
+            <span class = "points">( / 1 分)</span>
+        </div>
+        <div id = "index_6" class = "indexes" style = "visibility:hidden">
+            <span><b>第6题</b></span>
+            <span class = "points">( / 1 分)</span>
+        </div>
+        <div id = "index_7" class = "indexes" style = "visibility:hidden">
+            <span><b>第7题</b></span>
+            <span class = "points">( / 1 分)</span>
+        </div>
+        <div id = "index_8" class = "indexes" style = "visibility:hidden">
+            <span><b>第8题</b></span>
+            <span class = "points">( / 1 分)</span>
+        </div>
+        <div id = "index_9" class = "indexes" style = "visibility:hidden">
+            <span><b>第9题</b></span>
+            <span class = "points">( / 1 分)</span>
+        </div>
+        <div id = "index_10" class = "indexes" style = "visibility:hidden">
+            <span><b>第10题</b></span>
+            <span class = "points">( / 1 分)</span>
+        </div>
+      </div>
+       <%}else{%>
+        <div class = "contents">
+            <br>
+            <br>
+            <div class = "assignment_name"><%= thisAssignment.a_name%></div>
+             <br>
+              <span class = "student_name"><b>学生姓名：</b></span>
+               <span><%= userName%></span>
+              <br>
+              <br>
+              <span class = "total_points"><b>作业总分: </b></span>
+              <span class = "points">4 / 26分</span><br>
+      
+              <% qSet.map(function(q, index) { %>
+                <span><b>第<%= index+1%>题</b></span>
+                <% if(userType == 'I') { %>
+                  <span class = "grade">(&nbsp</span><input type="grading" class = "question_grade" name="question_g" value="" placeholder=""><span>&nbsp/&nbsp<%=q.q_difficulty%>分&nbsp)</span>
+                <% } %>
+                <% if(userType == 'S') { %>
+                <span class = "points">(<%= stu_scores[thisAssignment.a_name+'_'+q.q_id]%> / <%=q.q_difficulty%>分)</span>
+                <% } %>
+                <div class = "question_title"><%= q.q_title%><br>
+              <% }) %>
+              <% if(userType == 'I') { %>
+              <div class = "submit_position_2"><input id = "submit_button" type="submit" name="submit" value="提交"></div>
+              <% } %>
+            </div>
+          </div>
+        <%}%>
+      
+     
   </body>
+  <script>
+      function function1 () {
+        document.getElementById("question_2").style.visibility = "visible";
+        document.getElementById("index_2").style.visibility = "visible";
+      }
+      function function2 () {
+        document.getElementById("question_3").style.visibility = "visible";
+        document.getElementById("index_3").style.visibility = "visible";
+      }
+      function function3 () {
+        document.getElementById("question_4").style.visibility = "visible";
+        document.getElementById("index_4").style.visibility = "visible";
+      }
+      function function4 () {
+        document.getElementById("question_5").style.visibility = "visible";
+        document.getElementById("index_5").style.visibility = "visible";
+      }
+      function function5 () {
+        document.getElementById("question_6").style.visibility = "visible";
+        document.getElementById("index_6").style.visibility = "visible";
+      }
+      function function6 () {
+        document.getElementById("question_7").style.visibility = "visible";
+        document.getElementById("index_7").style.visibility = "visible";
+      }
+      function function7 () {
+        document.getElementById("question_8").style.visibility = "visible";
+        document.getElementById("index_8").style.visibility = "visible";
+      }
+      function function8 () {
+        document.getElementById("question_9").style.visibility = "visible";
+        document.getElementById("index_9").style.visibility = "visible";
+      }
+      function function9 () {
+        document.getElementById("question_10").style.visibility = "visible";
+        document.getElementById("index_10").style.visibility = "visible";
+      }
+      function function10 () {
+        document.getElementById("question_10").style.visibility = "visible";
+        document.getElementById("index_10").style.visibility = "visible";
+      }
+  </script>
 </html>

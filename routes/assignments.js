@@ -27,20 +27,40 @@ router.get('/deleteAssignment', function(req, res, next) {
 /* Auto-add assignment */
 router.post('/autoAddAssignment', function(req, res, next) {
   console.log('自动发布试卷')
-  // call.js
-  const exec = require('child_process').exec;
-  const execSync = require('child_process').execSync;
-  // 异步执行
-  exec('python input_data.py',function(error,stdout,stderr){
-      if(error) {
-          console.info('stderr : '+stderr);
-      }
-      console.log('exec: ' + stdout);
+  // // call.js
+  // const exec = require('child_process').exec;
+  // const execSync = require('child_process').execSync;
+  // // 异步执行
+  // exec('python /Users/xrw/Desktop/IntelliC/routes/DKT+.py',function(error,stdout,stderr){
+  //     if(error) {
+  //         console.info('stderr : '+stderr);
+  //     }
+  //     console.log('exec: ' + stdout);
+  // })
+  // // 同步执行
+  // const output = execSync('python /Users/xrw/Desktop/IntelliC/routes/DKT+.py')
+  // console.log('sync: ' + output.toString())
+  // console.log('over')
+  var thisAssignment = {
+    a_name: req.body.a_name,
+    a_courseID: req.query.thisCourse,
+    a_release: req.body.a_release,
+    a_due: req.body.a_due,
+    a_questions: [],
+    a_log: [],
+    a_type: 'A'
+  }
+  model.connect(function(db) {
+    // db.collection('tmp_test').find()
+    db.collection('users').updateMany({"user_courses.course_id": req.query.thisCourse}, {$addToSet: {user_assignments: thisAssignment}}, function(err, ret) {
+      if (err) {
+        console.log('Add Assignment Failed!')
+        } else {
+            console.log(thisAssignment)
+        }
+        res.redirect('/coursePage?thisCourse='+req.query.thisCourse)
+    })
   })
-  // 同步执行
-  const output = execSync('python input_data.py')
-  console.log('sync: ' + output.toString())
-  console.log('over')
 })
 
 var a_questionIds = []

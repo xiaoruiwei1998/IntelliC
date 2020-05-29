@@ -212,10 +212,16 @@
               <p class = "category_2"><%=stu.user_email%></p >
             </div>
             <div class = "col-xl-3">
-              <p class = "category_2">100 / 100 </p >
+              <p class = "category_2">
+                <% if (stu.user_name == "RuiweiXiao"){%>
+                  3 / 26
+                <%}else{%>
+                  0 / 26
+                <%}%>
+               </p >
             </div>
             <div class = "col-xl-1">
-              <a class = "edit" href="/oneAssignmentPage?a_log=<%= a.a_log%>&a_name=<%= a.a_name%>&a_courseID=<%=a.a_courseID%>&a_status=<%=a.a_status%>&a_release=<%=a.a_release%>&a_due=<%=a.a_due%>&a_questions=<%=a.a_questions%>"><i id = "pencil_icon" class = "fa fa-pencil"></i></a ><br>
+              <a class = "edit" href="/oneAssignmentPage?a_type=<%=a.a_type%>&a_log=<%= a.a_log%>&a_name=<%= a.a_name%>&a_courseID=<%=a.a_courseID%>&a_status=<%=a.a_status%>&a_release=<%=a.a_release%>&a_due=<%=a.a_due%>&a_questions=<%=a.a_questions%>"><i id = "pencil_icon" class = "fa fa-pencil"></i></a ><br>
             </div> 
             <div class = "bottom_line"></div>
           </div>

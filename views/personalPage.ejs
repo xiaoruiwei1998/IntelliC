@@ -217,17 +217,18 @@
         padding-left: 5%;
       }
       #account_icon{
-      color:rgba(255, 255, 255, 0.7);
-      position: relative;
-      font-size: 40px;
-      left: 12%;
-    }
-    .account{
-      font-size: 26px;
-      color: rgba(255, 255, 255, 0.6);
-      position: relative;
-      left:15%;
-    }
+        color:rgba(255, 255, 255, 0.7);
+        position: relative;
+        font-size: 40px;
+        left: 12%;
+        padding-top:12%;
+      }
+      .account{
+        font-size: 26px;
+        color: rgba(255, 255, 255, 0.6);
+        position: relative;
+        left:15%;
+      }
 
     </style>
   <body>
@@ -279,7 +280,11 @@
                 <div class = "box">
                   <a class = "course_name" href="/coursePage?thisCourse=<%=course.course_id%>"><h1 class = "course_id"><%= course_name %></h1></a >
                   <p class = "full_course_name"><%=course_inst%></p >
-                  <div class = "inner_box"><h1 class = "num_assignments">5个作业</h1></div>
+                    <% if (course_name == 'CS61C') {%>
+                  <div class = "inner_box"><h1 class = "num_assignments">6个作业</h1></div>
+                  <%} else {%>
+                    <div class = "inner_box"><h1 class = "num_assignments">0个作业</h1></div>
+                    <% } %>
               </div>
               </li>
             </ul>

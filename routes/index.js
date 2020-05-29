@@ -53,6 +53,7 @@ router.get('/analysisPage', function(req, res, next) {
 router.get('/oneAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
   var thisAssignment = {
+    a_type: req.query.a_type,
     a_name: req.query.a_name,
     a_courseID: req.query.a_course,
     a_status: req.query.a_status,
@@ -67,7 +68,7 @@ router.get('/oneAssignmentPage', function(req, res, next) {
       req.session.all_over_score = 0
       req.session.stu_answers = {}
       req.session.stu_scores = {}
-      res.render('oneAssignmentPage', {all_over_score:req.session.all_over_score, stu_answers: req.session.stu_answers, stu_scores: req.session.stu_scores, qSet: docs, userMail: userMail, userName:req.session.userName, thisAssignment: thisAssignment})
+      res.render('oneAssignmentPage', { a_type: req.query.a_type, a_type: req.query.a_type, userType: req.session.userType, all_over_score:req.session.all_over_score, stu_answers: req.session.stu_answers, stu_scores: req.session.stu_scores, qSet: docs, userMail: userMail, userName:req.session.userName, thisAssignment: thisAssignment})
     })
   })
 })
@@ -152,7 +153,7 @@ router.get('/manuAddAssignmentPage', function(req, res, next) {
 /* GET autoAssignmentPage page. */
 router.get('/autoAddAssignmentPage', function(req, res, next) {
   var userMail = req.session.userMail || ''
-  res.render('autoAddAssignmentPage', {userMail: userMail, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
+  res.render('autoAddAssignmentPage', {userMail: userMail, thisCourse: req.query.thisCourse, course_name: req.query.thisCourse.split('_')[0], course_inst: req.query.thisCourse.split('_')[1]})
 })
 
 router.get('/chooseQuestionPage', function(req, res, next) {

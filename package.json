@@ -1,10 +1,10 @@
 {
   "name": "intellic",
-  "worker": "node app.js",
+  // "worker": "node app.js",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "bcrypt": "^3.0.7",

@@ -1,8 +1,8 @@
 var MongoClient = require('mongodb').MongoClient
 
-var url = 'mongodb://localhost:27017'
+var url = 'mongodb+srv://Dev-Ruiwei:Xrw1998!!!@bbq.3sexy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
-var dbName = 'IntelliC'
+var dbName = 'bbq'
 
 // DB Connectinng Method
 function connect(callback) {

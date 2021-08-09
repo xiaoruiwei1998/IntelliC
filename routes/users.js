@@ -60,6 +60,7 @@ router.post('/register', function(req, res, next) {
                 user_email: req.body.userMail,
                 user_password: hashedPwd,
                 user_salt: salt,
+                user_courses: [],
                 user_friends: [],
                 user_assignments: []
               }

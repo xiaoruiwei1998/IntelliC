@@ -271,7 +271,7 @@
       
       
       <div class = "right_bottom">
-      <% if (item.user_courses != []) { %>
+      <% if (item.user_courses != [] && item.user_courses != null) { %>
           <% item.user_courses.map(function(course, index) { 
             var course_name = course.course_id.split('_')[0]
             var course_inst = course.course_id.split('_')[1]

@@ -30,12 +30,7 @@ router.post('/addCourse', function(req, res, next) {
               console.log("update err!")
             }
           })
-          // db.collection('users').updateOne({user_name: req.body.instName, "user_courses.course_id": new_course.course_id}, {$addToSet: {"user_courses.course_students": req.session.userName}}, function(err, ret) {
-          //   if (err) {
-          //     console.log("inst add course err!")
-          //   }
-          //   res.redirect('/personalPage')
-          // })
+            res.redirect('/personalPage')
       }
     })
   })

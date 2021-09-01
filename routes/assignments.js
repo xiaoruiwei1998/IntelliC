@@ -13,7 +13,7 @@ router.get('/editAssignment', function(req, res, next) {
 router.get('/deleteAssignment', function(req, res, next) {
   console.log('删除试卷')
   model.connect(function(db) {
-      db.collection('users').updateMany({}, {$pull: {user_assignments: {a_name: req.query.a_name}}}, function(err, ret) {
+      db.collection('courses').updateOne({}, {$pull: {course_assignments: {a_name: req.query.a_name}}}, function(err, ret) {
           if (err) {
               console.log('Delete failed!')
           } else {
@@ -52,7 +52,7 @@ router.post('/autoAddAssignment', function(req, res, next) {
   }
   model.connect(function(db) {
     // db.collection('tmp_test').find()
-    db.collection('users').updateMany({"user_courses.course_id": req.query.thisCourse}, {$addToSet: {user_assignments: thisAssignment}}, function(err, ret) {
+    db.collection('courses').updateOne({"course_id": req.query.thisCourse}, {$addToSet: {course_assignments: thisAssignment}}, function(err, ret) {
       if (err) {
         console.log('Add Assignment Failed!')
         } else {
@@ -80,7 +80,7 @@ router.post('/manuAddAssignment', function(req, res, next) {
   a_questionIds = []
   a_preview = []
   model.connect(function(db) {
-    db.collection('users').updateMany({"user_courses.course_id": req.query.thisCourse}, {$addToSet: {user_assignments: thisAssignment}}, function(err, ret) {
+    db.collection('courses').updateOne({"course_id": req.query.thisCourse}, {$addToSet: {course_assignments: thisAssignment}}, function(err, ret) {
       if (err) {
         console.log('Add Assignment Failed!')
         } else {

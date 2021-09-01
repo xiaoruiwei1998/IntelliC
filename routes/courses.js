@@ -10,10 +10,10 @@ router.post('/addCourse', function(req, res, next) {
       var uType = req.session.userType
       // If Inst: create new courses.
       if (uType == 'I') {
-        var new_course = req.body.courseName + '_' + req.session.userName // 每个课程唯一识别码 = course_name + inst_mail
+        var new_course = req.body.courseName + '_' + req.session.userMail // 每个课程唯一识别码 = course_name + inst_mail
         var this_course = {
                       course_id: new_course,
-                      course_insts: [req.session.userName],
+                      course_insts: [req.session.userMail],
                       course_students: [],
                       course_assignments: []
                      }

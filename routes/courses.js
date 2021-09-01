@@ -18,7 +18,7 @@ router.post('/addCourse', function(req, res, next) {
                       course_assignments: []
                      }
         db.collection('courses').insertOne(this_course, function(err, ret) {})
-        db.collection('users').updateOne({user_email: req.session.userMail}, {$addToSet: {user_courses: new_course}}, function(err, ret) {
+        db.collection('users').updateOne({user_email: req.session.userMail}, {$addToSet: {user_courses: {"course_id":new_course}}, function(err, ret) {
           if (err) {
             console.log("inst add course err!")
           }

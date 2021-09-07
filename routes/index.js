@@ -81,11 +81,17 @@ router.get('/coursePage', function(req, res, next) {
   var thisCourse = req.query.thisCourse
   var course_name = thisCourse.split('_')[0]
   var course_inst = thisCourse.split('_')[1]
+  var item = null
+  var course = null
+  
   model.connect(function(db) {
     db.collection('users').findOne({user_email: userMail}, function(err, docs) {
-        var item = docs
-        res.render('coursePage', {userMail: userMail, userType: userType, userName: userName, item: item, course_name:course_name, course_inst: course_inst, thisCourse: thisCourse});
+        item = docs
     })
+    db.collection('courses').findOne({course_id: thisCourse}, function(err, docs) {
+        course = docs
+    })
+    res.render('coursePage', {userMail: userMail, userType: userType, userName: userName, item: item, course_name:course_name, course_inst: course_inst, thisCourse: thisCourse, course: course});
   })
 })
 

@@ -15,7 +15,9 @@ router.get('/deleteAssignment', function(req, res, next) {
   model.connect(function(db) {
       db.collection('courses').find({course_assignments: {a_name: req.query.a_name}}, function(err, docs) {
           var list = docs
-          console.log(list)
+          
+          console.log('nope')
+          console.log(list.course_id)
       })
       db.collection('courses').updateOne({}, {$pull: {course_assignments: {a_name: req.query.a_name}}}, function(err, ret) {
           if (err) {

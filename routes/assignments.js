@@ -13,11 +13,11 @@ router.get('/editAssignment', function(req, res, next) {
 router.get('/deleteAssignment', function(req, res, next) {
   console.log('删除试卷')
   model.connect(function(db) {
-      db.collection('courses').find({course_assignments: {a_name: req.query.a_name}}, function(err, docs) {
+      db.collection('courses').findOne({course_assignments: {a_name: req.query.a_name}}, function(err, docs) {
           var list = docs
           
           console.log('nope')
-          console.log(list.course_id)
+          console.log(list)
       })
       db.collection('courses').updateOne({}, {$pull: {course_assignments: {a_name: req.query.a_name}}}, function(err, ret) {
           if (err) {

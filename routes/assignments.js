@@ -17,6 +17,7 @@ router.get('/deleteAssignment', function(req, res, next) {
           if (err) {
               console.log('Delete failed!')
           } else {
+              console.log(req.query.a_name)
               console.log('Delete successfully')
           }
           res.redirect('/coursePage?thisCourse='+req.query.course_name+'_'+req.query.course_inst)

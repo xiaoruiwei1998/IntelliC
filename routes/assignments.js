@@ -17,7 +17,7 @@ router.get('/deleteAssignment', function(req, res, next) {
           if (err) {
               console.log('Delete failed!')
           } else {
-              console.log(req.query.a_name)
+              console.log(req.query.thisCourse)
               console.log(req.query.a_name)
               console.log('Delete successfully')
           }

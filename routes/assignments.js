@@ -12,16 +12,17 @@ router.get('/editAssignment', function(req, res, next) {
 /* Delete assignment */
 router.get('/deleteAssignment', function(req, res, next) {
   console.log('删除试卷')
+  var thisCourse = req.query.course_name+'_'+req.query.course_inst
   model.connect(function(db) {
-      db.collection('courses').updateOne({course_id: req.query.thisCourse}, {$pull: {course_assignments: {a_name: req.query.a_name}}}, function(err, ret) {
+      db.collection('courses').updateOne({course_id: thisCourse}, {$pull: {course_assignments: {a_name: req.query.a_name}}}, function(err, ret) {
           if (err) {
               console.log('Delete failed!')
           } else {
-              console.log(req.query.thisCourse)
+              console.log(thisCourse)
               console.log(req.query.a_name)
               console.log('Delete successfully')
           }
-          res.redirect('/coursePage?thisCourse='+req.query.course_name+'_'+req.query.course_inst)
+          res.redirect('/coursePage?thisCourse='+thisCourse)
       })
   })
 });

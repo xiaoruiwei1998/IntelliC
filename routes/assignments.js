@@ -78,7 +78,8 @@ router.post('/manuAddAssignment', function(req, res, next) {
     a_release: req.body.a_release,
     a_due: req.body.a_due,
     a_questions: a_questionIds,
-    a_log: []
+    a_log: [],
+    a_type: 'M'
   }
   a_questionIds = []
   a_preview = []

@@ -114,7 +114,7 @@ router.post("/submitOneQuestion", function(req, res, next) {
     model.connect(function(db) {
         db.collection('users').updateOne({ "user_name" : req.session.userName}, {$addToSet: {user_logs:{"q_assignment": thisAssignment.a_name, "q_id" : req.query.q_id, "q_percentage" : (req.body.stu_answer == req.query.q_right), "q_time":moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')}}})
         db.collection('questions').find({q_id:{$in: thisAssignment.a_questions}}).toArray(function(err, docs) {
-            res.render('oneAssignmentPage', {assignmentType: req.query.a_type, userType: req.session.userType, all_over_score:req.session.all_over_score, stu_scores: req.session.stu_scores, stu_answers: req.session.stu_answers, qSet: docs, userMail: req.session.userMail, userName:req.session.userName, thisAssignment: thisAssignment})
+            res.render('oneAssignmentPage', {a_type: req.query.a_type, userType: req.session.userType, all_over_score:req.session.all_over_score, stu_scores: req.session.stu_scores, stu_answers: req.session.stu_answers, qSet: docs, userMail: req.session.userMail, userName:req.session.userName, thisAssignment: thisAssignment})
           })
     })
 })

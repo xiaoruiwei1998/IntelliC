@@ -312,16 +312,17 @@
                   <% if (q.q_type == "MC") { %>
                     <span>【单选题】</span>
                     <span><%= q.q_title%></span><br>
-                    <% for (var i=1; i<=q.q_choices.length; i++) { %>
-                      <span><%=q.q_choices[i]%></span><br>
+                    <% for (var i=0; i<4; i++) { %>
+                     <span><%=q.q_choices.split(",")[i]%></span><br>
                     <% } %>
                   <% } %>
+                  
       
                   <% if (q.q_type == "NMC") { %>
                     <span>【多选题】</span>
                     <span><%= q.q_title%></span><br>
-                    <% for (var i=1; i<=q.q_choices.length; i++) { %>
-                      <span><%=q.q_choices[i]%></span><br>
+                    <% for (var i=0; i<4; i++) { %>
+                     <span><%=q.q_choices.split(",")[i]%></span><br>
                     <% } %>
                   <% } %>
                   <span>答案：<%= q.q_answer %></span><br>
@@ -365,7 +366,7 @@
             <% if (q.q_type == "MC") { %>
               <span>【单选题】</span>
               <span><%= q.q_title%></span><br>
-              <% for (var i=1; i<=q.q_choices.split(",")[0]; i++) { %>
+              <% for (var i=0; i<4; i++) { %>
                 <span><%=q.q_choices.split(",")[i]%></span><br>
               <% } %>
             <% } %>
@@ -373,7 +374,7 @@
             <% if (q.q_type == "NMC") { %>
               <span>【多选题】</span>
               <span><%= q.q_title%></span><br>
-              <% for (var i=1; i<=q.q_choices.split(",")[0]; i++) { %>
+              <% for (var i=0; i<4; i++) { %>
                 <span><%=q.q_choices.split(",")[i]%></span><br>
               <% } %>
             <% } %>
